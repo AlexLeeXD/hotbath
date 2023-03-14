@@ -1,0 +1,11 @@
+{
+  "item.hotbath.hot_water_bucket": "Hot Water Bucket",
+  "item.hotbath.herbal_bath_bucket": "Herbal Bath Bucket",
+  "item.hotbath.honey_bath_bucket": "Honey Bath Bucket",
+  "item.hotbath.milk_bath_bucket": "Milk Bath Bucket",
+  "item.hotbath.rose_bath_bucket": "Rose Bath Bucket",
+  "item.hotbath.bath_herb": "Bath Herb",
+  "fluid.hotbath.hot_water_block": "Hot Water Block",
+
+  "itemGroup.hotBathTab": "Hot Bath"
+}

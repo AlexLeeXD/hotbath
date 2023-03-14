@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "hotbath:hot_water_flowing",
+    "hotbath:hot_water_fluid"
+  ]
+}

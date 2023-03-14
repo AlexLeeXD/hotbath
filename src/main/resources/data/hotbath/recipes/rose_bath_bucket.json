@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "S# ",
+    "   ",
+    "   "
+  ],
+  "key": {
+    "#": {
+      "item": "hotbath:hot_water_bucket"
+    },
+    "S": {
+      "item": "minecraft:rose_bush"
+    }
+  },
+  "result": {
+    "item": "hotbath:rose_bath_bucket"
+  }
+}

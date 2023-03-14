@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "S# ",
+    "   ",
+    "   "
+  ],
+  "key": {
+    "#": {
+      "item": "hotbath:hot_water_bucket"
+    },
+    "S": {
+      "item": "minecraft:honey_bottle"
+    }
+  },
+  "result": {
+    "item": "hotbath:honey_bath_bucket"
+  }
+}

@@ -1,8 +1,8 @@
 package net.hiveteam.hotbath;
 
 import net.hiveteam.hotbath.block.ModBlocks;
-import net.hiveteam.hotbath.fluid.ModFluids;
-import net.hiveteam.hotbath.item.ModItems;
+import net.hiveteam.hotbath.fluid.HotBathFluidsRegister;
+import net.hiveteam.hotbath.item.HotBathItemRegister;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.renderer.RenderType;
@@ -37,9 +37,9 @@ public class HotBath
         // Register the setup method for modloading
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        ModItems.register(eventBus);
+        HotBathItemRegister.register(eventBus);
         ModBlocks.register(eventBus);
-        ModFluids.register(eventBus);
+        HotBathFluidsRegister.register(eventBus);
 
         eventBus.addListener(this::setup);
         // Register the enqueueIMC method for modloading
@@ -62,9 +62,9 @@ public class HotBath
 
     private void doClientStuff(final FMLClientSetupEvent event) {
         event.enqueueWork(() -> {
-            RenderTypeLookup.setRenderLayer(ModFluids.HOT_WATER_FLUID.get(), RenderType.getTranslucent());
-            RenderTypeLookup.setRenderLayer(ModFluids.HOT_WATER_BLOCK.get(), RenderType.getTranslucent());
-            RenderTypeLookup.setRenderLayer(ModFluids.HOT_WATER_FLOWING.get(), RenderType.getTranslucent());
+            RenderTypeLookup.setRenderLayer(HotBathFluidsRegister.HOT_WATER_FLUID.get(), RenderType.getTranslucent());
+            RenderTypeLookup.setRenderLayer(HotBathFluidsRegister.HOT_WATER_BLOCK.get(), RenderType.getTranslucent());
+            RenderTypeLookup.setRenderLayer(HotBathFluidsRegister.HOT_WATER_FLOWING.get(), RenderType.getTranslucent());
         });
     }
 

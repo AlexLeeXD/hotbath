@@ -22,4 +22,5 @@ public class HotWaterBlock extends FlowingFluidBlock {
     public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, java.util.Random rand) {
         animateDefaultSteam(worldIn, pos, rand);
     }
+
 }

@@ -1,8 +1,8 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "S# ",
     "   ",
+    "S#S",
     "   "
   ],
   "key": {
@@ -14,6 +14,6 @@
     }
   },
   "result": {
-    "item": "hotbath:herbal_bath_bucket"
+    "item": "hotbath:peony_bath_bucket"
   }
 }

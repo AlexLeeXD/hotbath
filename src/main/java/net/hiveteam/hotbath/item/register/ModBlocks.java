@@ -1,4 +1,4 @@
-package net.hiveteam.hotbath.block;
+package net.hiveteam.hotbath.item.register;
 
 import net.hiveteam.hotbath.HotBath;
 import net.hiveteam.hotbath.item.ItemGroup;

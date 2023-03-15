@@ -1,7 +1,7 @@
 package net.hiveteam.hotbath.item;
 
 import net.hiveteam.hotbath.HotBath;
-import net.hiveteam.hotbath.fluid.FluidsRegister;
+import net.hiveteam.hotbath.item.register.FluidsRegister;
 import net.minecraft.item.BucketItem;
 import net.minecraft.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;

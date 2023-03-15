@@ -1,7 +1,7 @@
-package net.hiveteam.hotbath.fluid;
+package net.hiveteam.hotbath.item.register;
 
 import net.hiveteam.hotbath.HotBath;
-import net.hiveteam.hotbath.block.ModBlocks;
+import net.hiveteam.hotbath.block.HotWaterBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.FlowingFluidBlock;
@@ -17,10 +17,13 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import static net.hiveteam.hotbath.fluid.FluidsParticles.*;
+import static net.hiveteam.hotbath.util.FluidsParticles.*;
 import static net.hiveteam.hotbath.fluid.FluidsProperties.*;
 
 
+/**
+ * 液体注册类
+ */
 public class FluidsRegister {
     public static final ResourceLocation WATER_STILL_RL = new ResourceLocation("block/water_still");
     public static final ResourceLocation WATER_FLOWING_RL = new ResourceLocation("block/water_flow");
@@ -37,13 +40,8 @@ public class FluidsRegister {
             () -> new ForgeFlowingFluid.Flowing(HOT_WATER_PROPERTIES));
 
     public static final RegistryObject<FlowingFluidBlock> HOT_WATER_BLOCK = ModBlocks.BLOCKS.register("hot_water_block",
-            () -> new FlowingFluidBlock(() -> FluidsRegister.HOT_WATER_FLUID.get(), AbstractBlock.Properties.create(Material.WATER)
-                    .doesNotBlockMovement().hardnessAndResistance(100f).noDrops()) {
-                @Override
-                public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, java.util.Random rand) {
-                    animateDefaultSteam(worldIn, pos, rand);
-                }
-            });
+            () -> new HotWaterBlock(() -> HOT_WATER_FLUID.get(), AbstractBlock.Properties.create(Material.WATER)
+                    .doesNotBlockMovement().hardnessAndResistance(100f).noDrops()));
 
 
 

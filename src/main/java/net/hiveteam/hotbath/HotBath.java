@@ -1,7 +1,7 @@
 package net.hiveteam.hotbath;
 
-import net.hiveteam.hotbath.block.ModBlocks;
-import net.hiveteam.hotbath.fluid.FluidsRegister;
+import net.hiveteam.hotbath.item.register.ModBlocks;
+import net.hiveteam.hotbath.item.register.FluidsRegister;
 import net.hiveteam.hotbath.item.ItemRegister;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;

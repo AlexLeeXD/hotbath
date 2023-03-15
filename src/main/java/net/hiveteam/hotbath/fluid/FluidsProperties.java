@@ -8,7 +8,7 @@ import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.fml.RegistryObject;
 
-import static net.hiveteam.hotbath.fluid.FluidsRegister.*;
+import static net.hiveteam.hotbath.item.register.FluidsRegister.*;
 
 public class FluidsProperties {
     private static int FLUID_COLOR;

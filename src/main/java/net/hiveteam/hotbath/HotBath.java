@@ -1,8 +1,8 @@
 package net.hiveteam.hotbath;
 
-import net.hiveteam.hotbath.item.register.ModBlocks;
-import net.hiveteam.hotbath.item.register.FluidsRegister;
-import net.hiveteam.hotbath.item.ItemRegister;
+import net.hiveteam.hotbath.register.blocksRegister;
+import net.hiveteam.hotbath.register.FluidsRegister;
+import net.hiveteam.hotbath.register.ItemRegister;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.renderer.RenderType;
@@ -38,7 +38,7 @@ public class HotBath
         IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         ItemRegister.register(eventBus);
-        ModBlocks.register(eventBus);
+        blocksRegister.register(eventBus);
         FluidsRegister.register(eventBus);
 
         eventBus.addListener(this::setup);

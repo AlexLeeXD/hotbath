@@ -1,6 +1,6 @@
 package net.hiveteam.hotbath.fluid;
 
-import net.hiveteam.hotbath.item.ItemRegister;
+import net.hiveteam.hotbath.register.ItemRegister;
 import net.minecraft.block.FlowingFluidBlock;
 import net.minecraft.fluid.FlowingFluid;
 import net.minecraft.util.SoundEvents;
@@ -8,7 +8,7 @@ import net.minecraftforge.fluids.FluidAttributes;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.fml.RegistryObject;
 
-import static net.hiveteam.hotbath.item.register.FluidsRegister.*;
+import static net.hiveteam.hotbath.register.FluidsRegister.*;
 
 public class FluidsProperties {
     private static int FLUID_COLOR;

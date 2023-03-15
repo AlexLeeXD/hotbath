@@ -1,8 +1,7 @@
-package net.hiveteam.hotbath.item.register;
+package net.hiveteam.hotbath.register;
 
 import net.hiveteam.hotbath.HotBath;
 import net.hiveteam.hotbath.item.ItemGroup;
-import net.hiveteam.hotbath.item.ItemRegister;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -13,7 +12,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.function.Supplier;
 
-public class ModBlocks {
+public class blocksRegister {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, HotBath.MOD_ID);
 

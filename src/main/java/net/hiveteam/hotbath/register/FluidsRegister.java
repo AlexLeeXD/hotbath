@@ -1,23 +1,19 @@
-package net.hiveteam.hotbath.item.register;
+package net.hiveteam.hotbath.register;
 
 import net.hiveteam.hotbath.HotBath;
 import net.hiveteam.hotbath.block.HotWaterBlock;
 import net.minecraft.block.AbstractBlock;
-import net.minecraft.block.BlockState;
 import net.minecraft.block.FlowingFluidBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.fluid.FlowingFluid;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import static net.hiveteam.hotbath.util.FluidsParticles.*;
 import static net.hiveteam.hotbath.fluid.FluidsProperties.*;
 
 
@@ -39,7 +35,7 @@ public class FluidsRegister {
     public static final RegistryObject<FlowingFluid> HOT_WATER_FLOWING = FLUIDS.register("hot_water_flowing",
             () -> new ForgeFlowingFluid.Flowing(HOT_WATER_PROPERTIES));
 
-    public static final RegistryObject<FlowingFluidBlock> HOT_WATER_BLOCK = ModBlocks.BLOCKS.register("hot_water_block",
+    public static final RegistryObject<FlowingFluidBlock> HOT_WATER_BLOCK = blocksRegister.BLOCKS.register("hot_water_block",
             () -> new HotWaterBlock(() -> HOT_WATER_FLUID.get(), AbstractBlock.Properties.create(Material.WATER)
                     .doesNotBlockMovement().hardnessAndResistance(100f).noDrops()));
 

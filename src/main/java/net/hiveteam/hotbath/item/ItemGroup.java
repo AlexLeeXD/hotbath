@@ -1,5 +1,6 @@
 package net.hiveteam.hotbath.item;
 
+import net.hiveteam.hotbath.register.ItemRegister;
 import net.minecraft.item.ItemStack;
 
 public class ItemGroup {

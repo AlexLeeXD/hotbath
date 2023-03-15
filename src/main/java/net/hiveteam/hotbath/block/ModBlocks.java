@@ -1,8 +1,8 @@
 package net.hiveteam.hotbath.block;
 
 import net.hiveteam.hotbath.HotBath;
-import net.hiveteam.hotbath.item.HotBathItemGroup;
-import net.hiveteam.hotbath.item.HotBathItemRegister;
+import net.hiveteam.hotbath.item.ItemGroup;
+import net.hiveteam.hotbath.item.ItemRegister;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -26,8 +26,8 @@ public class ModBlocks {
     }
 
     private static <T extends Block> void registerBlockItem(String name, RegistryObject<T> block) {
-        HotBathItemRegister.ITEMS.register(name, () -> new BlockItem(block.get(),
-                new Item.Properties().group(HotBathItemGroup.HOT_BATH)));
+        ItemRegister.ITEMS.register(name, () -> new BlockItem(block.get(),
+                new Item.Properties().group(ItemGroup.HOT_BATH)));
     }
 
     public static void register(IEventBus eventBus) {

@@ -17,11 +17,11 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import static net.hiveteam.hotbath.fluid.HotBathFluidsParticles.*;
-import static net.hiveteam.hotbath.fluid.HotBathFluidsProperties.*;
+import static net.hiveteam.hotbath.fluid.FluidsParticles.*;
+import static net.hiveteam.hotbath.fluid.FluidsProperties.*;
 
 
-public class HotBathFluidsRegister {
+public class FluidsRegister {
     public static final ResourceLocation WATER_STILL_RL = new ResourceLocation("block/water_still");
     public static final ResourceLocation WATER_FLOWING_RL = new ResourceLocation("block/water_flow");
     public static final ResourceLocation WATER_OVERLAY_RL = new ResourceLocation("block/water_overlay");
@@ -37,7 +37,7 @@ public class HotBathFluidsRegister {
             () -> new ForgeFlowingFluid.Flowing(HOT_WATER_PROPERTIES));
 
     public static final RegistryObject<FlowingFluidBlock> HOT_WATER_BLOCK = ModBlocks.BLOCKS.register("hot_water_block",
-            () -> new FlowingFluidBlock(() -> HotBathFluidsRegister.HOT_WATER_FLUID.get(), AbstractBlock.Properties.create(Material.WATER)
+            () -> new FlowingFluidBlock(() -> FluidsRegister.HOT_WATER_FLUID.get(), AbstractBlock.Properties.create(Material.WATER)
                     .doesNotBlockMovement().hardnessAndResistance(100f).noDrops()) {
                 @Override
                 public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, java.util.Random rand) {

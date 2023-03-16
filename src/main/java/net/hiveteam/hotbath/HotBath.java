@@ -1,6 +1,7 @@
 package net.hiveteam.hotbath;
 
-import net.hiveteam.hotbath.register.blocksRegister;
+import java.util.stream.Collectors;
+import net.hiveteam.hotbath.register.BlocksRegister;
 import net.hiveteam.hotbath.register.FluidsRegister;
 import net.hiveteam.hotbath.register.ItemRegister;
 import net.minecraft.block.Block;
@@ -22,80 +23,121 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.stream.Collectors;
-
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(HotBath.MOD_ID)
-public class HotBath
-{
-    // Directly reference a log4j logger.
-    private static final Logger LOGGER = LogManager.getLogger();
+public class HotBath {
+  // Directly reference a log4j logger.
+  private static final Logger LOGGER = LogManager.getLogger();
 
-    public static final String MOD_ID = "hotbath";
-    public HotBath() {
+  public static final String MOD_ID = "hotbath";
 
-        // Register the setup method for modloading
-        IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
+  public HotBath() {
 
-        ItemRegister.register(eventBus);
-        blocksRegister.register(eventBus);
-        FluidsRegister.register(eventBus);
+    // Register the setup method for modloading
+    IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-        eventBus.addListener(this::setup);
-        // Register the enqueueIMC method for modloading
-        eventBus.addListener(this::enqueueIMC);
-        // Register the processIMC method for modloading
-        eventBus.addListener(this::processIMC);
-        // Register the doClientStuff method for modloading
-        eventBus.addListener(this::doClientStuff);
+    ItemRegister.register(eventBus);
+    BlocksRegister.register(eventBus);
+    FluidsRegister.register(eventBus);
 
-        // Register ourselves for server and other game events we are interested in
-        MinecraftForge.EVENT_BUS.register(this);
-    }
+    eventBus.addListener(this::setup);
+    // Register the enqueueIMC method for modloading
+    eventBus.addListener(this::enqueueIMC);
+    // Register the processIMC method for modloading
+    eventBus.addListener(this::processIMC);
+    // Register the doClientStuff method for modloading
+    eventBus.addListener(this::doClientStuff);
 
-    private void setup(final FMLCommonSetupEvent event)
-    {
-        // some preinit code
-        LOGGER.info("HELLO FROM PREINIT");
-        LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
-    }
+    // Register ourselves for server and other game events we are interested in
+    MinecraftForge.EVENT_BUS.register(this);
+  }
 
-    private void doClientStuff(final FMLClientSetupEvent event) {
-        event.enqueueWork(() -> {
-            RenderTypeLookup.setRenderLayer(FluidsRegister.HOT_WATER_FLUID.get(), RenderType.getTranslucent());
-            RenderTypeLookup.setRenderLayer(FluidsRegister.HOT_WATER_BLOCK.get(), RenderType.getTranslucent());
-            RenderTypeLookup.setRenderLayer(FluidsRegister.HOT_WATER_FLOWING.get(), RenderType.getTranslucent());
+  private void setup(final FMLCommonSetupEvent event) {
+    // some preinit code
+    LOGGER.info("HELLO FROM PREINIT");
+    LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+  }
+
+  private void doClientStuff(final FMLClientSetupEvent event) {
+    event.enqueueWork(
+        () -> {
+          RenderTypeLookup.setRenderLayer(
+              FluidsRegister.HERBAL_BATH_BLOCK.get(), RenderType.getTranslucent());
+          RenderTypeLookup.setRenderLayer(
+              FluidsRegister.HERBAL_BATH_FLOWING.get(), RenderType.getTranslucent());
+          RenderTypeLookup.setRenderLayer(
+              FluidsRegister.HERBAL_BATH_FLUID.get(), RenderType.getTranslucent());
+
+          RenderTypeLookup.setRenderLayer(
+              FluidsRegister.HONEY_BATH_BLOCK.get(), RenderType.getTranslucent());
+          RenderTypeLookup.setRenderLayer(
+              FluidsRegister.HONEY_BATH_FLOWING.get(), RenderType.getTranslucent());
+          RenderTypeLookup.setRenderLayer(
+              FluidsRegister.HONEY_BATH_FLUID.get(), RenderType.getTranslucent());
+
+          RenderTypeLookup.setRenderLayer(
+              FluidsRegister.HOT_WATER_FLUID.get(), RenderType.getTranslucent());
+          RenderTypeLookup.setRenderLayer(
+              FluidsRegister.HOT_WATER_BLOCK.get(), RenderType.getTranslucent());
+          RenderTypeLookup.setRenderLayer(
+              FluidsRegister.HOT_WATER_FLOWING.get(), RenderType.getTranslucent());
+
+          RenderTypeLookup.setRenderLayer(
+              FluidsRegister.MILK_BATH_FLUID.get(), RenderType.getTranslucent());
+          RenderTypeLookup.setRenderLayer(
+              FluidsRegister.MILK_BATH_BLOCK.get(), RenderType.getTranslucent());
+          RenderTypeLookup.setRenderLayer(
+              FluidsRegister.MILK_BATH_FLOWING.get(), RenderType.getTranslucent());
+
+          RenderTypeLookup.setRenderLayer(
+              FluidsRegister.PEONY_BATH_BLOCK.get(), RenderType.getTranslucent());
+          RenderTypeLookup.setRenderLayer(
+              FluidsRegister.PEONY_BATH_FLOWING.get(), RenderType.getTranslucent());
+          RenderTypeLookup.setRenderLayer(
+              FluidsRegister.PEONY_BATH_FLUID.get(), RenderType.getTranslucent());
+
+          RenderTypeLookup.setRenderLayer(
+              FluidsRegister.ROSE_BATH_BLOCK.get(), RenderType.getTranslucent());
+          RenderTypeLookup.setRenderLayer(
+              FluidsRegister.ROSE_BATH_FLOWING.get(), RenderType.getTranslucent());
+          RenderTypeLookup.setRenderLayer(
+              FluidsRegister.ROSE_BATH_FLUID.get(), RenderType.getTranslucent());
         });
-    }
+  }
 
-    private void enqueueIMC(final InterModEnqueueEvent event)
-    {
-        // some example code to dispatch IMC to another mod
-        InterModComms.sendTo("examplemod", "helloworld", () -> { LOGGER.info("Hello world from the MDK"); return "Hello world";});
-    }
+  private void enqueueIMC(final InterModEnqueueEvent event) {
+    // some example code to dispatch IMC to another mod
+    InterModComms.sendTo(
+        "hotbath",
+        "helloworld",
+        () -> {
+          LOGGER.info("Hello world from Hot Bath");
+          return "Hello world from Hot Bath";
+        });
+  }
 
-    private void processIMC(final InterModProcessEvent event)
-    {
-        // some example code to receive and process InterModComms from other mods
-        LOGGER.info("Got IMC {}", event.getIMCStream().
-                map(m->m.getMessageSupplier().get()).
-                collect(Collectors.toList()));
-    }
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
+  private void processIMC(final InterModProcessEvent event) {
+    // some example code to receive and process InterModComms from other mods
+    LOGGER.info(
+        "Got IMC {}",
+        event.getIMCStream().map(m -> m.getMessageSupplier().get()).collect(Collectors.toList()));
+  }
+  // You can use SubscribeEvent and let the Event Bus discover methods to call
+  @SubscribeEvent
+  public void onServerStarting(FMLServerStartingEvent event) {
+    // do something when the server starts
+    LOGGER.info("HELLO from Hot Bath");
+  }
+
+  // You can use EventBusSubscriber to automatically subscribe events on the contained class (this
+  // is subscribing to the MOD
+  // Event bus for receiving Registry Events)
+  @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
+  public static class RegistryEvents {
     @SubscribeEvent
-    public void onServerStarting(FMLServerStartingEvent event) {
-        // do something when the server starts
-        LOGGER.info("HELLO from server starting");
+    public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
+      // register a new block here
+      LOGGER.info("HELLO from Hot Bath");
     }
-
-    // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
-    // Event bus for receiving Registry Events)
-    @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
-    public static class RegistryEvents {
-        @SubscribeEvent
-        public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
-            // register a new block here
-            LOGGER.info("HELLO from Hot Bath");
-        }
-    }
+  }
 }

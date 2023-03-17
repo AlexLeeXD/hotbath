@@ -80,7 +80,7 @@ public class FluidsRegister {
                   () -> HOT_WATER_FLUID.get(),
                   AbstractBlock.Properties.create(Material.WATER)
                       .doesNotBlockMovement()
-                      .hardnessAndResistance(100f)
+                      .hardnessAndResistance(1000f)
                       .noDrops()));
 
   public static final RegistryObject<FlowingFluid> MILK_BATH_FLUID =

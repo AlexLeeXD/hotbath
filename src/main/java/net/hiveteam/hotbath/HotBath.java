@@ -1,6 +1,7 @@
 package net.hiveteam.hotbath;
 
 import java.util.stream.Collectors;
+import net.hiveteam.hotbath.fluid_blocks.HotWaterBlock;
 import net.hiveteam.hotbath.register.BlocksRegister;
 import net.hiveteam.hotbath.register.FluidsRegister;
 import net.hiveteam.hotbath.register.ItemRegister;
@@ -21,6 +22,7 @@ import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
 import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.ObjectHolder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -28,7 +30,7 @@ import org.apache.logging.log4j.Logger;
 @Mod(HotBath.MOD_ID)
 public class HotBath {
   // Directly reference a log4j logger.
-  private static final Logger LOGGER = LogManager.getLogger();
+  public static final Logger LOGGER = LogManager.getLogger();
 
   public static final String MOD_ID = "hotbath";
 
@@ -142,4 +144,7 @@ public class HotBath {
       LOGGER.info("HELLO from Hot Bath");
     }
   }
+
+  @ObjectHolder("hotbath:hot_water_block")
+  public static final HotWaterBlock HOT_WATER_BLOCK = null;
 }

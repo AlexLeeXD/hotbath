@@ -4,6 +4,7 @@ import java.util.stream.Collectors;
 import net.hiveteam.hotbath.register.BlocksRegister;
 import net.hiveteam.hotbath.register.FluidsRegister;
 import net.hiveteam.hotbath.register.ItemRegister;
+import net.hiveteam.hotbath.register.ParticleRegister;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.client.renderer.RenderType;
@@ -39,6 +40,7 @@ public class HotBath {
     ItemRegister.register(eventBus);
     BlocksRegister.register(eventBus);
     FluidsRegister.register(eventBus);
+    ParticleRegister.register(eventBus);
 
     eventBus.addListener(this::setup);
     // Register the enqueueIMC method for modloading

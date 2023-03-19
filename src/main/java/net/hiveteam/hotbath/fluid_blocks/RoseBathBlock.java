@@ -1,6 +1,6 @@
 package net.hiveteam.hotbath.fluid_blocks;
 
-import static net.hiveteam.hotbath.util.FluidsParticles.renderDefaultSteam;
+import static net.hiveteam.hotbath.util.ParticleGenerator.renderDefaultSteam;
 
 import java.util.function.Supplier;
 import net.minecraft.block.BlockState;
@@ -9,7 +9,7 @@ import net.minecraft.fluid.FlowingFluid;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-/** 玫瑰浴汤方块 */
+/** Rose Bath Block */
 public class RoseBathBlock extends FlowingFluidBlock {
   public RoseBathBlock(Supplier<? extends FlowingFluid> supplier, Properties properties) {
     super(supplier, properties);

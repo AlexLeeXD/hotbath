@@ -24,9 +24,9 @@ public class HotWaterBlock extends FlowingFluidBlock {
 
   @Override
   public void onEntityCollision(BlockState state, World worldIn, BlockPos pos, Entity entityIn) {
-    if( entityIn instanceof PlayerEntity){
-      PlayerEntity player = (PlayerEntity)entityIn;
-      LOGGER.info(player.getUniqueID());
+    if (entityIn instanceof PlayerEntity) {
+      PlayerEntity player = (PlayerEntity) entityIn;
+      LOGGER.info(player.getUniqueID() + " is in hot water!");
     }
   }
 }

@@ -85,46 +85,4 @@ public class SteamParticle extends SpriteTexturedParticle {
       return steamParticle;
     }
   }
-
-  //    public Particle makeParticle(
-  //        BasicParticleType typeIn,
-  //        ClientWorld worldIn,
-  //        double x,
-  //        double y,
-  //        double z,
-  //        double xSpeed,
-  //        double ySpeed,
-  //        double zSpeed) {
-  //      SteamParticle steamParticle =
-  //          new SteamParticle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed, false);
-  //      steamParticle.setAlphaF(0.9F);
-  //      steamParticle.selectSpriteRandomly(this.spriteSet);
-  //      return steamParticle;
-  //    }
-  //  }
-
-  //  @OnlyIn(Dist.CLIENT)
-  //  public static class SignalSmokeFactory implements IParticleFactory<BasicParticleType> {
-  //    private final IAnimatedSprite spriteSet;
-  //
-  //    public SignalSmokeFactory(IAnimatedSprite spriteSet) {
-  //      this.spriteSet = spriteSet;
-  //    }
-  //
-  //    public Particle makeParticle(
-  //        BasicParticleType typeIn,
-  //        ClientWorld worldIn,
-  //        double x,
-  //        double y,
-  //        double z,
-  //        double xSpeed,
-  //        double ySpeed,
-  //        double zSpeed) {
-  //      SteamParticle steamParticle =
-  //          new SteamParticle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed, true);
-  //      steamParticle.setAlphaF(0.95F);
-  //      steamParticle.selectSpriteRandomly(this.spriteSet);
-  //      return steamParticle;
-  //    }
-  //  }
 }

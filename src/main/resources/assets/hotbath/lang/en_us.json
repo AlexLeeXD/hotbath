@@ -5,9 +5,8 @@
   "item.hotbath.milk_bath_bucket": "Milk Bath Bucket",
   "item.hotbath.peony_bath_bucket": "Peony Bath Bucket",
   "item.hotbath.rose_bath_bucket": "Rose Bath Bucket",
-
   "fluid.hotbath.hot_water_block": "Hot Water Block",
-
   "item.hotbath.bath_herb": "Bath Herb",
-  "itemGroup.hotBathTab": "Hot Bath"
+  "itemGroup.hotBathTab": "Hot Bath",
+  "hotbath.advancement.hot_water_100_times.title": "Foot Health"
 }

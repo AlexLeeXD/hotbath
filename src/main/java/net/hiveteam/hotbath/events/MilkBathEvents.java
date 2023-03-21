@@ -20,7 +20,7 @@ public class MilkBathEvents {
   static final String MILK_BATH_ENTERED_NUMBER = "MilkBathEnteredNumber";
   static final String MILK_BATH_STAYED_TIME = "MilkBathStayedTime";
   static final String HAS_ENTERED_MILK_BATH = "HasEnteredMilkBath";
-  static final String MILK_BATH_ADVANCEMENT_ID = "hotbath:foot_health";
+  static final String MILK_BATH_ADVANCEMENT_ID = "hotbath:milk_skin";
   private static final int MILK_BATH_ENTERED_COUNT_TRIGGER_NUMBER = 100;
   private static final int MILK_BATH_STAYED_EFFECT_TRIGGER_TIME_SECONDS = 15;
 

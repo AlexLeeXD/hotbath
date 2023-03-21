@@ -25,4 +25,16 @@ public class EffectRemovalHandler {
       }
     }
   }
+
+  public static void removeNegativeEffects(ServerPlayerEntity player) {
+    List<EffectInstance> activeEffects = new ArrayList<>(player.getActivePotionEffects());
+
+    for (EffectInstance effectInstance : activeEffects) {
+      Effect effect = effectInstance.getPotion();
+
+      if (effect.getEffectType() == EffectType.HARMFUL) {
+        player.removePotionEffect(effect);
+      }
+    }
+  }
 }

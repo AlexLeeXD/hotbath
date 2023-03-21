@@ -1,4 +1,4 @@
-package net.hiveteam.hotbath.events;
+package net.hiveteam.hotbath.util;
 
 import net.hiveteam.hotbath.HotBath;
 import net.minecraft.entity.Entity;
@@ -17,7 +17,7 @@ public class UndeadDamageInFluidHandler {
   private static final int DAMAGE_INTERVAL_TICKS = 20;
 
   @SubscribeEvent
-  public static void onUndeadLivingUpdate(LivingEvent.LivingUpdateEvent event) {
+  public static void damageUndeadInHerbalBath(LivingEvent.LivingUpdateEvent event) {
     Entity entity = event.getEntity();
 
     if (entity instanceof ZombieEntity || entity instanceof SkeletonEntity) {

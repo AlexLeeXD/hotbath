@@ -43,7 +43,6 @@ public class HotBath {
     BlocksRegister.register(eventBus);
     FluidsRegister.register(eventBus);
     ParticleRegister.register(eventBus);
-
     eventBus.addListener(this::setup);
     // Register the enqueueIMC method for modloading
     eventBus.addListener(this::enqueueIMC);

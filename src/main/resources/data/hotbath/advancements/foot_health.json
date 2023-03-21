@@ -1,10 +1,11 @@
 {
+  "id": "hotbath:foot_health",
   "display": {
     "icon": {
       "item": "hotbath:hot_water_bucket"
     },
     "title": "Foot Health",
-    "description": "Bath in hot water for 100 times.",
+    "description": "",
     "background": "minecraft:textures/block/stone.png",
     "frame": "challenge",
     "show_toast": true,
@@ -13,11 +14,8 @@
   },
   "parent": "hotbath:hot_bath",
   "criteria": {
-    "requirement": {
-      "trigger": "minecraft:enter_block",
-      "conditions": {
-        "block": "hotbath:hot_water_block"
-      }
+    "code_triggered": {
+      "trigger": "hotbath:foot_health"
     }
   },
   "rewards": {

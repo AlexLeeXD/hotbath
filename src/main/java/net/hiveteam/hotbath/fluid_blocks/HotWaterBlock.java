@@ -11,8 +11,6 @@ import net.minecraft.world.World;
 
 /** Hot Water Block */
 public class HotWaterBlock extends FlowingFluidBlock {
-  public static final String HOT_WATER_ENTERED_NUMBER = "hot_water_entered_number";
-  private static final String HOT_WATER_STAYED_TIME = "hot_water_stayed_time";
 
   public HotWaterBlock(Supplier<? extends FlowingFluid> supplier, Properties properties) {
     super(supplier, properties);

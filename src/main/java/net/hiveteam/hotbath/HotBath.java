@@ -1,7 +1,7 @@
 package net.hiveteam.hotbath;
 
 import java.util.stream.Collectors;
-import net.hiveteam.hotbath.fluid_blocks.HotWaterBlock;
+import net.hiveteam.hotbath.fluid_blocks.*;
 import net.hiveteam.hotbath.register.BlocksRegister;
 import net.hiveteam.hotbath.register.FluidsRegister;
 import net.hiveteam.hotbath.register.ItemRegister;
@@ -146,4 +146,19 @@ public class HotBath {
 
   @ObjectHolder("hotbath:hot_water_block")
   public static final HotWaterBlock HOT_WATER_BLOCK = null;
+
+  @ObjectHolder("hotbath:herbal_bath_block")
+  public static final HerbalBathBlock HERBAL_BATH_BLOCK = null;
+
+  @ObjectHolder("hotbath:honey_bath_block")
+  public static final HoneyBathBlock HONEY_BATH_BLOCK = null;
+
+  @ObjectHolder("hotbath:milk_bath_block")
+  public static final MilkBathBlock MILK_BATH_BLOCK = null;
+
+  @ObjectHolder("hotbath:peony_bath_block")
+  public static final PeonyBathBlock PEONY_BATH_BLOCK = null;
+
+  @ObjectHolder("hotbath:rose_bath_block")
+  public static final RoseBathBlock ROSE_BATH_BLOCK = null;
 }

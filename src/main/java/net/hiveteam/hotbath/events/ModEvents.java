@@ -3,7 +3,7 @@ package net.hiveteam.hotbath.events;
 import static net.hiveteam.hotbath.register.ParticleRegister.STEAM_PARTICLE;
 
 import net.hiveteam.hotbath.HotBath;
-import net.hiveteam.hotbath.advancements.FootHealthTrigger;
+import net.hiveteam.hotbath.advancements.AdvancementTrigger;
 import net.hiveteam.hotbath.particles.SteamParticle;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.client.Minecraft;
@@ -25,7 +25,10 @@ public class ModEvents {
   public static void registerAdvancementTrigger(FMLCommonSetupEvent event) {
     event.enqueueWork(
         () -> {
-          CriteriaTriggers.register(new FootHealthTrigger());
+          CriteriaTriggers.register(new AdvancementTrigger("hotbath", "foot_health"));
+          CriteriaTriggers.register(new AdvancementTrigger("hotbath", "milk_skin"));
+          CriteriaTriggers.register(new AdvancementTrigger("hotbath", "chronic_invalid"));
+          CriteriaTriggers.register(new AdvancementTrigger("hotbath", "rose_body_fragrance"));
         });
   }
 }

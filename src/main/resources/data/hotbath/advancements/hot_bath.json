@@ -5,6 +5,7 @@
     },
     "title": "Hot Bath!",
     "description": "Boiling bath water",
+    "background": "minecraft:textures/block/stone.png",
     "show_toast": true,
     "announce_to_chat": true,
     "hidden": false

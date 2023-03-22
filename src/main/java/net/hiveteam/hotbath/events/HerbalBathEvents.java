@@ -50,22 +50,28 @@ public class HerbalBathEvents {
       String hasEnteredHerbalBath,
       String herbalBathAdvancementId) {
 
-    boolean isInHerbalBath =
-        CustomFluidHandler.isPlayerInHerbalBathBlock((PlayerEntity) event.getEntityLiving());
-
-    if (isInHerbalBath) {
+    if (!(event.getEntityLiving() instanceof PlayerEntity)) {
       if (event.getEntityLiving() instanceof ZombieEntity
           || event.getEntityLiving() instanceof SkeletonEntity) {
-        int damageIntervalTicks = 20; // 每 20 刻（1秒）造成一次伤害
-        float damagePerSecond = 0.5f;
+        boolean isInHerbalBath =
+            CustomFluidHandler.isEntityInHerbalBathBlock(event.getEntityLiving());
 
-        if (event.getEntityLiving().ticksExisted % damageIntervalTicks == 0) {
-          event
-              .getEntityLiving()
-              .attackEntityFrom(DamageSource.MAGIC, damagePerSecond * damageIntervalTicks);
+        if (isInHerbalBath) {
+          int damageIntervalTicks = 20; // 每 20 刻（1秒）造成一次伤害
+          float damagePerSecond = 0.5f;
+
+          if (event.getEntityLiving().ticksExisted % damageIntervalTicks == 0) {
+            event
+                .getEntityLiving()
+                .attackEntityFrom(DamageSource.MAGIC, damagePerSecond * damageIntervalTicks);
+          }
         }
       }
+      return;
     }
+
+    boolean isInHerbalBath =
+        CustomFluidHandler.isPlayerInHerbalBathBlock((PlayerEntity) event.getEntityLiving());
 
     if (event.getEntityLiving() instanceof ServerPlayerEntity) {
       ServerPlayerEntity player = (ServerPlayerEntity) event.getEntityLiving();
@@ -94,7 +100,7 @@ public class HerbalBathEvents {
         int hotBathTime = playerData.getInt(herbalBathStayedTime) + 1;
         playerData.putInt(herbalBathStayedTime, hotBathTime);
 
-        regenHealth(4, player);
+        regenHealth(0.25F, 2, player);
 
         if (playerData.getInt(herbalBathStayedTime) >= stayedEffectTriggerTime) {
           applyResistanceBoost(10, player);

@@ -13,16 +13,16 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = HotBath.MOD_ID)
-public class HowWaterEvents {
+public class HotWaterEvents {
   private static final int TICK_NUMBER = 20;
   static final String HOT_WATER_ENTERED_NUMBER = "HotWaterEnteredNumber";
   static final String HOT_WATER_STAYED_TIME = "HotWaterStayedTime";
   static final String HAS_ENTERED_HOT_WATER = "HasEnteredHotWater";
   static final String HOT_WATER_ADVANCEMENT_ID = "hotbath:foot_health";
   private static final int HOT_WATER_ENTERED_COUNT_TRIGGER_NUMBER = 100;
-  private static final int HOT_WATER_STAYED_EFFECT_TRIGGER_TIME_SECONDS = 15;
+  private static final int HOT_WATER_STAYED_EFFECT_TRIGGER_TIME_SECONDS = 20;
   private static final EffectInstance HOT_WATER_STAY_EFFECT =
-      new EffectInstance(Effects.SPEED, TICK_NUMBER * 15, 1, false, false, true);
+      new EffectInstance(Effects.SPEED, TICK_NUMBER * 20, 1, false, false, true);
 
   // enter hot water block event
   @SubscribeEvent

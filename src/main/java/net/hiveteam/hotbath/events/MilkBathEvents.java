@@ -74,12 +74,12 @@ public class MilkBathEvents {
         playerData.putInt(milkBathStayedTime, hotBathTime);
 
         if (playerData.getInt(milkBathStayedTime) >= stayedEffectTriggerTime) {
-          regenHealth(4, player);
+          regenHealth(0.25F, 2, player);
           removeNegativeEffectsExceptUnluckAndBadOmen(player);
         }
 
         if (playerData.getInt(milkBathStayedTime) >= 60) {
-          regenHunger(8, player);
+          regenHunger(1, 15, player);
         }
       } else {
         playerData.putInt(milkBathStayedTime, 0);

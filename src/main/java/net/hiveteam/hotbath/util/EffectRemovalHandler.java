@@ -26,6 +26,33 @@ public class EffectRemovalHandler {
     }
   }
 
+  public static void removeNegativeEffectsExceptSlowUnluckAndBadOmen(ServerPlayerEntity player) {
+    List<EffectInstance> activeEffects = new ArrayList<>(player.getActivePotionEffects());
+
+    for (EffectInstance effectInstance : activeEffects) {
+      Effect effect = effectInstance.getPotion();
+
+      if (effect.getEffectType() == EffectType.HARMFUL
+          && effect != Effects.UNLUCK
+          && effect != Effects.BAD_OMEN
+          && effect != Effects.SLOWNESS) {
+        player.removePotionEffect(effect);
+      }
+    }
+  }
+
+  public static void removeNegativeEffectsExceptBadOmen(ServerPlayerEntity player) {
+    List<EffectInstance> activeEffects = new ArrayList<>(player.getActivePotionEffects());
+
+    for (EffectInstance effectInstance : activeEffects) {
+      Effect effect = effectInstance.getPotion();
+
+      if (effect.getEffectType() == EffectType.HARMFUL && effect != Effects.BAD_OMEN) {
+        player.removePotionEffect(effect);
+      }
+    }
+  }
+
   public static void removeNegativeEffects(ServerPlayerEntity player) {
     List<EffectInstance> activeEffects = new ArrayList<>(player.getActivePotionEffects());
 

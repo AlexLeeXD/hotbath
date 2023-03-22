@@ -71,7 +71,7 @@ public class PeonyBathEvents {
         int hotBathTime = playerData.getInt(peonyBathStayedTime) + 1;
         playerData.putInt(peonyBathStayedTime, hotBathTime);
 
-        if (playerData.getInt(peonyBathStayedTime) >= stayedEffectTriggerTime) {
+        if (playerData.getInt(peonyBathStayedTime) >= stayedEffectTriggerTime * TICK_NUMBER) {
           regenHealth(0.25F, 2, player);
           removeNegativeEffectsExceptBadOmen(player);
         }
@@ -90,15 +90,22 @@ public class PeonyBathEvents {
               ATTACK_SPEED_MODIFIER_UUID,
               0.10,
               AttributeModifier.Operation.MULTIPLY_TOTAL);
+        }
 
-          if (playerData.getInt(enteredNumberInPeonyBath) >= LUCK_THRESHOLD) {
-            applyEffect(player, Effects.LUCK, LUCK_DURATION, 0);
-          }
+        if (playerData.getInt(enteredNumberInPeonyBath) >= LUCK_THRESHOLD) {
+          player.addPotionEffect(
+              new EffectInstance(Effects.LUCK, LUCK_DURATION, 45, false, false, true));
         }
 
       } else {
+        if (playerData.getBoolean(hasEnteredPeonyBath)) {
+          // 移除属性修改器
+          removeAttributeModifier(
+              player, Attributes.KNOCKBACK_RESISTANCE, KNOCKBACK_RESISTANCE_MODIFIER_UUID);
+          removeAttributeModifier(player, Attributes.ATTACK_SPEED, ATTACK_SPEED_MODIFIER_UUID);
+          playerData.putBoolean(hasEnteredPeonyBath, false);
+        }
         playerData.putInt(peonyBathStayedTime, 0);
-        playerData.putBoolean(hasEnteredPeonyBath, false);
       }
     }
   }
@@ -126,6 +133,15 @@ public class PeonyBathEvents {
       }
 
       attributeInstance.applyPersistentModifier(modifier);
+    }
+  }
+
+  private static void removeAttributeModifier(
+      ServerPlayerEntity player, Attribute attribute, UUID uuid) {
+    ModifiableAttributeInstance attributeInstance = player.getAttribute(attribute);
+
+    if (attributeInstance != null && attributeInstance.getModifier(uuid) != null) {
+      attributeInstance.removeModifier(uuid);
     }
   }
 }

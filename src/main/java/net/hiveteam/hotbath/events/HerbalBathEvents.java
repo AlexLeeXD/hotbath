@@ -102,7 +102,7 @@ public class HerbalBathEvents {
 
         regenHealth(0.25F, 2, player);
 
-        if (playerData.getInt(herbalBathStayedTime) >= stayedEffectTriggerTime) {
+        if (playerData.getInt(herbalBathStayedTime) >= stayedEffectTriggerTime * TICK_NUMBER) {
           applyResistanceBoost(10, player);
         }
 

@@ -44,7 +44,7 @@ public class HoneyBathEvents {
         player.addPotionEffect(
             new EffectInstance(Effects.SLOWNESS, 10 * TICK_NUMBER, 0, false, false, true));
 
-        if (playerData.getInt(honeyBathStayedTime) >= stayedEffectTriggerTime) {
+        if (playerData.getInt(honeyBathStayedTime) >= stayedEffectTriggerTime * TICK_NUMBER) {
           removeNegativeEffectsExceptSlowUnluckAndBadOmen(player);
           player.addPotionEffect(
               new EffectInstance(Effects.ABSORPTION, 20 * TICK_NUMBER, 1, false, false, true));

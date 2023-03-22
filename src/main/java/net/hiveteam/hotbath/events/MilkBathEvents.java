@@ -73,7 +73,7 @@ public class MilkBathEvents {
         int hotBathTime = playerData.getInt(milkBathStayedTime) + 1;
         playerData.putInt(milkBathStayedTime, hotBathTime);
 
-        if (playerData.getInt(milkBathStayedTime) >= stayedEffectTriggerTime) {
+        if (playerData.getInt(milkBathStayedTime) >= stayedEffectTriggerTime * TICK_NUMBER) {
           regenHealth(0.25F, 2, player);
           removeNegativeEffectsExceptUnluckAndBadOmen(player);
         }

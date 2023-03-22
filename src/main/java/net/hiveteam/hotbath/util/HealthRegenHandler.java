@@ -13,7 +13,7 @@ public class HealthRegenHandler {
     int healthRegenTimer = playerData.getInt(healthRegenTimerKey) + 1;
     playerData.putInt(healthRegenTimerKey, healthRegenTimer);
 
-    if (healthRegenTimer >= 20 * perSecondsNumber) { // 4 seconds (20 ticks/second * 4 seconds)
+    if (healthRegenTimer >= 20 * perSecondsNumber) {
       float currentHealth = player.getHealth();
       float maxHealth = player.getMaxHealth();
 

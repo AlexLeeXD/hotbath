@@ -58,12 +58,10 @@ public class HerbalBathEvents {
 
         if (isInHerbalBath) {
           int damageIntervalTicks = 20; // 每 20 刻（1秒）造成一次伤害
-          float damagePerSecond = 0.5f;
+          float damagePerSecond = 0.5F;
 
           if (event.getEntityLiving().ticksExisted % damageIntervalTicks == 0) {
-            event
-                .getEntityLiving()
-                .attackEntityFrom(DamageSource.MAGIC, damagePerSecond * damageIntervalTicks);
+            event.getEntityLiving().attackEntityFrom(DamageSource.MAGIC, damagePerSecond);
           }
         }
       }
@@ -106,7 +104,7 @@ public class HerbalBathEvents {
           applyResistanceBoost(10, player);
         }
 
-        if (playerData.getInt(herbalBathStayedTime) >= 15) {
+        if (playerData.getInt(herbalBathStayedTime) >= 15 * TICK_NUMBER) {
           // remove negative effects
           removeNegativeEffects(player);
         }

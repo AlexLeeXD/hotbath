@@ -78,7 +78,7 @@ public class MilkBathEvents {
           removeNegativeEffectsExceptUnluckAndBadOmen(player);
         }
 
-        if (playerData.getInt(milkBathStayedTime) >= 60) {
+        if (playerData.getInt(milkBathStayedTime) >= 60 * TICK_NUMBER) {
           regenHunger(1, 15, player);
         }
       } else {

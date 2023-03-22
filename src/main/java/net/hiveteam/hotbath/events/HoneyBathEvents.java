@@ -39,7 +39,7 @@ public class HoneyBathEvents {
         playerData.putInt(honeyBathStayedTime, honeyBathTime);
 
         regenHealth(0.25F, 1, player);
-        regenHunger(4, 4, player);
+        regenHunger(1, 4, player);
 
         player.addPotionEffect(
             new EffectInstance(Effects.SLOWNESS, 10 * TICK_NUMBER, 0, false, false, true));

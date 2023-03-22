@@ -4,6 +4,7 @@ import static net.hiveteam.hotbath.util.EffectRemovalHandler.removeNegativeEffec
 import static net.hiveteam.hotbath.util.HealthRegenHandler.regenHealth;
 import static net.hiveteam.hotbath.util.HungerRegenHandler.regenHunger;
 
+import java.util.logging.Logger;
 import net.hiveteam.hotbath.HotBath;
 import net.hiveteam.hotbath.util.CustomFluidHandler;
 import net.minecraft.advancements.Advancement;
@@ -77,10 +78,18 @@ public class MilkBathEvents {
           regenHealth(0.25F, 2, player);
           removeNegativeEffectsExceptUnluckAndBadOmen(player);
         }
-
+        // current helth
+        Logger.getLogger("MilkBathEvents").info("Current Health: " + player.getHealth());
         if (playerData.getInt(milkBathStayedTime) >= 60 * TICK_NUMBER) {
           regenHunger(1, 15, player);
         }
+
+        // current hunger
+        Logger.getLogger("MilkBathEvents")
+            .info("Current Hunger: " + player.getFoodStats().getFoodLevel());
+        // current time
+        Logger.getLogger("MilkBathEvents")
+            .info("Current Time: " + playerData.getInt(milkBathStayedTime));
       } else {
         playerData.putInt(milkBathStayedTime, 0);
         playerData.putBoolean(hasEnteredMilkBath, false);

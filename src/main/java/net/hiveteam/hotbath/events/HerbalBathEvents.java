@@ -57,7 +57,7 @@ public class HerbalBathEvents {
             CustomFluidHandler.isEntityInHerbalBathBlock(event.getEntityLiving());
 
         if (isInHerbalBath) {
-          int damageIntervalTicks = 20; // 每 20 刻（1秒）造成一次伤害
+          int damageIntervalTicks = 20;
           float damagePerSecond = 0.5F;
 
           if (event.getEntityLiving().ticksExisted % damageIntervalTicks == 0) {

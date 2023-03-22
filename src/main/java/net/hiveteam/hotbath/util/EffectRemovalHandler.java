@@ -9,7 +9,7 @@ import net.minecraft.potion.EffectType;
 import net.minecraft.potion.Effects;
 
 public class EffectRemovalHandler {
-  public static void removeNegativeEffectsExceptUnluckAndBadOmen(ServerPlayerEntity player) {
+  public static void removeNegativeEffectsExceptUnluck(ServerPlayerEntity player) {
     // 创建一个新的效果实例集合，以避免在迭代过程中修改集合
     List<EffectInstance> activeEffects = new ArrayList<>(player.getActivePotionEffects());
 
@@ -17,16 +17,14 @@ public class EffectRemovalHandler {
       Effect effect = effectInstance.getPotion();
 
       // 检查效果是否为负面效果，且不是霉运或不祥之兆
-      if (effect.getEffectType() == EffectType.HARMFUL
-          && effect != Effects.UNLUCK
-          && effect != Effects.BAD_OMEN) {
+      if (effect.getEffectType() == EffectType.HARMFUL && effect != Effects.UNLUCK) {
         // 移除效果
         player.removePotionEffect(effect);
       }
     }
   }
 
-  public static void removeNegativeEffectsExceptSlowUnluckAndBadOmen(ServerPlayerEntity player) {
+  public static void removeNegativeEffectsExceptSlowAndUnluck(ServerPlayerEntity player) {
     List<EffectInstance> activeEffects = new ArrayList<>(player.getActivePotionEffects());
 
     for (EffectInstance effectInstance : activeEffects) {
@@ -34,20 +32,7 @@ public class EffectRemovalHandler {
 
       if (effect.getEffectType() == EffectType.HARMFUL
           && effect != Effects.UNLUCK
-          && effect != Effects.BAD_OMEN
           && effect != Effects.SLOWNESS) {
-        player.removePotionEffect(effect);
-      }
-    }
-  }
-
-  public static void removeNegativeEffectsExceptBadOmen(ServerPlayerEntity player) {
-    List<EffectInstance> activeEffects = new ArrayList<>(player.getActivePotionEffects());
-
-    for (EffectInstance effectInstance : activeEffects) {
-      Effect effect = effectInstance.getPotion();
-
-      if (effect.getEffectType() == EffectType.HARMFUL && effect != Effects.BAD_OMEN) {
         player.removePotionEffect(effect);
       }
     }
@@ -63,5 +48,9 @@ public class EffectRemovalHandler {
         player.removePotionEffect(effect);
       }
     }
+  }
+
+  public static void removeBadOmen(ServerPlayerEntity player) {
+    player.removePotionEffect(Effects.BAD_OMEN);
   }
 }

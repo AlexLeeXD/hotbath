@@ -1,6 +1,6 @@
 package net.hiveteam.hotbath.events;
 
-import static net.hiveteam.hotbath.util.EffectRemovalHandler.removeNegativeEffectsExceptUnluckAndBadOmen;
+import static net.hiveteam.hotbath.util.EffectRemovalHandler.removeNegativeEffectsExceptUnluck;
 import static net.hiveteam.hotbath.util.HealthRegenHandler.regenHealth;
 import static net.hiveteam.hotbath.util.HungerRegenHandler.regenHunger;
 
@@ -76,7 +76,7 @@ public class MilkBathEvents {
 
         if (playerData.getInt(milkBathStayedTime) >= stayedEffectTriggerTime * TICK_NUMBER) {
           regenHealth(0.25F, 2, player);
-          removeNegativeEffectsExceptUnluckAndBadOmen(player);
+          removeNegativeEffectsExceptUnluck(player);
         }
         // current helth
         Logger.getLogger("MilkBathEvents").info("Current Health: " + player.getHealth());

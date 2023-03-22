@@ -1,6 +1,6 @@
 package net.hiveteam.hotbath.events;
 
-import static net.hiveteam.hotbath.util.EffectRemovalHandler.removeNegativeEffectsExceptUnluckAndBadOmen;
+import static net.hiveteam.hotbath.util.EffectRemovalHandler.*;
 import static net.hiveteam.hotbath.util.HealthRegenHandler.regenHealth;
 
 import net.hiveteam.hotbath.HotBath;
@@ -73,7 +73,8 @@ public class RoseBathEvents {
         playerData.putInt(roseBathStayedTime, roseBathTime);
         if (playerData.getInt(roseBathStayedTime) >= stayedEffectTriggerTime * TICK_NUMBER) {
           regenHealth(0.25F, 1, player);
-          removeNegativeEffectsExceptUnluckAndBadOmen(player);
+          removeNegativeEffects(player);
+          removeBadOmen(player);
           player.addPotionEffect(
               new EffectInstance(Effects.STRENGTH, 20 * TICK_NUMBER, 0, false, false, true));
         }

@@ -1,6 +1,6 @@
 package net.hiveteam.hotbath.events;
 
-import static net.hiveteam.hotbath.util.EffectRemovalHandler.removeNegativeEffectsExceptSlowUnluckAndBadOmen;
+import static net.hiveteam.hotbath.util.EffectRemovalHandler.removeNegativeEffectsExceptSlowAndUnluck;
 import static net.hiveteam.hotbath.util.HealthRegenHandler.regenHealth;
 import static net.hiveteam.hotbath.util.HungerRegenHandler.regenHunger;
 
@@ -45,7 +45,7 @@ public class HoneyBathEvents {
             new EffectInstance(Effects.SLOWNESS, 10 * TICK_NUMBER, 0, false, false, true));
 
         if (playerData.getInt(honeyBathStayedTime) >= stayedEffectTriggerTime * TICK_NUMBER) {
-          removeNegativeEffectsExceptSlowUnluckAndBadOmen(player);
+          removeNegativeEffectsExceptSlowAndUnluck(player);
           player.addPotionEffect(
               new EffectInstance(Effects.ABSORPTION, 20 * TICK_NUMBER, 1, false, false, true));
         }

@@ -1,6 +1,6 @@
 package net.hiveteam.hotbath.events;
 
-import static net.hiveteam.hotbath.util.EffectRemovalHandler.removeNegativeEffectsExceptBadOmen;
+import static net.hiveteam.hotbath.util.EffectRemovalHandler.*;
 import static net.hiveteam.hotbath.util.HealthRegenHandler.regenHealth;
 
 import java.util.UUID;
@@ -33,8 +33,6 @@ public class PeonyBathEvents {
   private static final int ATTACK_SPEED_DURATION = 15 * TICK_NUMBER;
   private static final int LUCK_DURATION = 45 * TICK_NUMBER;
   private static final int LUCK_THRESHOLD = 50;
-  private static final UUID KNOCKBACK_RESISTANCE_MODIFIER_UUID =
-      UUID.fromString("3e3b0f20-7a04-11ec-9621-0242ac130002");
 
   private static final UUID ATTACK_SPEED_MODIFIER_UUID =
       UUID.fromString("3e3b0f20-7a04-11ec-9621-0242ac130003");
@@ -75,17 +73,12 @@ public class PeonyBathEvents {
 
         if (playerData.getInt(peonyBathStayedTime) >= stayedEffectTriggerTime * TICK_NUMBER) {
           regenHealth(0.25F, 2, player);
-          removeNegativeEffectsExceptBadOmen(player);
+          removeNegativeEffects(player);
+          removeBadOmen(player);
         }
 
         if (playerData.getInt(peonyBathStayedTime) >= 15 * TICK_NUMBER) {
-          applyAttributeModifier(
-              player,
-              Attributes.KNOCKBACK_RESISTANCE,
-              KNOCKBACK_RESISTANCE_MODIFIER_UUID,
-              0.10,
-              AttributeModifier.Operation.MULTIPLY_TOTAL);
-
+          player.getAttribute(Attributes.KNOCKBACK_RESISTANCE).setBaseValue(0.2);
           applyAttributeModifier(
               player,
               Attributes.ATTACK_SPEED,
@@ -108,8 +101,7 @@ public class PeonyBathEvents {
 
           if (playerData.getInt(PEONY_BATH_EXITED_TIME) >= ATTRIBUTE_REMOVE_DELAY_TICKS) {
             // 移除属性修改器
-            removeAttributeModifier(
-                player, Attributes.KNOCKBACK_RESISTANCE, KNOCKBACK_RESISTANCE_MODIFIER_UUID);
+            player.getAttribute(Attributes.KNOCKBACK_RESISTANCE).setBaseValue(0);
             removeAttributeModifier(player, Attributes.ATTACK_SPEED, ATTACK_SPEED_MODIFIER_UUID);
             playerData.putBoolean(hasEnteredPeonyBath, false);
           }

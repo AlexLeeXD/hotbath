@@ -4,15 +4,20 @@ import static net.hiveteam.hotbath.util.ParticleGenerator.renderDefaultSteam;
 
 import java.util.function.Supplier;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.FlowingFluidBlock;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.fluid.FlowingFluid;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 /** Honey Bath Block */
-public class HoneyBathBlock extends FlowingFluidBlock {
+public class HoneyBathBlock extends AbstractHotBathBlock {
   public HoneyBathBlock(Supplier<? extends FlowingFluid> supplier, Properties properties) {
     super(supplier, properties);
+  }
+
+  @Override
+  public void specialEffect(ServerPlayerEntity serverPlayerEntity, Integer stayTime, Integer enteredCount) {
+
   }
 
   @Override

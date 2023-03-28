@@ -1,7 +1,6 @@
 package net.hiveteam.hotbath.events;
 
-import static net.hiveteam.hotbath.util.EffectRemovalHandler.removeNegativeEffectsExceptSlowAndUnluck;
-import static net.hiveteam.hotbath.util.HealthRegenHandler.regenHealth;
+import static net.hiveteam.hotbath.util.EffectChangeUtil.removeNegativeEffectsExceptSlowAndUnluck;
 import static net.hiveteam.hotbath.util.HungerRegenHandler.regenHunger;
 
 import net.hiveteam.hotbath.HotBath;
@@ -14,7 +13,7 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = HotBath.MOD_ID)
+//@Mod.EventBusSubscriber(modid = HotBath.MOD_ID)
 public class HoneyBathEvents {
   private static final int TICK_NUMBER = 20;
   static final String HONEY_BATH_STAYED_TIME = "HoneyBathStayedTime";
@@ -38,7 +37,6 @@ public class HoneyBathEvents {
         int honeyBathTime = playerData.getInt(honeyBathStayedTime) + 1;
         playerData.putInt(honeyBathStayedTime, honeyBathTime);
 
-        regenHealth(0.25F, 1, player);
         regenHunger(1, 4, player);
 
         player.addPotionEffect(

@@ -1,7 +1,6 @@
 package net.hiveteam.hotbath.events;
 
-import static net.hiveteam.hotbath.util.EffectRemovalHandler.*;
-import static net.hiveteam.hotbath.util.HealthRegenHandler.regenHealth;
+import static net.hiveteam.hotbath.util.EffectChangeUtil.*;
 
 import java.util.UUID;
 import net.hiveteam.hotbath.HotBath;
@@ -19,7 +18,7 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = HotBath.MOD_ID)
+//@Mod.EventBusSubscriber(modid = HotBath.MOD_ID)
 public class PeonyBathEvents {
   private static final int TICK_NUMBER = 20;
   static final String PEONY_BATH_ENTERED_NUMBER = "PeonyBathEnteredNumber";
@@ -37,6 +36,7 @@ public class PeonyBathEvents {
   private static final UUID ATTACK_SPEED_MODIFIER_UUID =
       UUID.fromString("3e3b0f20-7a04-11ec-9621-0242ac130003");
   private static final int ATTRIBUTE_REMOVE_DELAY_TICKS = 15 * TICK_NUMBER;
+  private static final int ATTRIBUTEKNOCK_REMOVE_DELAY_TICKS = 30 * TICK_NUMBER;
   // enter hot water block event
   @SubscribeEvent
   public static void enterPeonyBathEvents(LivingEvent.LivingUpdateEvent event) {
@@ -72,7 +72,6 @@ public class PeonyBathEvents {
         playerData.putInt(peonyBathStayedTime, hotBathTime);
 
         if (playerData.getInt(peonyBathStayedTime) >= stayedEffectTriggerTime * TICK_NUMBER) {
-          regenHealth(0.25F, 2, player);
           removeNegativeEffects(player);
           removeBadOmen(player);
         }
@@ -96,11 +95,9 @@ public class PeonyBathEvents {
 
       } else {
         if (playerData.getBoolean(hasEnteredPeonyBath)) {
-          // 记录离开液体的时间
           playerData.putInt(PEONY_BATH_EXITED_TIME, playerData.getInt(PEONY_BATH_EXITED_TIME) + 1);
 
           if (playerData.getInt(PEONY_BATH_EXITED_TIME) >= ATTRIBUTE_REMOVE_DELAY_TICKS) {
-            // 移除属性修改器
             player.getAttribute(Attributes.KNOCKBACK_RESISTANCE).setBaseValue(0);
             removeAttributeModifier(player, Attributes.ATTACK_SPEED, ATTACK_SPEED_MODIFIER_UUID);
             playerData.putBoolean(hasEnteredPeonyBath, false);

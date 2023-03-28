@@ -2,21 +2,25 @@ package net.hiveteam.hotbath.util;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+
+import net.minecraft.entity.ai.attributes.Attribute;
+import net.minecraft.entity.ai.attributes.AttributeModifier;
+import net.minecraft.entity.ai.attributes.ModifiableAttributeInstance;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.EffectType;
 import net.minecraft.potion.Effects;
 
-public class EffectRemovalHandler {
+public class EffectChangeUtil {
   public static void removeNegativeEffectsExceptUnluck(ServerPlayerEntity player) {
-    // 创建一个新的效果实例集合，以避免在迭代过程中修改集合
+
     List<EffectInstance> activeEffects = new ArrayList<>(player.getActivePotionEffects());
 
     for (EffectInstance effectInstance : activeEffects) {
       Effect effect = effectInstance.getPotion();
 
-      // 检查效果是否为负面效果，且不是霉运或不祥之兆
       if (effect.getEffectType() == EffectType.HARMFUL && effect != Effects.UNLUCK) {
         // 移除效果
         player.removePotionEffect(effect);
@@ -52,5 +56,28 @@ public class EffectRemovalHandler {
 
   public static void removeBadOmen(ServerPlayerEntity player) {
     player.removePotionEffect(Effects.BAD_OMEN);
+  }
+
+  public static void applyAttributeModifier(
+          ServerPlayerEntity player,
+          Attribute attribute,
+          AttributeModifier modifier) {
+    ModifiableAttributeInstance attributeInstance = player.getAttribute(attribute);
+    if (attributeInstance != null) {
+      if (attributeInstance.getModifier(modifier.getID()) != null) {
+        attributeInstance.removeModifier(modifier.getID());
+      }
+
+      attributeInstance.applyPersistentModifier(modifier);
+    }
+  }
+
+  public static void removeAttributeModifier(
+          ServerPlayerEntity player, Attribute attribute, UUID uuid) {
+    ModifiableAttributeInstance attributeInstance = player.getAttribute(attribute);
+
+    if (attributeInstance != null && attributeInstance.getModifier(uuid) != null) {
+      attributeInstance.removeModifier(uuid);
+    }
   }
 }

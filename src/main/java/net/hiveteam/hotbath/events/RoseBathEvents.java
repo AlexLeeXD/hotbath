@@ -1,7 +1,6 @@
 package net.hiveteam.hotbath.events;
 
-import static net.hiveteam.hotbath.util.EffectRemovalHandler.*;
-import static net.hiveteam.hotbath.util.HealthRegenHandler.regenHealth;
+import static net.hiveteam.hotbath.util.EffectChangeUtil.*;
 
 import net.hiveteam.hotbath.HotBath;
 import net.hiveteam.hotbath.util.CustomFluidHandler;
@@ -15,7 +14,7 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = HotBath.MOD_ID)
+//@Mod.EventBusSubscriber(modid = HotBath.MOD_ID)
 public class RoseBathEvents {
   private static final int TICK_NUMBER = 20;
   static final String ROSE_BATH_ENTERED_NUMBER = "RoseBathEnteredNumber";
@@ -72,7 +71,6 @@ public class RoseBathEvents {
         int roseBathTime = playerData.getInt(roseBathStayedTime) + 1;
         playerData.putInt(roseBathStayedTime, roseBathTime);
         if (playerData.getInt(roseBathStayedTime) >= stayedEffectTriggerTime * TICK_NUMBER) {
-          regenHealth(0.25F, 1, player);
           removeNegativeEffects(player);
           removeBadOmen(player);
           player.addPotionEffect(

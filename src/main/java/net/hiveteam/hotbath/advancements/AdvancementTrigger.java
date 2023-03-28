@@ -32,7 +32,6 @@ public class AdvancementTrigger extends AbstractCriterionTrigger<AdvancementTrig
     return new Instance(entityPredicate, ID);
   }
 
-  // 自定义 Instance 类
   public static class Instance extends CriterionInstance {
     public Instance(EntityPredicate.AndPredicate playerPredicate, ResourceLocation id) {
       super(id, playerPredicate);

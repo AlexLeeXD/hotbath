@@ -16,9 +16,8 @@ public class PeonyBathBlock extends AbstractHotBathBlock {
   }
 
   @Override
-  public void specialEffect(ServerPlayerEntity serverPlayerEntity, Integer stayTime, Integer enteredCount) {
-
-  }
+  public void specialEffect(
+      ServerPlayerEntity serverPlayerEntity, Integer stayTime, Integer enteredCount) {}
 
   @Override
   public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, java.util.Random rand) {

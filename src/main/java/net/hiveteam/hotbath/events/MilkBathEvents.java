@@ -1,6 +1,7 @@
 package net.hiveteam.hotbath.events;
 
-import static net.hiveteam.hotbath.util.EffectChangeUtil.removeNegativeEffectsExceptUnluck;
+import static net.hiveteam.hotbath.util.EffectRemovalHandler.removeNegativeEffectsExceptUnluck;
+import static net.hiveteam.hotbath.util.HealthRegenHandler.regenHealth;
 import static net.hiveteam.hotbath.util.HungerRegenHandler.regenHunger;
 
 import java.util.logging.Logger;
@@ -14,7 +15,7 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-//@Mod.EventBusSubscriber(modid = HotBath.MOD_ID)
+@Mod.EventBusSubscriber(modid = HotBath.MOD_ID)
 public class MilkBathEvents {
   private static final int TICK_NUMBER = 20;
   static final String MILK_BATH_ENTERED_NUMBER = "MilkBathEnteredNumber";
@@ -74,6 +75,7 @@ public class MilkBathEvents {
         playerData.putInt(milkBathStayedTime, hotBathTime);
 
         if (playerData.getInt(milkBathStayedTime) >= stayedEffectTriggerTime * TICK_NUMBER) {
+          regenHealth(0.25F, 2, player);
           removeNegativeEffectsExceptUnluck(player);
         }
         // current helth

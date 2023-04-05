@@ -12,7 +12,7 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-//@Mod.EventBusSubscriber(modid = HotBath.MOD_ID)
+@Mod.EventBusSubscriber(modid = HotBath.MOD_ID)
 public class HotWaterEvents {
   private static final int TICK_NUMBER = 20;
   static final String HOT_WATER_ENTERED_NUMBER = "HotWaterEnteredNumber";
@@ -21,6 +21,7 @@ public class HotWaterEvents {
   static final String HOT_WATER_ADVANCEMENT_ID = "hotbath:foot_health";
   private static final int HOT_WATER_ENTERED_COUNT_TRIGGER_NUMBER = 100;
   private static final int HOT_WATER_STAYED_EFFECT_TRIGGER_TIME_SECONDS = 15;
+
   // enter hot water block event
   @SubscribeEvent
   public static void enterHotWaterEvents(LivingEvent.LivingUpdateEvent event) {

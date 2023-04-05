@@ -1,3 +1,20 @@
 {
-  "type": "hotbath:milk_bath_bucket"
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "   ",
+    "S# ",
+    "   "
+  ],
+  "key": {
+    "#": {
+      "item": "hotbath:hot_water_bucket"
+    },
+    "S": {
+      "item": "minecraft:milk_bucket"
+    }
+  },
+  "result": {
+    "item": "hotbath:milk_bath_bucket",
+    "count": 1
+  }
 }

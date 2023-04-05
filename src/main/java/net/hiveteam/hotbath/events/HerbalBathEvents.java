@@ -1,6 +1,7 @@
 package net.hiveteam.hotbath.events;
 
-import static net.hiveteam.hotbath.util.EffectChangeUtil.removeNegativeEffects;
+import static net.hiveteam.hotbath.util.EffectRemovalHandler.removeNegativeEffects;
+import static net.hiveteam.hotbath.util.HealthRegenHandler.regenHealth;
 import static net.hiveteam.hotbath.util.ResistanceBoostHandler.applyResistanceBoost;
 
 import net.hiveteam.hotbath.HotBath;
@@ -17,7 +18,7 @@ import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-//@Mod.EventBusSubscriber(modid = HotBath.MOD_ID)
+@Mod.EventBusSubscriber(modid = HotBath.MOD_ID)
 public class HerbalBathEvents {
   private static final int TICK_NUMBER = 20;
   static final String HERBAL_BATH_ENTERED_NUMBER = "HerbalBathEnteredNumber";
@@ -97,6 +98,7 @@ public class HerbalBathEvents {
         int hotBathTime = playerData.getInt(herbalBathStayedTime) + 1;
         playerData.putInt(herbalBathStayedTime, hotBathTime);
 
+        regenHealth(0.25F, 2, player);
 
         if (playerData.getInt(herbalBathStayedTime) >= stayedEffectTriggerTime * TICK_NUMBER) {
           applyResistanceBoost(10, player);

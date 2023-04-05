@@ -20,7 +20,7 @@ public class ItemRegister {
           () ->
               new BucketItem(
                   () -> FluidsRegister.HERBAL_BATH_FLUID.get(),
-                  new Item.Properties().group(ItemGroup.HOT_BATH)));
+                  new Item.Properties().group(ItemGroup.HOT_BATH).maxStackSize(1)));
 
   public static final RegistryObject<Item> HONEY_BATH_BUCKET =
       ITEMS.register(
@@ -28,7 +28,7 @@ public class ItemRegister {
           () ->
               new BucketItem(
                   () -> FluidsRegister.HONEY_BATH_FLUID.get(),
-                  new Item.Properties().group(ItemGroup.HOT_BATH)));
+                  new Item.Properties().group(ItemGroup.HOT_BATH).maxStackSize(1)));
 
   public static final RegistryObject<Item> HOT_WATER_BUCKET =
       ITEMS.register(
@@ -36,14 +36,15 @@ public class ItemRegister {
           () ->
               new BucketItem(
                   () -> FluidsRegister.HOT_WATER_FLUID.get(),
-                  new Item.Properties().group(ItemGroup.HOT_BATH)));
+                  new Item.Properties().group(ItemGroup.HOT_BATH).maxStackSize(1)));
+
   public static final RegistryObject<Item> MILK_BATH_BUCKET =
       ITEMS.register(
           "milk_bath_bucket",
           () ->
               new BucketItem(
                   () -> FluidsRegister.MILK_BATH_FLUID.get(),
-                  new Item.Properties().group(ItemGroup.HOT_BATH)));
+                  new Item.Properties().group(ItemGroup.HOT_BATH).maxStackSize(1)));
 
   public static final RegistryObject<Item> PEONY_BATH_BUCKET =
       ITEMS.register(
@@ -51,15 +52,15 @@ public class ItemRegister {
           () ->
               new BucketItem(
                   () -> FluidsRegister.PEONY_BATH_FLUID.get(),
-                  new Item.Properties().group(ItemGroup.HOT_BATH)));
+                  new Item.Properties().group(ItemGroup.HOT_BATH).maxStackSize(1)));
+
   public static final RegistryObject<Item> ROSE_BATH_BUCKET =
       ITEMS.register(
           "rose_bath_bucket",
           () ->
               new BucketItem(
                   () -> FluidsRegister.ROSE_BATH_FLUID.get(),
-                  new Item.Properties().group(ItemGroup.HOT_BATH)));
-
+                  new Item.Properties().group(ItemGroup.HOT_BATH).maxStackSize(1)));
   public static final RegistryObject<Item> BATH_HERB =
       ITEMS.register("bath_herb", () -> new Item(new Item.Properties().group(ItemGroup.HOT_BATH)));
 

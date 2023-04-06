@@ -73,7 +73,7 @@ public class HotWaterEvents {
 
         if (playerData.getInt(hotWaterStayedTime) >= stayedEffectTriggerTime * TICK_NUMBER) {
           player.addPotionEffect(
-              new EffectInstance(Effects.SPEED, TICK_NUMBER * 20, 1, false, false, true));
+              new EffectInstance(Effects.SPEED, TICK_NUMBER * 20, 0, false, false, true));
         }
       } else {
         playerData.putInt(hotWaterStayedTime, 0);

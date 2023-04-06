@@ -71,8 +71,8 @@ public class RoseBathEvents {
         }
         int roseBathTime = playerData.getInt(roseBathStayedTime) + 1;
         playerData.putInt(roseBathStayedTime, roseBathTime);
+        regenHealth(0.25F, 1, player);
         if (playerData.getInt(roseBathStayedTime) >= stayedEffectTriggerTime * TICK_NUMBER) {
-          regenHealth(0.25F, 1, player);
           removeNegativeEffects(player);
           removeBadOmen(player);
           player.addPotionEffect(

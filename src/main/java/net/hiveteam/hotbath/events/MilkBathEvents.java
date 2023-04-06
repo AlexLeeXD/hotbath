@@ -74,15 +74,13 @@ public class MilkBathEvents {
         int hotBathTime = playerData.getInt(milkBathStayedTime) + 1;
         playerData.putInt(milkBathStayedTime, hotBathTime);
 
+        regenHealth(0.25F, 2, player);
         if (playerData.getInt(milkBathStayedTime) >= stayedEffectTriggerTime * TICK_NUMBER) {
-          regenHealth(0.25F, 2, player);
           removeNegativeEffectsExceptUnluck(player);
         }
         // current helth
         Logger.getLogger("MilkBathEvents").info("Current Health: " + player.getHealth());
-        if (playerData.getInt(milkBathStayedTime) >= 60 * TICK_NUMBER) {
-          regenHunger(1, 15, player);
-        }
+        regenHunger(1, 15, player);
 
         // current hunger
         Logger.getLogger("MilkBathEvents")

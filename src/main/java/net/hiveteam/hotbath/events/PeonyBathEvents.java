@@ -4,7 +4,6 @@ import static net.hiveteam.hotbath.util.EffectRemovalHandler.*;
 import static net.hiveteam.hotbath.util.HealthRegenHandler.regenHealth;
 
 import java.util.UUID;
-import java.util.logging.Logger;
 import net.hiveteam.hotbath.HotBath;
 import net.hiveteam.hotbath.util.CustomFluidHandler;
 import net.minecraft.entity.ai.attributes.Attribute;
@@ -66,13 +65,6 @@ public class PeonyBathEvents {
           int enteredCount = playerData.getInt(enteredNumberInPeonyBath) + 1;
           playerData.putInt(enteredNumberInPeonyBath, enteredCount);
           playerData.putBoolean(hasEnteredPeonyBath, true);
-          Logger.getLogger("PeonyBathEvents")
-              .info(
-                  "Player "
-                      + player.getName().getString()
-                      + " has entered peony bath "
-                      + playerData.getInt(enteredNumberInPeonyBath)
-                      + " times.");
         }
 
         int hotBathTime = playerData.getInt(peonyBathStayedTime) + 1;
@@ -108,7 +100,6 @@ public class PeonyBathEvents {
           playerData.putBoolean(hasEnteredPeonyBath, false);
         }
 
-        Logger.getLogger("PeonyBathEvents").info("Player exited peony bath.");
         playerData.putInt(PEONY_BATH_EXITED_TIME, playerData.getInt(PEONY_BATH_EXITED_TIME) + 1);
 
         if (playerData.getInt(PEONY_BATH_EXITED_TIME) >= 15 * TICK_NUMBER) {
@@ -121,13 +112,6 @@ public class PeonyBathEvents {
               player, Attributes.KNOCKBACK_RESISTANCE, KNOCKBACK_RESISTANCE_UUID);
         }
 
-        Logger.getLogger("PeonyBathEvents")
-            .info(
-                "Player "
-                    + player.getName().getString()
-                    + " has exited peony bath "
-                    + playerData.getInt(PEONY_BATH_EXITED_TIME)
-                    + " times.");
         playerData.putInt(peonyBathStayedTime, 0);
       }
     }

@@ -19,39 +19,43 @@ public class SteamParticle extends SpriteTexturedParticle {
       double motionZ,
       boolean longLivingEmber) {
     super(world, x, y, z);
-    this.multiplyParticleScaleBy(3.0F);
+    this.particleScale = (this.rand.nextFloat() * 0.5F + 0.5F) * 2.0F;
+    this.multiplyParticleScaleBy(2.5F + rand.nextFloat() * 1.0F);
     this.setSize(0.25F, 0.25F);
+    this.particleScale *= 0.2F;
     if (longLivingEmber) {
-      this.maxAge = this.rand.nextInt(50) + 280;
+      this.maxAge = 90 + this.rand.nextInt(10) + 20;
     } else {
-      this.maxAge = this.rand.nextInt(50) + 10;
+      this.maxAge = 80 + this.rand.nextInt(10) + 10;
     }
 
-    this.particleGravity = Float.MIN_VALUE;
-    this.motionX = motionX;
-    this.motionY = motionY + (double) (this.rand.nextFloat() / 500.0F) * 0.5D;
-    this.motionZ = motionZ;
+    this.particleGravity = 0.0002F;
+    this.motionX =
+        motionX
+            + (double)
+                (this.rand.nextFloat() / 250.0F * (float) (this.rand.nextBoolean() ? 1 : -1));
+    this.motionZ =
+        motionZ
+            + (double)
+                (this.rand.nextFloat() / 250.0F * (float) (this.rand.nextBoolean() ? 1 : -1));
+    this.motionY = motionY + 0.025 + (double) (this.rand.nextFloat() / 250.0F);
   }
 
   public void tick() {
+
     this.prevPosX = this.posX;
     this.prevPosY = this.posY;
     this.prevPosZ = this.posZ;
 
-    if (this.particleAlpha > 0.0F) {
-      this.age++;
-
+    if (this.age++ < this.maxAge && this.particleAlpha > 0.02F) {
       this.motionX +=
-          (double) (this.rand.nextFloat() / 5000.0F * (float) (this.rand.nextBoolean() ? 1 : -1));
+          (double) (this.rand.nextFloat() / 1000.0F * (float) (this.rand.nextBoolean() ? 1 : -1));
       this.motionZ +=
-          (double) (this.rand.nextFloat() / 5000.0F * (float) (this.rand.nextBoolean() ? 1 : -1));
-      this.motionY -= this.particleGravity;
+          (double) (this.rand.nextFloat() / 1000.0F * (float) (this.rand.nextBoolean() ? 1 : -1));
+      this.motionY -= (double) this.particleGravity;
       this.move(this.motionX, this.motionY, this.motionZ);
 
-      this.particleAlpha -= 0.05F;
-
-      this.particleAlpha = Math.max(this.particleAlpha, 0.0F);
-
+      this.particleAlpha -= 0.01F + rand.nextFloat() * 0.01F;
     } else {
       this.setExpired();
     }
@@ -80,7 +84,7 @@ public class SteamParticle extends SpriteTexturedParticle {
         double zSpeed) {
       SteamParticle steamParticle =
           new SteamParticle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed, false);
-      steamParticle.setAlphaF(0.9F);
+      steamParticle.setAlphaF(0.9F); // transparency
       steamParticle.selectSpriteRandomly(this.spriteSet);
       return steamParticle;
     }

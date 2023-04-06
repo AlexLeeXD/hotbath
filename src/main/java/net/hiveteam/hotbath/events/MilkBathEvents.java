@@ -2,9 +2,7 @@ package net.hiveteam.hotbath.events;
 
 import static net.hiveteam.hotbath.util.EffectRemovalHandler.removeNegativeEffectsExceptUnluck;
 import static net.hiveteam.hotbath.util.HealthRegenHandler.regenHealth;
-import static net.hiveteam.hotbath.util.HungerRegenHandler.regenHunger;
 
-import java.util.logging.Logger;
 import net.hiveteam.hotbath.HotBath;
 import net.hiveteam.hotbath.util.CustomFluidHandler;
 import net.minecraft.advancements.Advancement;
@@ -78,16 +76,6 @@ public class MilkBathEvents {
         if (playerData.getInt(milkBathStayedTime) >= stayedEffectTriggerTime * TICK_NUMBER) {
           removeNegativeEffectsExceptUnluck(player);
         }
-        // current helth
-        Logger.getLogger("MilkBathEvents").info("Current Health: " + player.getHealth());
-        regenHunger(1, 15, player);
-
-        // current hunger
-        Logger.getLogger("MilkBathEvents")
-            .info("Current Hunger: " + player.getFoodStats().getFoodLevel());
-        // current time
-        Logger.getLogger("MilkBathEvents")
-            .info("Current Time: " + playerData.getInt(milkBathStayedTime));
       } else {
         playerData.putInt(milkBathStayedTime, 0);
         playerData.putBoolean(hasEnteredMilkBath, false);

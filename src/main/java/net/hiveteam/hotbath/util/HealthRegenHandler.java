@@ -19,9 +19,6 @@ public class HealthRegenHandler {
 
       if (currentHealth < maxHealth) {
         player.setHealth(Math.min(currentHealth + regenHealthNumber, maxHealth));
-        //        Logger.getGlobal().info("Health Regen: " + regenHealthNumber);
-        //        Logger.getGlobal().info("Current Health: " + currentHealth);
-        //        Logger.getGlobal().info("Time: " + healthRegenTimer);
       }
       playerData.putInt(healthRegenTimerKey, 0);
     }

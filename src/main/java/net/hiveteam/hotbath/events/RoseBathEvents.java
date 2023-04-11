@@ -69,8 +69,8 @@ public class RoseBathEvents {
             }
           }
         }
-        int roseBathTime = playerData.getInt(roseBathStayedTime) + 1;
-        playerData.putInt(roseBathStayedTime, roseBathTime);
+        int roseBathStayTime = playerData.getInt(roseBathStayedTime) + 1;
+        playerData.putInt(roseBathStayedTime, roseBathStayTime);
         regenHealth(0.25F, 1, player);
         if (playerData.getInt(roseBathStayedTime) >= stayedEffectTriggerTime * TICK_NUMBER) {
           removeNegativeEffects(player);

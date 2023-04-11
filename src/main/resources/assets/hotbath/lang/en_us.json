@@ -8,5 +8,6 @@
   "fluid.hotbath.hot_water_block": "Hot Water Block",
   "item.hotbath.bath_herb": "Bath Herb",
   "itemGroup.hotBathTab": "Hot Bath",
-  "hotbath.advancement.hot_water_100_times.title": "Foot Health"
+  "hotbath.advancement.hot_bath": "Hot Bath!",
+  "hotbath.advancement.milk_skin": "Milk Skin"
 }

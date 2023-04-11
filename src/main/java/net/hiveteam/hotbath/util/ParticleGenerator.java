@@ -27,38 +27,4 @@ public class ParticleGenerator {
           0.0D);
     }
   }
-
-  //  public static void renderCustomParticles(World worldIn, BlockPos pos, FluidState state,
-  // java.util.Random rand) {
-  //    if (!state.isSource() && !state.get(FlowingFluid.FALLING)) {
-  //      BlockPos blockpos = pos.down();
-  //      BlockState blockStateBelow = worldIn.getBlockState(blockpos);
-  //
-  //      if (rand.nextInt(64) == 0) {
-  //        // 生成自定义的进入液体粒子效果
-  //        worldIn.addParticle(
-  //                CUSTOM_ENTERING_PARTICLE,
-  //                pos.getX() + 0.5,
-  //                pos.getY() + 0.5,
-  //                pos.getZ() + 0.5,
-  //                0.0D,
-  //                0.0D,
-  //                0.0D);
-  //      }
-  //
-  //      if (rand.nextInt(10) == 0 && blockStateBelow.isSolidSide(worldIn, blockpos, Direction.UP))
-  // {
-  //        // 生成自定义的气泡效果
-  //        worldIn.addParticle(
-  //                CUSTOM_BUBBLE_PARTICLE,
-  //                pos.getX() + rand.nextDouble(),
-  //                pos.getY() + 1.1D,
-  //                pos.getZ() + rand.nextDouble(),
-  //                0.0D,
-  //                0.0D,
-  //                0.0D);
-  //      }
-  //    }
-  //  }
-
 }

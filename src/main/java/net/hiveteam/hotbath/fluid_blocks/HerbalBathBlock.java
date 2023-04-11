@@ -8,6 +8,8 @@ import net.minecraft.block.FlowingFluidBlock;
 import net.minecraft.fluid.FlowingFluid;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 /** Herbal Bath Block */
 public class HerbalBathBlock extends FlowingFluidBlock {
@@ -16,8 +18,8 @@ public class HerbalBathBlock extends FlowingFluidBlock {
   }
 
   @Override
+  @OnlyIn(Dist.CLIENT)
   public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, java.util.Random rand) {
     renderDefaultSteam(worldIn, pos, rand);
-    // renderCustomParticles(worldIn, pos, stateIn, rand);
   }
 }

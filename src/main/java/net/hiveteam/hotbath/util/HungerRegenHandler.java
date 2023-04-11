@@ -12,9 +12,10 @@ public class HungerRegenHandler {
     int hungerRegenTimer = playerData.getInt(hungerRegenTimerKey) + 1;
     playerData.putInt(hungerRegenTimerKey, hungerRegenTimer);
 
-    int ticksPerRegen = (int) (perSecondsNumber * 20); // 计算恢复所需的刻数（ticks）
+    int ticksPerRegen =
+        (int) (perSecondsNumber * 20); // Calculate the number of ticks required to recover
 
-    if (hungerRegenTimer >= ticksPerRegen) { // 根据给定的秒数进行恢复
+    if (hungerRegenTimer >= ticksPerRegen) { // Regenerate based on the given number of seconds
       int currentFoodLevel = player.getFoodStats().getFoodLevel();
       int maxFoodLevel = 20;
 

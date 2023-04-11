@@ -2,6 +2,7 @@ package net.hiveteam.hotbath.events;
 
 import static net.hiveteam.hotbath.util.EffectRemovalHandler.removeNegativeEffectsExceptUnluck;
 import static net.hiveteam.hotbath.util.HealthRegenHandler.regenHealth;
+import static net.hiveteam.hotbath.util.HungerRegenHandler.regenHunger;
 
 import net.hiveteam.hotbath.HotBath;
 import net.hiveteam.hotbath.util.CustomFluidHandler;
@@ -71,7 +72,7 @@ public class MilkBathEvents {
 
         int hotBathTime = playerData.getInt(milkBathStayedTime) + 1;
         playerData.putInt(milkBathStayedTime, hotBathTime);
-
+        regenHunger(1, 15, player);
         regenHealth(0.25F, 2, player);
         if (playerData.getInt(milkBathStayedTime) >= stayedEffectTriggerTime * TICK_NUMBER) {
           removeNegativeEffectsExceptUnluck(player);

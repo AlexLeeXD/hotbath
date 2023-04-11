@@ -10,15 +10,15 @@ import net.minecraft.potion.Effects;
 
 public class EffectRemovalHandler {
   public static void removeNegativeEffectsExceptUnluck(ServerPlayerEntity player) {
-    // 创建一个新的效果实例集合，以避免在迭代过程中修改集合
+    // Create a new effect instance collection to avoid modifying the collection during iteration
     List<EffectInstance> activeEffects = new ArrayList<>(player.getActivePotionEffects());
 
     for (EffectInstance effectInstance : activeEffects) {
       Effect effect = effectInstance.getPotion();
 
-      // 检查效果是否为负面效果，且不是霉运或不祥之兆
+      // Check if the effect is a negative effect, and not unluck or bad omen
       if (effect.getEffectType() == EffectType.HARMFUL && effect != Effects.UNLUCK) {
-        // 移除效果
+        // Remove the effect
         player.removePotionEffect(effect);
       }
     }

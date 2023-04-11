@@ -5,9 +5,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.math.BlockPos; // This file is for repository reference only. It is not
-
-// part of the mod.
+import net.minecraft.util.math.BlockPos;
 
 public class CustomFluidHandler {
 

@@ -12,7 +12,6 @@ import net.minecraft.entity.ai.attributes.Attributes;
 import net.minecraft.entity.ai.attributes.ModifiableAttributeInstance;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.potion.Effect;
 import net.minecraft.potion.EffectInstance;
 import net.minecraft.potion.Effects;
 import net.minecraftforge.event.entity.living.LivingEvent;
@@ -115,12 +114,6 @@ public class PeonyBathEvents {
         playerData.putInt(peonyBathStayedTime, 0);
       }
     }
-  }
-
-  private static void applyEffect(
-      ServerPlayerEntity player, Effect effect, int duration, int amplifier) {
-    EffectInstance effectInstance = new EffectInstance(effect, duration, amplifier, false, false);
-    player.addPotionEffect(effectInstance);
   }
 
   private static void applyAttributeModifier(

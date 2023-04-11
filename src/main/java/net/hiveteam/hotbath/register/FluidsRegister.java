@@ -4,9 +4,9 @@ import static net.hiveteam.hotbath.fluid_details.FluidsProperties.*;
 
 import net.hiveteam.hotbath.HotBath;
 import net.hiveteam.hotbath.fluid_blocks.*;
+import net.hiveteam.hotbath.fluid_details.HotBathMaterials;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.FlowingFluidBlock;
-import net.minecraft.block.material.Material;
 import net.minecraft.fluid.FlowingFluid;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.util.ResourceLocation;
@@ -42,7 +42,7 @@ public class FluidsRegister {
           () ->
               new HerbalBathBlock(
                   () -> HERBAL_BATH_FLUID.get(),
-                  AbstractBlock.Properties.create(Material.WATER)
+                  AbstractBlock.Properties.create(HotBathMaterials.HOTBATH_MATERIAL)
                       .doesNotBlockMovement()
                       .hardnessAndResistance(100f)
                       .noDrops()));
@@ -61,7 +61,7 @@ public class FluidsRegister {
           () ->
               new HoneyBathBlock(
                   () -> HONEY_BATH_FLUID.get(),
-                  AbstractBlock.Properties.create(Material.WATER)
+                  AbstractBlock.Properties.create(HotBathMaterials.HOTBATH_MATERIAL)
                       .doesNotBlockMovement()
                       .hardnessAndResistance(100f)
                       .noDrops()));
@@ -78,7 +78,7 @@ public class FluidsRegister {
           () ->
               new HotWaterBlock(
                   () -> HOT_WATER_FLUID.get(),
-                  AbstractBlock.Properties.create(Material.WATER)
+                  AbstractBlock.Properties.create(HotBathMaterials.HOTBATH_MATERIAL)
                       .doesNotBlockMovement()
                       .hardnessAndResistance(1000f)
                       .noDrops()));
@@ -96,7 +96,7 @@ public class FluidsRegister {
           () ->
               new MilkBathBlock(
                   () -> MILK_BATH_FLUID.get(),
-                  AbstractBlock.Properties.create(Material.WATER)
+                  AbstractBlock.Properties.create(HotBathMaterials.HOTBATH_MATERIAL)
                       .doesNotBlockMovement()
                       .hardnessAndResistance(100f)
                       .noDrops()));
@@ -115,7 +115,7 @@ public class FluidsRegister {
           () ->
               new PeonyBathBlock(
                   () -> PEONY_BATH_FLUID.get(),
-                  AbstractBlock.Properties.create(Material.WATER)
+                  AbstractBlock.Properties.create(HotBathMaterials.HOTBATH_MATERIAL)
                       .doesNotBlockMovement()
                       .hardnessAndResistance(100f)
                       .noDrops()));
@@ -133,7 +133,7 @@ public class FluidsRegister {
           () ->
               new RoseBathBlock(
                   () -> ROSE_BATH_FLUID.get(),
-                  AbstractBlock.Properties.create(Material.WATER)
+                  AbstractBlock.Properties.create(HotBathMaterials.HOTBATH_MATERIAL)
                       .doesNotBlockMovement()
                       .hardnessAndResistance(100f)
                       .noDrops()));

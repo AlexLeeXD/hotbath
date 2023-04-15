@@ -1,8 +1,6 @@
 package net.hiveteam.hotbath;
 
 import java.util.stream.Collectors;
-import net.hiveteam.hotbath.events.AquaticMobHurtsHandler;
-import net.hiveteam.hotbath.events.BlockPlacementHandler;
 import net.hiveteam.hotbath.fluid_blocks.*;
 import net.hiveteam.hotbath.register.BlocksRegister;
 import net.hiveteam.hotbath.register.FluidsRegister;
@@ -55,8 +53,6 @@ public class HotBath {
 
     // Register ourselves for server and other game events we are interested in
     MinecraftForge.EVENT_BUS.register(this);
-    MinecraftForge.EVENT_BUS.register(BlockPlacementHandler.class);
-    MinecraftForge.EVENT_BUS.register(AquaticMobHurtsHandler.class);
   }
 
   private void setup(final FMLCommonSetupEvent event) {

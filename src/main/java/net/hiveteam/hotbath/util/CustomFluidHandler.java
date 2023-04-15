@@ -1,6 +1,9 @@
 package net.hiveteam.hotbath.util;
 
+import static net.hiveteam.hotbath.HotBath.LOGGER;
+
 import net.hiveteam.hotbath.HotBath;
+import net.hiveteam.hotbath.fluid_blocks.IHotbathBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
@@ -8,6 +11,14 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.BlockPos;
 
 public class CustomFluidHandler {
+
+  public static boolean isPlayerInHotBathBlock(PlayerEntity player) {
+    BlockPos playerPos = player.getPosition();
+    BlockState stateAtPlayerPos = player.world.getBlockState(playerPos);
+    LOGGER.info("isPlayerInHotBathBlock: " + stateAtPlayerPos.getBlock());
+
+    return stateAtPlayerPos.getBlock() instanceof IHotbathBlock;
+  }
 
   public static boolean isPlayerInHotWaterBlock(PlayerEntity player) {
     BlockPos playerPos = player.getPosition();

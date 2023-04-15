@@ -12,7 +12,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 /** Hot Water Block */
-public class HotWaterBlock extends FlowingFluidBlock {
+public class HotWaterBlock extends FlowingFluidBlock implements IHotbathBlock {
 
   public HotWaterBlock(Supplier<? extends FlowingFluid> supplier, Properties properties) {
     super(supplier, properties);

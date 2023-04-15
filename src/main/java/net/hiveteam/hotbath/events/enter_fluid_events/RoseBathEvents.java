@@ -1,4 +1,4 @@
-package net.hiveteam.hotbath.events;
+package net.hiveteam.hotbath.events.enter_fluid_events;
 
 import static net.hiveteam.hotbath.util.EffectRemovalHandler.*;
 import static net.hiveteam.hotbath.util.HealthRegenHandler.regenHealth;

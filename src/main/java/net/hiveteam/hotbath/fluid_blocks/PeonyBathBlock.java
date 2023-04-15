@@ -12,7 +12,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 /** Peony Bath Block */
-public class PeonyBathBlock extends FlowingFluidBlock {
+public class PeonyBathBlock extends FlowingFluidBlock implements IHotbathBlock {
   public PeonyBathBlock(Supplier<? extends FlowingFluid> supplier, Properties properties) {
     super(supplier, properties);
   }

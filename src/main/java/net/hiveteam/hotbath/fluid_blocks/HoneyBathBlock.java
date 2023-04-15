@@ -12,7 +12,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 /** Honey Bath Block */
-public class HoneyBathBlock extends FlowingFluidBlock {
+public class HoneyBathBlock extends FlowingFluidBlock implements IHotbathBlock {
   public HoneyBathBlock(Supplier<? extends FlowingFluid> supplier, Properties properties) {
     super(supplier, properties);
   }

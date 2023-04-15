@@ -12,7 +12,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 /** Milk Bath Block */
-public class MilkBathBlock extends FlowingFluidBlock {
+public class MilkBathBlock extends FlowingFluidBlock implements IHotbathBlock {
   public MilkBathBlock(Supplier<? extends FlowingFluid> supplier, Properties properties) {
     super(supplier, properties);
   }

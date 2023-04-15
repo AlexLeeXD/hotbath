@@ -12,7 +12,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 /** Herbal Bath Block */
-public class HerbalBathBlock extends FlowingFluidBlock {
+public class HerbalBathBlock extends FlowingFluidBlock implements IHotbathBlock {
   public HerbalBathBlock(Supplier<? extends FlowingFluid> supplier, Properties properties) {
     super(supplier, properties);
   }

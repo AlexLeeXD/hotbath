@@ -12,7 +12,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
 /** Rose Bath Block */
-public class RoseBathBlock extends FlowingFluidBlock {
+public class RoseBathBlock extends FlowingFluidBlock implements IHotbathBlock {
   public RoseBathBlock(Supplier<? extends FlowingFluid> supplier, Properties properties) {
     super(supplier, properties);
   }

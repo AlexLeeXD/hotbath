@@ -1,4 +1,4 @@
-package net.hiveteam.hotbath.events;
+package net.hiveteam.hotbath.events.enter_fluid_events;
 
 import net.hiveteam.hotbath.HotBath;
 import net.hiveteam.hotbath.util.CustomFluidHandler;

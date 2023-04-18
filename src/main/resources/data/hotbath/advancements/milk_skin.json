@@ -4,8 +4,12 @@
     "icon": {
       "item": "hotbath:milk_bath_bucket"
     },
-    "title": "Milk Skin",
-    "description": "",
+    "title": {
+      "translate": "hotbath.advancement.milk_skin"
+    },
+    "description": {
+      "translate": "hotbath.advancement.milk_skin.desc"
+    },
     "background": "minecraft:textures/block/stone.png",
     "frame": "challenge",
     "show_toast": true,

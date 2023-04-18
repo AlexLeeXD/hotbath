@@ -4,8 +4,12 @@
     "icon": {
       "item": "hotbath:hot_water_bucket"
     },
-    "title": "Foot Health",
-    "description": "",
+    "title": {
+      "translate": "hotbath.advancement.foot_health"
+    },
+    "description": {
+      "translate": "hotbath.advancement.foot_health.desc"
+    },
     "background": "minecraft:textures/block/stone.png",
     "frame": "challenge",
     "show_toast": true,

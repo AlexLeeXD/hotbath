@@ -2,7 +2,7 @@ package net.hiveteam.hotbath.events;
 
 import net.hiveteam.hotbath.fluid_blocks.IHotbathBlock;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.world.IWorld;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -13,7 +13,7 @@ public class AquaticMobSpawnPreventionHandler {
 
   @SubscribeEvent
   public static void onCheckSpawn(LivingSpawnEvent.CheckSpawn event) {
-    World world = (World) event.getWorld();
+    IWorld world = event.getWorld();
     BlockPos pos = event.getEntity().getPosition();
 
     // Check if the spawning location is a HotBath block

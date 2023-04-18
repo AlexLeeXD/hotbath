@@ -4,8 +4,12 @@
     "icon": {
       "item": "hotbath:rose_bath_bucket"
     },
-    "title": "Rose Body Fragrance",
-    "description": "",
+    "title": {
+      "translate": "hotbath.advancement.rose_body_fragrance"
+    },
+    "description": {
+      "translate": "hotbath.advancement.rose_body_fragrance.desc"
+    },
     "background": "minecraft:textures/block/stone.png",
     "frame": "challenge",
     "show_toast": true,

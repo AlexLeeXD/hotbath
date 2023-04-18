@@ -1,4 +1,4 @@
-package net.hiveteam.hotbath.events;
+package net.hiveteam.hotbath.register;
 
 import static net.hiveteam.hotbath.register.ParticleRegister.STEAM_PARTICLE;
 
@@ -13,7 +13,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 
 @Mod.EventBusSubscriber(modid = HotBath.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
-public class ModEvents {
+public class ExtraEventsRegister {
   @SubscribeEvent
   public static void registerParticlesFactories(final ParticleFactoryRegisterEvent event) {
     Minecraft.getInstance()

@@ -3,8 +3,12 @@
     "icon": {
       "item": "hotbath:hot_water_bucket"
     },
-    "title": "Hot Bath!",
-    "description": "Boiling bath water",
+    "title": {
+      "translate": "hotbath.advancement.hot_bath"
+    },
+    "description": {
+      "translate": "hotbath.advancement.hot_bath.desc"
+    },
     "background": "minecraft:textures/block/stone.png",
     "show_toast": true,
     "announce_to_chat": true,

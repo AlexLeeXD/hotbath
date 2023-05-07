@@ -1,8 +1,8 @@
-package net.hiveteam.hotbath.events;
+package hivestandsteam.hotbath.events;
 
+import hivestandsteam.hotbath.HotBath;
+import hivestandsteam.hotbath.register.ItemRegister;
 import javax.annotation.Nullable;
-import net.hiveteam.hotbath.HotBath;
-import net.hiveteam.hotbath.register.ItemRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.merchant.villager.VillagerProfession;
 import net.minecraft.entity.merchant.villager.VillagerTrades.ITrade;

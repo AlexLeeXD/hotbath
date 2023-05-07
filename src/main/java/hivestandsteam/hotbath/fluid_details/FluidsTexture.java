@@ -3,7 +3,7 @@ package hivestandsteam.hotbath.fluid_details;
 import hivestandsteam.hotbath.HotBath;
 import net.minecraft.util.ResourceLocation;
 
-/** reference: */
+/** reference: <a href="https://github.com/connor135246/Simply-Hot-Springs">...</a> */
 public class FluidsTexture {
   public static final ResourceLocation HOT_WATER_STILL_TEXTURE =
       new ResourceLocation(HotBath.MOD_ID, "blocks/still_hot_water");

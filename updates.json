@@ -8,10 +8,6 @@
     "0.1.0": {
       "changes": "Initial release.",
       "url": "https://legacy.curseforge.com/minecraft/mc-mods/hotbath"
-    },
-    "0.1.1": {
-      "changes": "Fixed a bug where the mod would crash if the player was in a dimension that didn't have a sky.",
-      "url": "https://legacy.curseforge.com/minecraft/mc-mods/hotbath"
     }
   }
 }

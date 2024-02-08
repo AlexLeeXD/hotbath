@@ -18,7 +18,7 @@ apply plugin: 'net.minecraftforge.gradle'
 
 version = '1.0-1.18.2'
 group = 'com.crabmod.hotbath' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'modid'
+archivesBaseName = 'hotbath'
 
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -64,7 +64,7 @@ minecraft {
             property 'forge.enabledGameTestNamespaces', 'hotbath'
 
             mods {
-                examplemod {
+                hotbath {
                     source sourceSets.main
                 }
             }
@@ -81,7 +81,7 @@ minecraft {
             property 'forge.enabledGameTestNamespaces', 'hotbath'
 
             mods {
-                examplemod {
+                hotbath {
                     source sourceSets.main
                 }
             }
@@ -109,7 +109,7 @@ minecraft {
             property 'forge.enabledGameTestNamespaces', 'hotbath'
 
             mods {
-                examplemod {
+                hotbath {
                     source sourceSets.main
                 }
             }
@@ -126,7 +126,7 @@ minecraft {
             args '--mod', 'hotbath', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
-                examplemod {
+                hotbath {
                     source sourceSets.main
                 }
             }
@@ -171,11 +171,11 @@ jar {
     manifest {
         attributes([
                 "Specification-Title"     : "hotbath",
-                "Specification-Vendor"    : "examplemodsareus",
+                "Specification-Vendor"    : "hotbathsareus",
                 "Specification-Version"   : "1", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : "examplemodsareus",
+                "Implementation-Vendor"   : "hotbathsareus",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }

@@ -1,15 +1,23 @@
 package com.crabmod.hotbath;
 
+import com.crabmod.hotbath.ModItems.BlocksRegister;
+import com.crabmod.hotbath.ModItems.FluidsRegister;
+import com.crabmod.hotbath.ModItems.ItemRegister;
 import com.mojang.logging.LogUtils;
 import java.util.stream.Collectors;
+
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.event.lifecycle.InterModProcessEvent;
@@ -25,15 +33,33 @@ public class HotBath {
   private static final Logger LOGGER = LogUtils.getLogger();
 
   public HotBath() {
+    IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+    modEventBus.addListener(this::setup);
+
+    FluidsRegister.register(modEventBus);
+    BlocksRegister.register(modEventBus);
+    ItemRegister.ITEMS.register(modEventBus);
+
     // Register the setup method for modloading
     FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
     // Register the enqueueIMC method for modloading
     FMLJavaModLoadingContext.get().getModEventBus().addListener(this::enqueueIMC);
     // Register the processIMC method for modloading
     FMLJavaModLoadingContext.get().getModEventBus().addListener(this::processIMC);
+    // Register the doClientStuff method for modloading
+    FMLJavaModLoadingContext.get().getModEventBus().addListener(this::clientSetup);
 
     // Register ourselves for server and other game events we are interested in
     MinecraftForge.EVENT_BUS.register(this);
+  }
+
+  private void clientSetup(final FMLClientSetupEvent event) {
+    // some preinit code
+    LOGGER.info("HELLO FROM HotBath CLIENTSETUP");
+    ItemBlockRenderTypes.setRenderLayer(FluidsRegister.HERBAL_BATH_BLOCK.get(), RenderType.translucent());
+    ItemBlockRenderTypes.setRenderLayer(FluidsRegister.HERBAL_BATH_FLUID.get(), RenderType.translucent());
+    ItemBlockRenderTypes.setRenderLayer(FluidsRegister.HERBAL_BATH_FLOWING.get(), RenderType.translucent());
   }
 
   private void setup(final FMLCommonSetupEvent event) {

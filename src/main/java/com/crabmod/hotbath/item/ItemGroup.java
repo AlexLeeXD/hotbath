@@ -1,6 +1,6 @@
 package com.crabmod.hotbath.item;
 
-import com.crabmod.hotbath.ModItems.ItemRegister;
+import com.crabmod.hotbath.registers.ItemRegister;
 import net.minecraft.world.item.ItemStack;
 import org.jetbrains.annotations.NotNull;
 

@@ -1,15 +1,11 @@
-package com.crabmod.hotbath.ModItems;
+package com.crabmod.hotbath.registers;
 
 import com.crabmod.hotbath.HotBath;
-import com.crabmod.hotbath.ModItems.ParticleRegister;
 import com.crabmod.hotbath.particles.SteamParticle;
-import net.minecraft.advancements.Advancement;
-import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 
 @Mod.EventBusSubscriber(modid = HotBath.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ExtraEventsRegister {

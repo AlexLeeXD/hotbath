@@ -1,4 +1,4 @@
-package com.crabmod.hotbath.ModItems;
+package com.crabmod.hotbath.registers;
 
 import com.crabmod.hotbath.HotBath;
 import com.crabmod.hotbath.fluid_blocks.HerbalBathBlock;

@@ -1,6 +1,6 @@
 package com.crabmod.hotbath.fluid_blocks;
 
-import com.crabmod.hotbath.ModItems.FluidsRegister;
+import com.crabmod.hotbath.registers.FluidsRegister;
 import com.crabmod.hotbath.util.ParticleGenerator;
 import java.util.function.Supplier;
 import net.minecraft.client.multiplayer.ClientLevel;

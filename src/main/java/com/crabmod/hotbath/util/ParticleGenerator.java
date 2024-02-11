@@ -1,10 +1,9 @@
 package com.crabmod.hotbath.util;
 
-import static com.crabmod.hotbath.ModItems.ParticleRegister.STEAM_PARTICLE;
+import static com.crabmod.hotbath.registers.ParticleRegister.STEAM_PARTICLE;
 
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.level.Level;
 
 /** Fluids Particles */
 public class ParticleGenerator {

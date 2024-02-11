@@ -1,4 +1,4 @@
-package com.crabmod.hotbath.ModItems;
+package com.crabmod.hotbath.registers;
 
 
 import java.util.function.Supplier;

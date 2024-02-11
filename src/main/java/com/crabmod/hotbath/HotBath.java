@@ -1,6 +1,6 @@
 package com.crabmod.hotbath;
 
-import com.crabmod.hotbath.ModItems.*;
+import com.crabmod.hotbath.registers.*;
 import com.crabmod.hotbath.fluid_blocks.HerbalBathBlock;
 import com.mojang.logging.LogUtils;
 import java.util.stream.Collectors;

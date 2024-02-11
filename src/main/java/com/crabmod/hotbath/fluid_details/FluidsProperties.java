@@ -1,8 +1,8 @@
 package com.crabmod.hotbath.fluid_details;
 
-import static com.crabmod.hotbath.ModItems.FluidsRegister.*;
+import static com.crabmod.hotbath.registers.FluidsRegister.*;
 
-import com.crabmod.hotbath.ModItems.ItemRegister;
+import com.crabmod.hotbath.registers.ItemRegister;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.Item;

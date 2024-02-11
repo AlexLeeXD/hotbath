@@ -1,8 +1,6 @@
 package com.crabmod.hotbath;
 
-import com.crabmod.hotbath.ModItems.BlocksRegister;
-import com.crabmod.hotbath.ModItems.FluidsRegister;
-import com.crabmod.hotbath.ModItems.ItemRegister;
+import com.crabmod.hotbath.ModItems.*;
 import com.mojang.logging.LogUtils;
 import java.util.stream.Collectors;
 
@@ -39,7 +37,8 @@ public class HotBath {
 
     FluidsRegister.register(modEventBus);
     BlocksRegister.register(modEventBus);
-    ItemRegister.ITEMS.register(modEventBus);
+    ItemRegister.register(modEventBus);
+    ParticleRegister.register(modEventBus);
 
     // Register the setup method for modloading
     FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);

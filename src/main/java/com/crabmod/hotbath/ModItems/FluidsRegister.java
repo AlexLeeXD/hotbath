@@ -1,6 +1,7 @@
 package com.crabmod.hotbath.ModItems;
 
 import com.crabmod.hotbath.HotBath;
+import com.crabmod.hotbath.fluid_blocks.HerbalBathBlock;
 import com.crabmod.hotbath.fluid_details.FluidsProperties;
 import com.crabmod.hotbath.fluid_details.HotBathMaterials;
 import net.minecraft.client.resources.model.ModelResourceLocation;
@@ -62,7 +63,7 @@ public class FluidsRegister {
       BlocksRegister.BLOCKS.register(
           "herbal_bath_block",
           () ->
-              new LiquidBlock(
+              new HerbalBathBlock(
                   () -> FluidsRegister.HERBAL_BATH_FLUID.get(),
                   BlockBehaviour.Properties.of(HotBathMaterials.HOTBATH_MATERIAL)
                       .noCollission()

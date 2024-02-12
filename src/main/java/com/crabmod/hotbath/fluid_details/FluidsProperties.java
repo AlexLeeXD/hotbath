@@ -24,55 +24,55 @@ public class FluidsProperties {
           FluidsTexture.HERBAL_BATH_STILL_TEXTURE,
           FluidsTexture.HERBAL_BATH_FLOWING_TEXTURE);
 
-  //  public static final ForgeFlowingFluid.Properties HONEY_BATH_PROPERTIES =
-  //      setHotBathProperties(
-  //          HONEY_BATH_FLUID,
-  //          HONEY_BATH_FLOWING,
-  //          HONEY_BATH_BLOCK,
-  //          ItemRegister.HONEY_BATH_BUCKET,
-  //          FluidsColor.HONEY_BATH_COLOR,
-  //          hivestandsteam.hotbath.fluid_details.FluidsTexture.HONEY_BATH_STILL_TEXTURE,
-  //          hivestandsteam.hotbath.fluid_details.FluidsTexture.HONEY_BATH_FLOWING_TEXTURE);
-  //
-  //  public static final ForgeFlowingFluid.Properties HOT_WATER_PROPERTIES =
-  //      setHotBathProperties(
-  //          HOT_WATER_FLUID,
-  //          HOT_WATER_FLOWING,
-  //          HOT_WATER_BLOCK,
-  //          ItemRegister.HOT_WATER_BUCKET,
-  //          FluidsColor.HOT_WATER_COLOR,
-  //          hivestandsteam.hotbath.fluid_details.FluidsTexture.HOT_WATER_STILL_TEXTURE,
-  //          hivestandsteam.hotbath.fluid_details.FluidsTexture.HOT_WATER_FLOWING_TEXTURE);
-  //
-  //  public static final ForgeFlowingFluid.Properties MILK_BATH_PROPERTIES =
-  //      setHotBathProperties(
-  //          MILK_BATH_FLUID,
-  //          MILK_BATH_FLOWING,
-  //          MILK_BATH_BLOCK,
-  //          ItemRegister.MILK_BATH_BUCKET,
-  //          FluidsColor.MILK_BATH_COLOR,
-  //          hivestandsteam.hotbath.fluid_details.FluidsTexture.MILK_BATH_STILL_TEXTURE,
-  //          hivestandsteam.hotbath.fluid_details.FluidsTexture.MILK_BATH_FLOWING_TEXTURE);
-  //
-  //  public static final ForgeFlowingFluid.Properties PEONY_BATH_PROPERTIES =
-  //      setHotBathProperties(
-  //          PEONY_BATH_FLUID,
-  //          PEONY_BATH_FLOWING,
-  //          PEONY_BATH_BLOCK,
-  //          ItemRegister.PEONY_BATH_BUCKET,
-  //          FluidsColor.PEONY_BATH_COLOR,
-  //          hivestandsteam.hotbath.fluid_details.FluidsTexture.PEONY_BATH_STILL_TEXTURE,
-  //          hivestandsteam.hotbath.fluid_details.FluidsTexture.PEONY_BATH_FLOWING_TEXTURE);
-  //
-  //  public static final ForgeFlowingFluid.Properties ROSE_BATH_PROPERTIES =
-  //      setHotBathProperties(
-  //          ROSE_BATH_FLUID,
-  //          ROSE_BATH_FLOWING,
-  //          ROSE_BATH_BLOCK,
-  //          ItemRegister.ROSE_BATH_BUCKET,
-  //          FluidsColor.ROSE_BATH_COLOR,
-  //          hivestandsteam.hotbath.fluid_details.FluidsTexture.ROSE_BATH_STILL_TEXTURE,
-  //          hivestandsteam.hotbath.fluid_details.FluidsTexture.ROSE_BATH_FLOWING_TEXTURE);
+  public static final ForgeFlowingFluid.Properties HONEY_BATH_PROPERTIES =
+      setHotBathProperties(
+          HONEY_BATH_FLUID,
+          HONEY_BATH_FLOWING,
+          HONEY_BATH_BLOCK,
+          ItemRegister.HONEY_BATH_BUCKET,
+          FluidsColor.HONEY_BATH_COLOR,
+          FluidsTexture.HONEY_BATH_STILL_TEXTURE,
+          FluidsTexture.HONEY_BATH_FLOWING_TEXTURE);
+
+  public static final ForgeFlowingFluid.Properties HOT_WATER_PROPERTIES =
+      setHotBathProperties(
+          HOT_WATER_FLUID,
+          HOT_WATER_FLOWING,
+          HOT_WATER_BLOCK,
+          ItemRegister.HOT_WATER_BUCKET,
+          FluidsColor.HOT_WATER_COLOR,
+          FluidsTexture.HOT_WATER_STILL_TEXTURE,
+          FluidsTexture.HOT_WATER_FLOWING_TEXTURE);
+
+  public static final ForgeFlowingFluid.Properties MILK_BATH_PROPERTIES =
+      setHotBathProperties(
+          MILK_BATH_FLUID,
+          MILK_BATH_FLOWING,
+          MILK_BATH_BLOCK,
+          ItemRegister.MILK_BATH_BUCKET,
+          FluidsColor.MILK_BATH_COLOR,
+          FluidsTexture.MILK_BATH_STILL_TEXTURE,
+          FluidsTexture.MILK_BATH_FLOWING_TEXTURE);
+
+  public static final ForgeFlowingFluid.Properties PEONY_BATH_PROPERTIES =
+      setHotBathProperties(
+          PEONY_BATH_FLUID,
+          PEONY_BATH_FLOWING,
+          PEONY_BATH_BLOCK,
+          ItemRegister.PEONY_BATH_BUCKET,
+          FluidsColor.PEONY_BATH_COLOR,
+          FluidsTexture.PEONY_BATH_STILL_TEXTURE,
+          FluidsTexture.PEONY_BATH_FLOWING_TEXTURE);
+
+  public static final ForgeFlowingFluid.Properties ROSE_BATH_PROPERTIES =
+      setHotBathProperties(
+          ROSE_BATH_FLUID,
+          ROSE_BATH_FLOWING,
+          ROSE_BATH_BLOCK,
+          ItemRegister.ROSE_BATH_BUCKET,
+          FluidsColor.ROSE_BATH_COLOR,
+          FluidsTexture.ROSE_BATH_STILL_TEXTURE,
+          FluidsTexture.ROSE_BATH_FLOWING_TEXTURE);
 
   public static ForgeFlowingFluid.Properties setHotBathProperties(
       RegistryObject<FlowingFluid> DEFAULT_HOT_BATH_FLUID,

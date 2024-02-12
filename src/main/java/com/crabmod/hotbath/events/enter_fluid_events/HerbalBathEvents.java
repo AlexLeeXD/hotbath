@@ -88,7 +88,7 @@ public class HerbalBathEvents {
                         Objects.requireNonNull(ResourceLocation.tryParse(herbalBathAdvancementId)));
 
             if (advancement != null) {
-              player.getAdvancements().award(advancement, HERBAL_BATH_ADVANCEMENT_ID);
+              player.getAdvancements().award(advancement, "code_triggered");
               playerData.putInt(enteredNumberInHerbalBath, 0);
             }
           }

@@ -1,7 +1,7 @@
 package com.crabmod.hotbath.registers;
 
 import com.crabmod.hotbath.HotBath;
-import com.crabmod.hotbath.fluid_blocks.HerbalBathBlock;
+import com.crabmod.hotbath.fluid_blocks.*;
 import com.crabmod.hotbath.fluid_details.FluidsProperties;
 import com.crabmod.hotbath.fluid_details.HotBathMaterials;
 import net.minecraft.client.resources.model.ModelResourceLocation;
@@ -44,7 +44,7 @@ public class FluidsRegister {
           "herbal_bath_block",
           () ->
               new HerbalBathBlock(
-                      FluidsRegister.HERBAL_BATH_FLUID,
+                  FluidsRegister.HERBAL_BATH_FLUID,
                   BlockBehaviour.Properties.of(HotBathMaterials.HOTBATH_MATERIAL)
                       .noCollission()
                       .strength(100.0F)
@@ -64,8 +64,8 @@ public class FluidsRegister {
       BlocksRegister.BLOCKS.register(
           "honey_bath_block",
           () ->
-              new HerbalBathBlock(
-                      FluidsRegister.HONEY_BATH_FLUID,
+              new HoneyBathBlock(
+                  FluidsRegister.HONEY_BATH_FLUID,
                   BlockBehaviour.Properties.of(HotBathMaterials.HOTBATH_MATERIAL)
                       .noCollission()
                       .strength(100.0F)
@@ -85,8 +85,8 @@ public class FluidsRegister {
       BlocksRegister.BLOCKS.register(
           "hot_water_block",
           () ->
-              new HerbalBathBlock(
-                      FluidsRegister.HOT_WATER_FLUID,
+              new HotWaterBlock(
+                  FluidsRegister.HOT_WATER_FLUID,
                   BlockBehaviour.Properties.of(HotBathMaterials.HOTBATH_MATERIAL)
                       .noCollission()
                       .strength(100.0F)
@@ -106,8 +106,8 @@ public class FluidsRegister {
       BlocksRegister.BLOCKS.register(
           "milk_bath_block",
           () ->
-              new HerbalBathBlock(
-                      FluidsRegister.MILK_BATH_FLUID,
+              new MilkBathBlock(
+                  FluidsRegister.MILK_BATH_FLUID,
                   BlockBehaviour.Properties.of(HotBathMaterials.HOTBATH_MATERIAL)
                       .noCollission()
                       .strength(100.0F)
@@ -127,8 +127,8 @@ public class FluidsRegister {
       BlocksRegister.BLOCKS.register(
           "peony_bath_block",
           () ->
-              new HerbalBathBlock(
-                      FluidsRegister.PEONY_BATH_FLUID,
+              new PeonyBathBlock(
+                  FluidsRegister.PEONY_BATH_FLUID,
                   BlockBehaviour.Properties.of(HotBathMaterials.HOTBATH_MATERIAL)
                       .noCollission()
                       .strength(100.0F)
@@ -148,8 +148,8 @@ public class FluidsRegister {
       BlocksRegister.BLOCKS.register(
           "rose_bath_block",
           () ->
-              new HerbalBathBlock(
-                      FluidsRegister.ROSE_BATH_FLUID,
+              new RoseBathBlock(
+                  FluidsRegister.ROSE_BATH_FLUID,
                   BlockBehaviour.Properties.of(HotBathMaterials.HOTBATH_MATERIAL)
                       .noCollission()
                       .strength(100.0F)

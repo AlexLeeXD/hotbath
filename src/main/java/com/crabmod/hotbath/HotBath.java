@@ -1,10 +1,9 @@
 package com.crabmod.hotbath;
 
+import com.crabmod.hotbath.fluid_blocks.*;
 import com.crabmod.hotbath.registers.*;
-import com.crabmod.hotbath.fluid_blocks.HerbalBathBlock;
 import com.mojang.logging.LogUtils;
 import java.util.stream.Collectors;
-
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Block;
@@ -58,9 +57,42 @@ public class HotBath {
   private void clientSetup(final FMLClientSetupEvent event) {
     // some preinit code
     LOGGER.info("HELLO FROM HotBath CLIENTSETUP");
-    ItemBlockRenderTypes.setRenderLayer(FluidsRegister.HERBAL_BATH_BLOCK.get(), RenderType.translucent());
-    ItemBlockRenderTypes.setRenderLayer(FluidsRegister.HERBAL_BATH_FLUID.get(), RenderType.translucent());
-    ItemBlockRenderTypes.setRenderLayer(FluidsRegister.HERBAL_BATH_FLOWING.get(), RenderType.translucent());
+    ItemBlockRenderTypes.setRenderLayer(
+        FluidsRegister.HERBAL_BATH_BLOCK.get(), RenderType.translucent());
+    ItemBlockRenderTypes.setRenderLayer(
+        FluidsRegister.HERBAL_BATH_FLUID.get(), RenderType.translucent());
+    ItemBlockRenderTypes.setRenderLayer(
+        FluidsRegister.HERBAL_BATH_FLOWING.get(), RenderType.translucent());
+    ItemBlockRenderTypes.setRenderLayer(
+        FluidsRegister.HONEY_BATH_BLOCK.get(), RenderType.translucent());
+    ItemBlockRenderTypes.setRenderLayer(
+        FluidsRegister.HONEY_BATH_FLUID.get(), RenderType.translucent());
+    ItemBlockRenderTypes.setRenderLayer(
+        FluidsRegister.HONEY_BATH_FLOWING.get(), RenderType.translucent());
+    ItemBlockRenderTypes.setRenderLayer(
+        FluidsRegister.HOT_WATER_BLOCK.get(), RenderType.translucent());
+    ItemBlockRenderTypes.setRenderLayer(
+        FluidsRegister.HOT_WATER_FLUID.get(), RenderType.translucent());
+    ItemBlockRenderTypes.setRenderLayer(
+        FluidsRegister.HOT_WATER_FLOWING.get(), RenderType.translucent());
+    ItemBlockRenderTypes.setRenderLayer(
+        FluidsRegister.MILK_BATH_BLOCK.get(), RenderType.translucent());
+    ItemBlockRenderTypes.setRenderLayer(
+        FluidsRegister.MILK_BATH_FLUID.get(), RenderType.translucent());
+    ItemBlockRenderTypes.setRenderLayer(
+        FluidsRegister.MILK_BATH_FLOWING.get(), RenderType.translucent());
+    ItemBlockRenderTypes.setRenderLayer(
+        FluidsRegister.PEONY_BATH_BLOCK.get(), RenderType.translucent());
+    ItemBlockRenderTypes.setRenderLayer(
+        FluidsRegister.PEONY_BATH_FLUID.get(), RenderType.translucent());
+    ItemBlockRenderTypes.setRenderLayer(
+        FluidsRegister.PEONY_BATH_FLOWING.get(), RenderType.translucent());
+    ItemBlockRenderTypes.setRenderLayer(
+        FluidsRegister.ROSE_BATH_BLOCK.get(), RenderType.translucent());
+    ItemBlockRenderTypes.setRenderLayer(
+        FluidsRegister.ROSE_BATH_FLUID.get(), RenderType.translucent());
+    ItemBlockRenderTypes.setRenderLayer(
+        FluidsRegister.ROSE_BATH_FLOWING.get(), RenderType.translucent());
   }
 
   private void setup(final FMLCommonSetupEvent event) {
@@ -107,21 +139,21 @@ public class HotBath {
   }
 
   // Register the setup method for modloading
-//  @ObjectHolder("hotbath:hot_water_block")
-//  public static final HotWaterBlock HOT_WATER_BLOCK = null;
+  @ObjectHolder("hotbath:hot_water_block")
+  public static final HotWaterBlock HOT_WATER_BLOCK = null;
 
   @ObjectHolder("hotbath:herbal_bath_block")
   public static final HerbalBathBlock HERBAL_BATH_BLOCK = null;
-//
-//  @ObjectHolder("hotbath:honey_bath_block")
-//  public static final HoneyBathBlock HONEY_BATH_BLOCK = null;
-//
-//  @ObjectHolder("hotbath:milk_bath_block")
-//  public static final MilkBathBlock MILK_BATH_BLOCK = null;
-//
-//  @ObjectHolder("hotbath:peony_bath_block")
-//  public static final PeonyBathBlock PEONY_BATH_BLOCK = null;
-//
-//  @ObjectHolder("hotbath:rose_bath_block")
-//  public static final RoseBathBlock ROSE_BATH_BLOCK = null;
+
+  @ObjectHolder("hotbath:honey_bath_block")
+  public static final HoneyBathBlock HONEY_BATH_BLOCK = null;
+
+  @ObjectHolder("hotbath:milk_bath_block")
+  public static final MilkBathBlock MILK_BATH_BLOCK = null;
+
+  @ObjectHolder("hotbath:peony_bath_block")
+  public static final PeonyBathBlock PEONY_BATH_BLOCK = null;
+
+  @ObjectHolder("hotbath:rose_bath_block")
+  public static final RoseBathBlock ROSE_BATH_BLOCK = null;
 }

@@ -23,7 +23,6 @@ public class ExtraEventsRegister {
   public static void registerAdvancementTrigger(FMLCommonSetupEvent event) {
     event.enqueueWork(
         () -> {
-          CriteriaTriggers.register(new AdvancementTrigger("hotbath", "herbal_bath"));
           CriteriaTriggers.register(new AdvancementTrigger("hotbath", "foot_health"));
           CriteriaTriggers.register(new AdvancementTrigger("hotbath", "milk_skin"));
           CriteriaTriggers.register(new AdvancementTrigger("hotbath", "chronic_invalid"));

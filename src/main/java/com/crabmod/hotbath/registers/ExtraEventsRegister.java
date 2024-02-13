@@ -16,8 +16,7 @@ public class ExtraEventsRegister {
   public static void registerParticlesFactories(final ParticleFactoryRegisterEvent event) {
     Minecraft.getInstance()
         .particleEngine
-        .register(
-            ParticleRegister.STEAM_PARTICLE.get(), SteamParticle.CozySmokeFactory::new);
+        .register(ParticleRegister.STEAM_PARTICLE.get(), SteamParticle.CozySmokeFactory::new);
   }
 
   @SubscribeEvent
@@ -25,6 +24,7 @@ public class ExtraEventsRegister {
     event.enqueueWork(
         () -> {
           CriteriaTriggers.register(new AdvancementTrigger("hotbath", "herbal_bath"));
+          CriteriaTriggers.register(new AdvancementTrigger("hotbath", "foot_health"));
           CriteriaTriggers.register(new AdvancementTrigger("hotbath", "milk_skin"));
           CriteriaTriggers.register(new AdvancementTrigger("hotbath", "chronic_invalid"));
           CriteriaTriggers.register(new AdvancementTrigger("hotbath", "rose_body_fragrance"));

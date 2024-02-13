@@ -20,7 +20,7 @@ public class HotWaterEvents {
   static final String HOT_WATER_STAYED_TIME = "HotWaterStayedTime";
   static final String HAS_ENTERED_HOT_WATER = "HasEnteredHotWater";
   static final String HOT_WATER_ADVANCEMENT_ID = "hotbath:foot_health";
-  private static final int HOT_WATER_ENTERED_COUNT_TRIGGER_NUMBER = 100;
+  private static final int HOT_WATER_ENTERED_COUNT_TRIGGER_NUMBER = 3;
   private static final int HOT_WATER_STAYED_EFFECT_TRIGGER_TIME_SECONDS = 15;
 
   // enter hot water block event
@@ -78,6 +78,23 @@ public class HotWaterEvents {
       String hotWaterAdvancementId,
       ServerPlayer player,
       CompoundTag playerData) {
-    MilkBathEvents.handleAdvancement(enteredCountTriggerNumber, hotWaterEnteredNumber, hotWaterStayedTime, hasEnteredHotWater, hotWaterAdvancementId, player, playerData);
+    if (!playerData.getBoolean(hasEnteredHotWater)) {
+      int enteredCount = playerData.getInt(hotWaterEnteredNumber) + 1;
+      playerData.putInt(hotWaterEnteredNumber, enteredCount);
+      playerData.putBoolean(hasEnteredHotWater, true);
+
+      if (enteredCount >= enteredCountTriggerNumber) {
+        Advancement advancement =
+            Objects.requireNonNull(player.getServer())
+                .getAdvancements()
+                .getAdvancement(
+                    Objects.requireNonNull(ResourceLocation.tryParse(hotWaterAdvancementId)));
+
+        if (advancement != null) {
+          player.getAdvancements().award(advancement, "code_triggered");
+          playerData.putInt(hotWaterEnteredNumber, 0);
+        }
+      }
+    }
   }
 }

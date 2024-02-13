@@ -20,7 +20,7 @@ public class HotWaterEvents {
   static final String HOT_WATER_STAYED_TIME = "HotWaterStayedTime";
   static final String HAS_ENTERED_HOT_WATER = "HasEnteredHotWater";
   static final String HOT_WATER_ADVANCEMENT_ID = "hotbath:foot_health";
-  private static final int HOT_WATER_ENTERED_COUNT_TRIGGER_NUMBER = 3;
+  private static final int HOT_WATER_ENTERED_COUNT_TRIGGER_NUMBER = 100;
   private static final int HOT_WATER_STAYED_EFFECT_TRIGGER_TIME_SECONDS = 15;
 
   // enter hot water block event

@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class ItemGroup {
   public static final net.minecraft.world.item.CreativeModeTab HOT_BATH =
-      new net.minecraft.world.item.CreativeModeTab("hot_bath") {
+      new net.minecraft.world.item.CreativeModeTab("hotBathTab") {
         @Override
         public @NotNull ItemStack makeIcon() {
           return new ItemStack(ItemRegister.HERBAL_BATH_BUCKET.get());

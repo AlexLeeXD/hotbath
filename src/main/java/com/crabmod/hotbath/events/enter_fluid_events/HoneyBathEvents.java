@@ -15,7 +15,7 @@ import net.minecraftforge.fml.common.Mod;
 import com.crabmod.hotbath.util.CustomFluidHandler;
 import static com.crabmod.hotbath.util.HealthRegenHandler.regenHealth;
 
-@Mod.EventBusSubscriber(modid = HotBath.MOD_ID, value = Dist.DEDICATED_SERVER)
+@Mod.EventBusSubscriber(modid = HotBath.MOD_ID)
 public class HoneyBathEvents {
   private static final int TICK_NUMBER = 20;
   static final String HONEY_BATH_STAYED_TIME = "HoneyBathStayedTime";
@@ -30,8 +30,7 @@ public class HoneyBathEvents {
           LivingEvent.LivingUpdateEvent event,
           int stayedEffectTriggerTime,
           String honeyBathStayedTime) {
-    if (event.getEntityLiving() instanceof Player) {
-      ServerPlayer player = (ServerPlayer) event.getEntityLiving();
+    if (event.getEntityLiving() instanceof ServerPlayer player) {
       CompoundTag playerData = player.getPersistentData();
       boolean isInHoneyBath = CustomFluidHandler.isPlayerInHoneyBathBlock(player);
 

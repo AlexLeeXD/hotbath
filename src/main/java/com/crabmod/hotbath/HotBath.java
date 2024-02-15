@@ -1,5 +1,6 @@
 package com.crabmod.hotbath;
 
+import com.crabmod.hotbath.item.ItemGroup;
 import com.crabmod.hotbath.registers.BlocksRegister;
 import com.crabmod.hotbath.registers.FluidsRegister;
 import com.crabmod.hotbath.registers.ItemRegister;
@@ -7,7 +8,6 @@ import com.crabmod.hotbath.registers.ParticleRegister;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -64,12 +64,6 @@ public class HotBath {
     ParticleRegister.register(modEventBus);
     // Register the commonSetup method for modloading
     modEventBus.addListener(this::commonSetup);
-
-    // Register the Deferred Register to the mod event bus so blocks get registered
-    BLOCKS.register(modEventBus);
-    // Register the Deferred Register to the mod event bus so items get registered
-    ITEMS.register(modEventBus);
-
     // Register ourselves for server and other game events we are interested in
     MinecraftForge.EVENT_BUS.register(this);
 
@@ -84,7 +78,15 @@ public class HotBath {
   }
 
   private void addCreative(CreativeModeTabEvent.BuildContents event) {
-    if (event.getTab() == CreativeModeTabs.BUILDING_BLOCKS) event.accept(EXAMPLE_BLOCK_ITEM);
+    if (event.getTab() == ItemGroup.HOT_BATH) {
+      event.accept(ItemRegister.HERBAL_BATH_BUCKET);
+      event.accept(ItemRegister.HONEY_BATH_BUCKET);
+      event.accept(ItemRegister.HOT_WATER_BUCKET);
+      event.accept(ItemRegister.MILK_BATH_BUCKET);
+      event.accept(ItemRegister.PEONY_BATH_BUCKET);
+      event.accept(ItemRegister.ROSE_BATH_BUCKET);
+      event.accept(ItemRegister.BATH_HERB);
+    }
   }
 
   // You can use SubscribeEvent and let the Event Bus discover methods to call

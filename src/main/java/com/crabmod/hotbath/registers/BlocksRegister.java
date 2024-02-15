@@ -24,7 +24,7 @@ public class BlocksRegister {
 
   private static <T extends Block> void registerBlockItem(String name, RegistryObject<T> block) {
     ItemRegister.ITEMS.register(
-        name, () -> new BlockItem(block.get(), new Item.Properties().tab(ItemGroup.HOT_BATH)));
+        name, () -> new BlockItem(block.get(), new Item.Properties()));
   }
 
   public static void register(IEventBus eventBus) {

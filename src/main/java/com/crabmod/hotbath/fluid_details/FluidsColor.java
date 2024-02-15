@@ -1,5 +1,7 @@
 package com.crabmod.hotbath.fluid_details;
 
+import org.joml.Vector3f;
+
 public final class FluidsColor {
   // return 16 bits color
   public static int setFluidColor(int red, int green, int blue) {
@@ -13,4 +15,6 @@ public final class FluidsColor {
   public static final int MILK_BATH_COLOR = setFluidColor(248, 248, 248);
   public static final int PEONY_BATH_COLOR = setFluidColor(253, 104, 159);
   public static final int ROSE_BATH_COLOR = setFluidColor(254, 119, 142);
+
+  public static final Vector3f DEFAULT_FOG_COLOR = new Vector3f(1.0f, 1.0f, 1.0f);
 }

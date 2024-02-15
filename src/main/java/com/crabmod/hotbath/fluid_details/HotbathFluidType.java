@@ -1,5 +1,6 @@
 package com.crabmod.hotbath.fluid_details;
 
+import static com.crabmod.hotbath.fluid_details.FluidsColor.DEFAULT_FOG_COLOR;
 import static com.crabmod.hotbath.fluid_details.FluidsColor.HOT_WATER_COLOR;
 
 import com.crabmod.hotbath.HotBath;
@@ -9,7 +10,6 @@ import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import org.joml.Vector3f;
 
 public class HotbathFluidType {
   public static final ResourceLocation WATER_STILL_RL = new ResourceLocation("block/water_still");
@@ -34,7 +34,7 @@ public class HotbathFluidType {
                 WATER_FLOWING_RL,
                 WATER_OVERLAY_RL,
                 HOT_WATER_COLOR,
-                new Vector3f(224f / 255f, 56f / 255f, 208f / 255f),
+                DEFAULT_FOG_COLOR,
                 properties));
   }
 

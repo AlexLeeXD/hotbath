@@ -8,6 +8,8 @@ import com.crabmod.hotbath.registers.ItemRegister;
 import com.crabmod.hotbath.registers.ParticleRegister;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -81,12 +83,12 @@ public class HotBath {
 
   private void addCreative(CreativeModeTabEvent.BuildContents event) {
     if (event.getTab() == ItemGroup.HOT_BATH) {
-//      event.accept(ItemRegister.HERBAL_BATH_BUCKET);
-//      event.accept(ItemRegister.HONEY_BATH_BUCKET);
+      //      event.accept(ItemRegister.HERBAL_BATH_BUCKET);
+      //      event.accept(ItemRegister.HONEY_BATH_BUCKET);
       event.accept(ItemRegister.HOT_WATER_BUCKET);
-//      event.accept(ItemRegister.MILK_BATH_BUCKET);
-//      event.accept(ItemRegister.PEONY_BATH_BUCKET);
-//      event.accept(ItemRegister.ROSE_BATH_BUCKET);
+      //      event.accept(ItemRegister.MILK_BATH_BUCKET);
+      //      event.accept(ItemRegister.PEONY_BATH_BUCKET);
+      //      event.accept(ItemRegister.ROSE_BATH_BUCKET);
       event.accept(ItemRegister.BATH_HERB);
     }
   }
@@ -107,6 +109,10 @@ public class HotBath {
       // Some client setup code
       LOGGER.info("HELLO FROM CLIENT SETUP");
       LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+      ItemBlockRenderTypes.setRenderLayer(
+          FluidsRegister.SOURCE_HOT_WATER.get(), RenderType.translucent());
+      ItemBlockRenderTypes.setRenderLayer(
+          FluidsRegister.FLOWING_HOT_WATER.get(), RenderType.translucent());
     }
   }
 }

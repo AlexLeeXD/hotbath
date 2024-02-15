@@ -1,6 +1,6 @@
 package com.crabmod.hotbath;
 
-import com.crabmod.hotbath.fluid_blocks.HotWaterBlock;
+import com.crabmod.hotbath.fluid_blocks.*;
 import com.crabmod.hotbath.fluid_details.HotbathFluidType;
 import com.crabmod.hotbath.item.ItemGroup;
 import com.crabmod.hotbath.registers.BlocksRegister;
@@ -137,8 +137,22 @@ public class HotBath {
           FluidsRegister.HERBAL_BATH_FLOWING.get(), RenderType.translucent());
     }
   }
-
   // Register the setup method for modloading
-  @ObjectHolder(registryName = "block", value = "hotbath:hot_water_block")
+  @ObjectHolder(registryName = "minecraft:block", value = "hotbath:hot_water_block")
   public static final HotWaterBlock HOT_WATER_BLOCK = null;
+
+  @ObjectHolder(registryName = "minecraft:block", value = "hotbath:herbal_bath_block")
+  public static final HerbalBathBlock HERBAL_BATH_BLOCK = null;
+
+  @ObjectHolder(registryName = "minecraft:block", value = "hotbath:honey_bath_block")
+  public static final HoneyBathBlock HONEY_BATH_BLOCK = null;
+
+  @ObjectHolder(registryName = "minecraft:block", value = "hotbath:milk_bath_block")
+  public static final MilkBathBlock MILK_BATH_BLOCK = null;
+
+  @ObjectHolder(registryName = "minecraft:block", value = "hotbath:peony_bath_block")
+  public static final PeonyBathBlock PEONY_BATH_BLOCK = null;
+
+  @ObjectHolder(registryName = "minecraft:block", value = "hotbath:rose_bath_block")
+  public static final RoseBathBlock ROSE_BATH_BLOCK = null;
 }

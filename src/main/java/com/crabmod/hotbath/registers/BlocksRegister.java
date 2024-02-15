@@ -25,6 +25,41 @@ public class BlocksRegister {
               new LiquidBlock(
                   FluidsRegister.HOT_WATER_FLUID, BlockBehaviour.Properties.copy(Blocks.WATER)));
 
+  public static final RegistryObject<LiquidBlock> HONEY_BATH_BLOCK =
+      BLOCKS.register(
+          "honey_bath_block",
+          () ->
+              new LiquidBlock(
+                  FluidsRegister.HONEY_BATH_FLUID, BlockBehaviour.Properties.copy(Blocks.WATER)));
+
+  public static final RegistryObject<LiquidBlock> MILK_BATH_BLOCK =
+      BLOCKS.register(
+          "milk_bath_block",
+          () ->
+              new LiquidBlock(
+                  FluidsRegister.MILK_BATH_FLUID, BlockBehaviour.Properties.copy(Blocks.WATER)));
+
+  public static final RegistryObject<LiquidBlock> PEONY_BATH_BLOCK =
+      BLOCKS.register(
+          "peony_bath_block",
+          () ->
+              new LiquidBlock(
+                  FluidsRegister.PEONY_BATH_FLUID, BlockBehaviour.Properties.copy(Blocks.WATER)));
+
+  public static final RegistryObject<LiquidBlock> ROSE_BATH_BLOCK =
+      BLOCKS.register(
+          "rose_bath_block",
+          () ->
+              new LiquidBlock(
+                  FluidsRegister.ROSE_BATH_FLUID, BlockBehaviour.Properties.copy(Blocks.WATER)));
+
+  public static final RegistryObject<LiquidBlock> HERBAL_BATH_BLOCK =
+      BLOCKS.register(
+          "herbal_bath_block",
+          () ->
+              new LiquidBlock(
+                  FluidsRegister.HERBAL_BATH_FLUID, BlockBehaviour.Properties.copy(Blocks.WATER)));
+
   private static <T extends Block> RegistryObject<T> registerBlock(
       String name, Supplier<T> block, CreativeModeTab tab) {
     RegistryObject<T> toReturn = BLOCKS.register(name, block);

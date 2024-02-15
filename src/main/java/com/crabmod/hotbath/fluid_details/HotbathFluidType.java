@@ -1,7 +1,6 @@
 package com.crabmod.hotbath.fluid_details;
 
 import static com.crabmod.hotbath.fluid_details.FluidsColor.DEFAULT_FOG_COLOR;
-import static com.crabmod.hotbath.fluid_details.FluidsColor.HOT_WATER_COLOR;
 
 import com.crabmod.hotbath.HotBath;
 import net.minecraft.resources.ResourceLocation;
@@ -20,12 +19,15 @@ public class HotbathFluidType {
   public static final DeferredRegister<FluidType> FLUID_TYPES =
       DeferredRegister.create(ForgeRegistries.Keys.FLUID_TYPES, HotBath.MOD_ID);
 
-  public static final RegistryObject<FluidType> HOTBATH_FLUID_TYPE =
-      register(
-          "hotbath_fluid_type",
-          FluidType.Properties.create().lightLevel(2).density(15).viscosity(5));
+  public static RegistryObject<FluidType> getHotBathFluidType(String name, int color) {
+    return register(
+        name,
+        FluidType.Properties.create().lightLevel(2).density(15).viscosity(5),
+        color);
+  }
 
-  private static RegistryObject<FluidType> register(String name, FluidType.Properties properties) {
+  private static RegistryObject<FluidType> register(
+      String name, FluidType.Properties properties, int FLUID_COLOR) {
     return FLUID_TYPES.register(
         name,
         () ->
@@ -33,7 +35,7 @@ public class HotbathFluidType {
                 WATER_STILL_RL,
                 WATER_FLOWING_RL,
                 WATER_OVERLAY_RL,
-                HOT_WATER_COLOR,
+                FLUID_COLOR,
                 DEFAULT_FOG_COLOR,
                 properties));
   }

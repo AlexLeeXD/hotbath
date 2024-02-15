@@ -85,12 +85,12 @@ public class HotBath {
 
   private void addCreative(CreativeModeTabEvent.BuildContents event) {
     if (event.getTab() == ItemGroup.HOT_BATH) {
-      //      event.accept(ItemRegister.HERBAL_BATH_BUCKET);
-      //      event.accept(ItemRegister.HONEY_BATH_BUCKET);
+      event.accept(ItemRegister.HERBAL_BATH_BUCKET);
+      event.accept(ItemRegister.HONEY_BATH_BUCKET);
       event.accept(ItemRegister.HOT_WATER_BUCKET);
-      //      event.accept(ItemRegister.MILK_BATH_BUCKET);
-      //      event.accept(ItemRegister.PEONY_BATH_BUCKET);
-      //      event.accept(ItemRegister.ROSE_BATH_BUCKET);
+      event.accept(ItemRegister.MILK_BATH_BUCKET);
+      event.accept(ItemRegister.PEONY_BATH_BUCKET);
+      event.accept(ItemRegister.ROSE_BATH_BUCKET);
       event.accept(ItemRegister.BATH_HERB);
     }
   }
@@ -115,11 +115,30 @@ public class HotBath {
           FluidsRegister.HOT_WATER_FLUID.get(), RenderType.translucent());
       ItemBlockRenderTypes.setRenderLayer(
           FluidsRegister.HOT_WATER_FLOWING.get(), RenderType.translucent());
+      ItemBlockRenderTypes.setRenderLayer(
+          FluidsRegister.HONEY_BATH_FLUID.get(), RenderType.translucent());
+      ItemBlockRenderTypes.setRenderLayer(
+          FluidsRegister.HONEY_BATH_FLOWING.get(), RenderType.translucent());
+      ItemBlockRenderTypes.setRenderLayer(
+          FluidsRegister.MILK_BATH_FLUID.get(), RenderType.translucent());
+      ItemBlockRenderTypes.setRenderLayer(
+          FluidsRegister.MILK_BATH_FLOWING.get(), RenderType.translucent());
+      ItemBlockRenderTypes.setRenderLayer(
+          FluidsRegister.PEONY_BATH_FLUID.get(), RenderType.translucent());
+      ItemBlockRenderTypes.setRenderLayer(
+          FluidsRegister.PEONY_BATH_FLOWING.get(), RenderType.translucent());
+      ItemBlockRenderTypes.setRenderLayer(
+          FluidsRegister.ROSE_BATH_FLUID.get(), RenderType.translucent());
+      ItemBlockRenderTypes.setRenderLayer(
+          FluidsRegister.ROSE_BATH_FLOWING.get(), RenderType.translucent());
+      ItemBlockRenderTypes.setRenderLayer(
+          FluidsRegister.HERBAL_BATH_FLUID.get(), RenderType.translucent());
+      ItemBlockRenderTypes.setRenderLayer(
+          FluidsRegister.HERBAL_BATH_FLOWING.get(), RenderType.translucent());
     }
   }
 
   // Register the setup method for modloading
   @ObjectHolder(registryName = "block", value = "hotbath:hot_water_block")
   public static final HotWaterBlock HOT_WATER_BLOCK = null;
-
 }

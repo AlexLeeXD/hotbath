@@ -1,5 +1,6 @@
 package com.crabmod.hotbath;
 
+import com.crabmod.hotbath.fluid_blocks.HotWaterBlock;
 import com.crabmod.hotbath.fluid_details.HotbathFluidType;
 import com.crabmod.hotbath.item.ItemGroup;
 import com.crabmod.hotbath.registers.BlocksRegister;
@@ -28,6 +29,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.ObjectHolder;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 
@@ -110,9 +112,14 @@ public class HotBath {
       LOGGER.info("HELLO FROM CLIENT SETUP");
       LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
       ItemBlockRenderTypes.setRenderLayer(
-          FluidsRegister.SOURCE_HOT_WATER.get(), RenderType.translucent());
+          FluidsRegister.HOT_WATER_FLUID.get(), RenderType.translucent());
       ItemBlockRenderTypes.setRenderLayer(
-          FluidsRegister.FLOWING_HOT_WATER.get(), RenderType.translucent());
+          FluidsRegister.HOT_WATER_FLOWING.get(), RenderType.translucent());
     }
   }
+
+  // Register the setup method for modloading
+  @ObjectHolder(registryName = "block", value = "hotbath:hot_water_block")
+  public static final HotWaterBlock HOT_WATER_BLOCK = null;
+
 }

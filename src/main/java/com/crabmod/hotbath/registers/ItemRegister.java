@@ -1,7 +1,6 @@
 package com.crabmod.hotbath.registers;
 
 import com.crabmod.hotbath.HotBath;
-import com.crabmod.hotbath.item.ItemGroup;
 import net.minecraft.world.item.BucketItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -31,7 +30,7 @@ public class ItemRegister {
 //                  new Item.Properties().stacksTo(1)));
 
   public static final RegistryObject<Item> HOT_WATER_BUCKET = ITEMS.register("hot_water_bucket",
-          () -> new BucketItem(FluidsRegister.SOURCE_HOT_WATER,
+          () -> new BucketItem(FluidsRegister.HOT_WATER_FLUID,
                   new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1)));
 
 //  public static final RegistryObject<Item> MILK_BATH_BUCKET =

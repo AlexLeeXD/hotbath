@@ -4,6 +4,8 @@ import static com.crabmod.hotbath.registers.ParticleRegister.STEAM_PARTICLE;
 
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
+import org.apache.logging.log4j.Logger;
 
 /** Fluids Particles */
 public class ParticleGenerator {
@@ -15,7 +17,7 @@ public class ParticleGenerator {
    * @param pos
    * @param rand
    */
-  public static void renderDefaultSteam(ClientLevel worldIn, BlockPos pos, java.util.Random rand) {
+  public static void renderDefaultSteam(ClientLevel worldIn, BlockPos pos, RandomSource rand) {
     if (rand.nextInt(80) == 0) {
       worldIn.addParticle(
           STEAM_PARTICLE.get(),

@@ -3,8 +3,10 @@ package com.crabmod.hotbath.fluid_blocks;
 import com.crabmod.hotbath.registers.FluidsRegister;
 import com.crabmod.hotbath.util.ParticleGenerator;
 import java.util.function.Supplier;
+import java.util.logging.Logger;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;
@@ -22,16 +24,18 @@ public class HotWaterBlock extends LiquidBlock implements IHotbathBlock {
 
   @Override
   public FluidState getHotBathFluidState() {
-    return FluidsRegister.SOURCE_HOT_WATER.get().defaultFluidState();
+    return FluidsRegister.HOT_WATER_FLUID.get().defaultFluidState();
   }
 
-//  @Override
-//  @OnlyIn(Dist.CLIENT)
-//  public void animateTick(
-//      @NotNull BlockState stateIn,
-//      @NotNull Level worldIn,
-//      @NotNull BlockPos pos,
-//      java.util.@NotNull Random rand) {
-//    ParticleGenerator.renderDefaultSteam((ClientLevel) worldIn, pos, rand);
-//  }
+  @Override
+  @OnlyIn(Dist.CLIENT)
+  public void animateTick(
+      @NotNull BlockState stateIn,
+      @NotNull Level worldIn,
+      @NotNull BlockPos pos,
+      @NotNull RandomSource rand) {
+    Logger logger = Logger.getLogger(HotWaterBlock.class.getName());
+    logger.info("HotWaterBlock.animateTick");
+    ParticleGenerator.renderDefaultSteam((ClientLevel) worldIn, pos, rand);
+  }
 }

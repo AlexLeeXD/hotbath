@@ -23,7 +23,7 @@ public class BlocksRegister {
           "hot_water_block",
           () ->
               new LiquidBlock(
-                  FluidsRegister.SOURCE_HOT_WATER, BlockBehaviour.Properties.copy(Blocks.WATER)));
+                  FluidsRegister.HOT_WATER_FLUID, BlockBehaviour.Properties.copy(Blocks.WATER)));
 
   private static <T extends Block> RegistryObject<T> registerBlock(
       String name, Supplier<T> block, CreativeModeTab tab) {

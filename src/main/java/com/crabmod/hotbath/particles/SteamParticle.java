@@ -61,7 +61,7 @@ public class SteamParticle extends TextureSheetParticle {
     }
   }
 
-  public ParticleRenderType getRenderType() {
+  public @NotNull ParticleRenderType getRenderType() {
     return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
   }
 

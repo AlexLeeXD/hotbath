@@ -7,7 +7,7 @@
   "item.hotbath.rose_bath_bucket": "Rose Bath Bucket",
   "fluid.hotbath.hot_water_block": "Hot Water Block",
   "item.hotbath.bath_herb": "Bath Herb",
-  "itemGroup.hotBathTab": "Hot Bath",
+  "itemGroup.hot_bath_tab": "Hot Bath",
   "hotbath.advancement.hot_bath": "Hot Bath!",
   "hotbath.advancement.hot_bath.desc": "Start your day with a hot bath.",
   "hotbath.advancement.foot_health": "Foot Health",

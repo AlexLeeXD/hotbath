@@ -1,5 +1,6 @@
 package com.crabmod.hotbath;
 
+import com.crabmod.hotbath.fluid_details.HotbathFluidType;
 import com.crabmod.hotbath.item.ItemGroup;
 import com.crabmod.hotbath.registers.BlocksRegister;
 import com.crabmod.hotbath.registers.FluidsRegister;
@@ -62,6 +63,7 @@ public class HotBath {
     BlocksRegister.register(modEventBus);
     ItemRegister.register(modEventBus);
     ParticleRegister.register(modEventBus);
+    HotbathFluidType.register(modEventBus);
     // Register the commonSetup method for modloading
     modEventBus.addListener(this::commonSetup);
     // Register ourselves for server and other game events we are interested in
@@ -79,12 +81,12 @@ public class HotBath {
 
   private void addCreative(CreativeModeTabEvent.BuildContents event) {
     if (event.getTab() == ItemGroup.HOT_BATH) {
-      event.accept(ItemRegister.HERBAL_BATH_BUCKET);
-      event.accept(ItemRegister.HONEY_BATH_BUCKET);
+//      event.accept(ItemRegister.HERBAL_BATH_BUCKET);
+//      event.accept(ItemRegister.HONEY_BATH_BUCKET);
       event.accept(ItemRegister.HOT_WATER_BUCKET);
-      event.accept(ItemRegister.MILK_BATH_BUCKET);
-      event.accept(ItemRegister.PEONY_BATH_BUCKET);
-      event.accept(ItemRegister.ROSE_BATH_BUCKET);
+//      event.accept(ItemRegister.MILK_BATH_BUCKET);
+//      event.accept(ItemRegister.PEONY_BATH_BUCKET);
+//      event.accept(ItemRegister.ROSE_BATH_BUCKET);
       event.accept(ItemRegister.BATH_HERB);
     }
   }

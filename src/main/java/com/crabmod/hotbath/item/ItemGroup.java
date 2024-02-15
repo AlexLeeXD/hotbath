@@ -18,10 +18,10 @@ public class ItemGroup {
   public static void registerItemGroup(CreativeModeTabEvent.Register event) {
     HOT_BATH =
         event.registerCreativeModeTab(
-            new ResourceLocation(HotBath.MOD_ID, "hotBathTab"),
+            new ResourceLocation(HotBath.MOD_ID, "hot_bath_tab"),
             builder ->
                 builder
                     .icon(() -> new ItemStack(ItemRegister.HOT_WATER_BUCKET.get()))
-                    .title(Component.translatable("itemGroup.hotBathTab")));
+                    .title(Component.translatable("itemGroup.hot_bath_tab")));
   }
 }

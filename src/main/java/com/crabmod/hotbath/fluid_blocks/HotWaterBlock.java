@@ -22,16 +22,16 @@ public class HotWaterBlock extends LiquidBlock implements IHotbathBlock {
 
   @Override
   public FluidState getHotBathFluidState() {
-    return FluidsRegister.HOT_WATER_FLUID.get().defaultFluidState();
+    return FluidsRegister.SOURCE_HOT_WATER.get().defaultFluidState();
   }
 
-  @Override
-  @OnlyIn(Dist.CLIENT)
-  public void animateTick(
-      @NotNull BlockState stateIn,
-      @NotNull Level worldIn,
-      @NotNull BlockPos pos,
-      java.util.@NotNull Random rand) {
-    ParticleGenerator.renderDefaultSteam((ClientLevel) worldIn, pos, rand);
-  }
+//  @Override
+//  @OnlyIn(Dist.CLIENT)
+//  public void animateTick(
+//      @NotNull BlockState stateIn,
+//      @NotNull Level worldIn,
+//      @NotNull BlockPos pos,
+//      java.util.@NotNull Random rand) {
+//    ParticleGenerator.renderDefaultSteam((ClientLevel) worldIn, pos, rand);
+//  }
 }

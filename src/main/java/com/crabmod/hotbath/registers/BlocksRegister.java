@@ -6,9 +6,6 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.LiquidBlock;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -17,48 +14,6 @@ import net.minecraftforge.registries.RegistryObject;
 public class BlocksRegister {
   public static final DeferredRegister<Block> BLOCKS =
       DeferredRegister.create(ForgeRegistries.BLOCKS, HotBath.MOD_ID);
-
-  public static final RegistryObject<LiquidBlock> HOT_WATER_BLOCK =
-      BLOCKS.register(
-          "hot_water_block",
-          () ->
-              new LiquidBlock(
-                  FluidsRegister.HOT_WATER_FLUID, BlockBehaviour.Properties.copy(Blocks.WATER)));
-
-  public static final RegistryObject<LiquidBlock> HONEY_BATH_BLOCK =
-      BLOCKS.register(
-          "honey_bath_block",
-          () ->
-              new LiquidBlock(
-                  FluidsRegister.HONEY_BATH_FLUID, BlockBehaviour.Properties.copy(Blocks.WATER)));
-
-  public static final RegistryObject<LiquidBlock> MILK_BATH_BLOCK =
-      BLOCKS.register(
-          "milk_bath_block",
-          () ->
-              new LiquidBlock(
-                  FluidsRegister.MILK_BATH_FLUID, BlockBehaviour.Properties.copy(Blocks.WATER)));
-
-  public static final RegistryObject<LiquidBlock> PEONY_BATH_BLOCK =
-      BLOCKS.register(
-          "peony_bath_block",
-          () ->
-              new LiquidBlock(
-                  FluidsRegister.PEONY_BATH_FLUID, BlockBehaviour.Properties.copy(Blocks.WATER)));
-
-  public static final RegistryObject<LiquidBlock> ROSE_BATH_BLOCK =
-      BLOCKS.register(
-          "rose_bath_block",
-          () ->
-              new LiquidBlock(
-                  FluidsRegister.ROSE_BATH_FLUID, BlockBehaviour.Properties.copy(Blocks.WATER)));
-
-  public static final RegistryObject<LiquidBlock> HERBAL_BATH_BLOCK =
-      BLOCKS.register(
-          "herbal_bath_block",
-          () ->
-              new LiquidBlock(
-                  FluidsRegister.HERBAL_BATH_FLUID, BlockBehaviour.Properties.copy(Blocks.WATER)));
 
   private static <T extends Block> RegistryObject<T> registerBlock(
       String name, Supplier<T> block, CreativeModeTab tab) {

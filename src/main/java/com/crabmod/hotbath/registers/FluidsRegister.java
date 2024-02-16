@@ -4,6 +4,10 @@ import static com.crabmod.hotbath.fluid_details.FluidsColor.*;
 import static com.crabmod.hotbath.fluid_details.HotbathFluidType.getHotBathFluidType;
 
 import com.crabmod.hotbath.HotBath;
+import com.crabmod.hotbath.fluid_blocks.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -26,6 +30,17 @@ public class FluidsRegister {
           "hot_water_flowing",
           () -> new ForgeFlowingFluid.Flowing(FluidsRegister.HOT_WATER_PROPERTIES));
 
+  public static final RegistryObject<LiquidBlock> HOT_WATER_BLOCK =
+      BlocksRegister.BLOCKS.register(
+          "hot_water_block",
+          () ->
+              new HotWaterBlock(
+                  HOT_WATER_FLUID,
+                  Block.Properties.copy(Blocks.WATER)
+                      .noCollission()
+                      .strength(1000.0F)
+                      .noOcclusion()));
+
   public static final ForgeFlowingFluid.Properties HOT_WATER_PROPERTIES =
       new ForgeFlowingFluid.Properties(
               getHotBathFluidType("hot_water_fluid_type", HOT_WATER_COLOR),
@@ -33,7 +48,7 @@ public class FluidsRegister {
               HOT_WATER_FLOWING)
           .slopeFindDistance(2)
           .levelDecreasePerBlock(2)
-          .block(BlocksRegister.HOT_WATER_BLOCK)
+          .block(HOT_WATER_BLOCK)
           .bucket(ItemRegister.HOT_WATER_BUCKET);
 
   public static final RegistryObject<FlowingFluid> HONEY_BATH_FLUID =
@@ -46,6 +61,17 @@ public class FluidsRegister {
           "honey_bath_flowing",
           () -> new ForgeFlowingFluid.Flowing(FluidsRegister.HONEY_BATH_PROPERTIES));
 
+  public static final RegistryObject<LiquidBlock> HONEY_BATH_BLOCK =
+      BlocksRegister.BLOCKS.register(
+          "honey_bath_block",
+          () ->
+              new HoneyBathBlock(
+                  HONEY_BATH_FLUID,
+                  Block.Properties.copy(Blocks.WATER)
+                      .noCollission()
+                      .strength(1000.0F)
+                      .noOcclusion()));
+
   public static final ForgeFlowingFluid.Properties HONEY_BATH_PROPERTIES =
       new ForgeFlowingFluid.Properties(
               getHotBathFluidType("honey_bath_fluid_type", HONEY_BATH_COLOR),
@@ -53,7 +79,7 @@ public class FluidsRegister {
               HONEY_BATH_FLOWING)
           .slopeFindDistance(2)
           .levelDecreasePerBlock(2)
-          .block(BlocksRegister.HONEY_BATH_BLOCK)
+          .block(HONEY_BATH_BLOCK)
           .bucket(ItemRegister.HONEY_BATH_BUCKET);
 
   public static final RegistryObject<FlowingFluid> MILK_BATH_FLUID =
@@ -66,6 +92,16 @@ public class FluidsRegister {
           "milk_bath_flowing",
           () -> new ForgeFlowingFluid.Flowing(FluidsRegister.MILK_BATH_PROPERTIES));
 
+  public static final RegistryObject<LiquidBlock> MILK_BATH_BLOCK =
+      BlocksRegister.BLOCKS.register(
+          "milk_bath_block",
+          () ->
+              new MilkBathBlock(
+                  MILK_BATH_FLUID,
+                  Block.Properties.copy(Blocks.WATER)
+                      .noCollission()
+                      .strength(1000.0F)
+                      .noOcclusion()));
   public static final ForgeFlowingFluid.Properties MILK_BATH_PROPERTIES =
       new ForgeFlowingFluid.Properties(
               getHotBathFluidType("milk_bath_fluid_type", MILK_BATH_COLOR),
@@ -73,7 +109,7 @@ public class FluidsRegister {
               MILK_BATH_FLOWING)
           .slopeFindDistance(2)
           .levelDecreasePerBlock(2)
-          .block(BlocksRegister.MILK_BATH_BLOCK)
+          .block(MILK_BATH_BLOCK)
           .bucket(ItemRegister.MILK_BATH_BUCKET);
 
   public static final RegistryObject<FlowingFluid> PEONY_BATH_FLUID =
@@ -86,6 +122,17 @@ public class FluidsRegister {
           "peony_bath_flowing",
           () -> new ForgeFlowingFluid.Flowing(FluidsRegister.PEONY_BATH_PROPERTIES));
 
+  public static final RegistryObject<LiquidBlock> PEONY_BATH_BLOCK =
+      BlocksRegister.BLOCKS.register(
+          "peony_bath_block",
+          () ->
+              new PeonyBathBlock(
+                  PEONY_BATH_FLUID,
+                  Block.Properties.copy(Blocks.WATER)
+                      .noCollission()
+                      .strength(1000.0F)
+                      .noOcclusion()));
+
   public static final ForgeFlowingFluid.Properties PEONY_BATH_PROPERTIES =
       new ForgeFlowingFluid.Properties(
               getHotBathFluidType("peony_bath_fluid_type", PEONY_BATH_COLOR),
@@ -93,7 +140,7 @@ public class FluidsRegister {
               PEONY_BATH_FLOWING)
           .slopeFindDistance(2)
           .levelDecreasePerBlock(2)
-          .block(BlocksRegister.PEONY_BATH_BLOCK)
+          .block(PEONY_BATH_BLOCK)
           .bucket(ItemRegister.PEONY_BATH_BUCKET);
 
   public static final RegistryObject<FlowingFluid> ROSE_BATH_FLUID =
@@ -106,6 +153,17 @@ public class FluidsRegister {
           "rose_bath_flowing",
           () -> new ForgeFlowingFluid.Flowing(FluidsRegister.ROSE_BATH_PROPERTIES));
 
+  public static final RegistryObject<LiquidBlock> ROSE_BATH_BLOCK =
+      BlocksRegister.BLOCKS.register(
+          "rose_bath_block",
+          () ->
+              new RoseBathBlock(
+                  ROSE_BATH_FLUID,
+                  Block.Properties.copy(Blocks.WATER)
+                      .noCollission()
+                      .strength(1000.0F)
+                      .noOcclusion()));
+
   public static final ForgeFlowingFluid.Properties ROSE_BATH_PROPERTIES =
       new ForgeFlowingFluid.Properties(
               getHotBathFluidType("rose_bath_fluid_type", ROSE_BATH_COLOR),
@@ -113,7 +171,7 @@ public class FluidsRegister {
               ROSE_BATH_FLOWING)
           .slopeFindDistance(2)
           .levelDecreasePerBlock(2)
-          .block(BlocksRegister.ROSE_BATH_BLOCK)
+          .block(ROSE_BATH_BLOCK)
           .bucket(ItemRegister.ROSE_BATH_BUCKET);
 
   public static final RegistryObject<FlowingFluid> HERBAL_BATH_FLUID =
@@ -125,6 +183,16 @@ public class FluidsRegister {
       FLUIDS.register(
           "herbal_bath_flowing",
           () -> new ForgeFlowingFluid.Flowing(FluidsRegister.HERBAL_BATH_PROPERTIES));
+  public static final RegistryObject<LiquidBlock> HERBAL_BATH_BLOCK =
+      BlocksRegister.BLOCKS.register(
+          "herbal_bath_block",
+          () ->
+              new HerbalBathBlock(
+                  HERBAL_BATH_FLUID,
+                  Block.Properties.copy(Blocks.WATER)
+                      .noCollission()
+                      .strength(1000.0F)
+                      .noOcclusion()));
 
   public static final ForgeFlowingFluid.Properties HERBAL_BATH_PROPERTIES =
       new ForgeFlowingFluid.Properties(
@@ -133,7 +201,7 @@ public class FluidsRegister {
               HERBAL_BATH_FLOWING)
           .slopeFindDistance(2)
           .levelDecreasePerBlock(2)
-          .block(BlocksRegister.HERBAL_BATH_BLOCK)
+          .block(HERBAL_BATH_BLOCK)
           .bucket(ItemRegister.HERBAL_BATH_BUCKET);
 
   public static void register(IEventBus eventBus) {

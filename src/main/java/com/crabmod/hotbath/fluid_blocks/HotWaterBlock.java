@@ -34,8 +34,6 @@ public class HotWaterBlock extends LiquidBlock implements IHotbathBlock {
       @NotNull Level worldIn,
       @NotNull BlockPos pos,
       @NotNull RandomSource rand) {
-    Logger logger = Logger.getLogger(HotWaterBlock.class.getName());
-    logger.info("HotWaterBlock.animateTick");
     ParticleGenerator.renderDefaultSteam((ClientLevel) worldIn, pos, rand);
   }
 }

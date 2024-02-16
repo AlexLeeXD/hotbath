@@ -1,6 +1,7 @@
 package com.crabmod.hotbath.registers;
 
 import static com.crabmod.hotbath.fluid_details.FluidsColor.*;
+import static com.crabmod.hotbath.fluid_details.FluidsTexture.*;
 import static com.crabmod.hotbath.fluid_details.HotbathFluidType.getHotBathFluidType;
 
 import com.crabmod.hotbath.HotBath;
@@ -43,7 +44,11 @@ public class FluidsRegister {
 
   public static final ForgeFlowingFluid.Properties HOT_WATER_PROPERTIES =
       new ForgeFlowingFluid.Properties(
-              getHotBathFluidType("hot_water_fluid_type", HOT_WATER_COLOR),
+              getHotBathFluidType(
+                  "hot_water_fluid_type",
+                  HOT_WATER_COLOR,
+                  HOT_WATER_STILL_TEXTURE,
+                  HOT_WATER_FLOWING_TEXTURE),
               HOT_WATER_FLUID,
               HOT_WATER_FLOWING)
           .slopeFindDistance(2)
@@ -74,7 +79,11 @@ public class FluidsRegister {
 
   public static final ForgeFlowingFluid.Properties HONEY_BATH_PROPERTIES =
       new ForgeFlowingFluid.Properties(
-              getHotBathFluidType("honey_bath_fluid_type", HONEY_BATH_COLOR),
+              getHotBathFluidType(
+                  "honey_bath_fluid_type",
+                  HONEY_BATH_COLOR,
+                  HONEY_BATH_STILL_TEXTURE,
+                  HONEY_BATH_FLOWING_TEXTURE),
               HONEY_BATH_FLUID,
               HONEY_BATH_FLOWING)
           .slopeFindDistance(2)
@@ -104,7 +113,11 @@ public class FluidsRegister {
                       .noOcclusion()));
   public static final ForgeFlowingFluid.Properties MILK_BATH_PROPERTIES =
       new ForgeFlowingFluid.Properties(
-              getHotBathFluidType("milk_bath_fluid_type", MILK_BATH_COLOR),
+              getHotBathFluidType(
+                  "milk_bath_fluid_type",
+                  MILK_BATH_COLOR,
+                  MILK_BATH_STILL_TEXTURE,
+                  MILK_BATH_FLOWING_TEXTURE),
               MILK_BATH_FLUID,
               MILK_BATH_FLOWING)
           .slopeFindDistance(2)
@@ -135,7 +148,11 @@ public class FluidsRegister {
 
   public static final ForgeFlowingFluid.Properties PEONY_BATH_PROPERTIES =
       new ForgeFlowingFluid.Properties(
-              getHotBathFluidType("peony_bath_fluid_type", PEONY_BATH_COLOR),
+              getHotBathFluidType(
+                  "peony_bath_fluid_type",
+                  PEONY_BATH_COLOR,
+                  PEONY_BATH_STILL_TEXTURE,
+                  PEONY_BATH_FLOWING_TEXTURE),
               PEONY_BATH_FLUID,
               PEONY_BATH_FLOWING)
           .slopeFindDistance(2)
@@ -166,7 +183,11 @@ public class FluidsRegister {
 
   public static final ForgeFlowingFluid.Properties ROSE_BATH_PROPERTIES =
       new ForgeFlowingFluid.Properties(
-              getHotBathFluidType("rose_bath_fluid_type", ROSE_BATH_COLOR),
+              getHotBathFluidType(
+                  "rose_bath_fluid_type",
+                  ROSE_BATH_COLOR,
+                  ROSE_BATH_STILL_TEXTURE,
+                  ROSE_BATH_FLOWING_TEXTURE),
               ROSE_BATH_FLUID,
               ROSE_BATH_FLOWING)
           .slopeFindDistance(2)
@@ -196,7 +217,11 @@ public class FluidsRegister {
 
   public static final ForgeFlowingFluid.Properties HERBAL_BATH_PROPERTIES =
       new ForgeFlowingFluid.Properties(
-              getHotBathFluidType("herbal_bath_fluid_type", HERBAL_BATH_COLOR),
+              getHotBathFluidType(
+                  "herbal_bath_fluid_type",
+                  HERBAL_BATH_COLOR,
+                  HERBAL_BATH_STILL_TEXTURE,
+                  HERBAL_BATH_FLOWING_TEXTURE),
               HERBAL_BATH_FLUID,
               HERBAL_BATH_FLOWING)
           .slopeFindDistance(2)

@@ -5,12 +5,13 @@ import com.crabmod.hotbath.util.CustomFluidHandler;
 import com.crabmod.hotbath.util.EffectRemovalHandler;
 import com.crabmod.hotbath.util.HealthRegenHandler;
 import com.crabmod.hotbath.util.ResistanceBoostHandler;
+import java.util.Objects;
+import net.minecraft.advancements.Advancement;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.monster.Skeleton;
 import net.minecraft.world.entity.monster.Zombie;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -47,19 +48,18 @@ public class HerbalBathEvents {
       String herbalBathStayedTime,
       String hasEnteredHerbalBath,
       String herbalBathAdvancementId) {
-    Entity entity = event.getEntity();
-    Level level = entity.level;
 
-    if (!(entity instanceof Player)) {
-      if (entity instanceof Zombie || entity instanceof Skeleton) {
-        boolean isInHerbalBath = CustomFluidHandler.isEntityInHerbalBathBlock(entity);
+    if (!(event.getEntity() instanceof ServerPlayer)) {
+      if (event.getEntity() instanceof Zombie || event.getEntity() instanceof Skeleton) {
+        boolean isInHerbalBath = CustomFluidHandler.isEntityInHerbalBathBlock(event.getEntity());
 
         if (isInHerbalBath) {
           int damageIntervalTicks = 20;
           float damagePerSecond = 0.5F;
 
-          if (entity.tickCount % damageIntervalTicks == 0) {
-            entity.hurt(level.damageSources().magic(), damagePerSecond);
+          if (event.getEntity().tickCount % damageIntervalTicks == 0) {
+            Level level = event.getEntity().level;
+            event.getEntity().hurt(level.damageSources().magic(), damagePerSecond);
           }
         }
       }
@@ -67,20 +67,33 @@ public class HerbalBathEvents {
     }
 
     boolean isInHerbalBath =
-        CustomFluidHandler.isPlayerInHerbalBathBlock((Player) event.getEntity());
+        CustomFluidHandler.isPlayerInHerbalBathBlock((ServerPlayer) event.getEntity());
 
     if (event.getEntity() instanceof ServerPlayer player) {
       CompoundTag playerData = player.getPersistentData();
 
       if (isInHerbalBath) {
-        HotWaterEvents.handleAdvancement(
-            enteredCountTriggerNumber,
-            enteredNumberInHerbalBath,
-            herbalBathStayedTime,
-            hasEnteredHerbalBath,
-            herbalBathAdvancementId,
-            player,
-            playerData);
+        if (!playerData.getBoolean(hasEnteredHerbalBath)) {
+          int enteredCount = playerData.getInt(enteredNumberInHerbalBath) + 1;
+          playerData.putInt(enteredNumberInHerbalBath, enteredCount);
+          playerData.putBoolean(hasEnteredHerbalBath, true);
+
+          if (enteredCount >= enteredCountTriggerNumber) {
+            Advancement advancement =
+                Objects.requireNonNull(player.getServer())
+                    .getAdvancements()
+                    .getAdvancement(
+                        Objects.requireNonNull(ResourceLocation.tryParse(herbalBathAdvancementId)));
+
+            if (advancement != null) {
+              player.getAdvancements().award(advancement, "code_triggered");
+              playerData.putInt(enteredNumberInHerbalBath, 0);
+            }
+          }
+        }
+
+        int hotBathTime = playerData.getInt(herbalBathStayedTime) + 1;
+        playerData.putInt(herbalBathStayedTime, hotBathTime);
 
         HealthRegenHandler.regenHealth(0.25F, 2, player);
 

@@ -49,14 +49,27 @@ public class HotWaterEvents {
       boolean isInHotWater = CustomFluidHandler.isPlayerInHotWaterBlock(player);
 
       if (isInHotWater) {
-        handleAdvancement(
-            enteredCountTriggerNumber,
-            hotWaterEnteredNumber,
-            hotWaterStayedTime,
-            hasEnteredHotWater,
-            hotWaterAdvancementId,
-            player,
-            playerData);
+        if (!playerData.getBoolean(hasEnteredHotWater)) {
+          int enteredCount = playerData.getInt(hotWaterEnteredNumber) + 1;
+          playerData.putInt(hotWaterEnteredNumber, enteredCount);
+          playerData.putBoolean(hasEnteredHotWater, true);
+
+          if (enteredCount >= enteredCountTriggerNumber) {
+            Advancement advancement =
+                Objects.requireNonNull(player.getServer())
+                    .getAdvancements()
+                    .getAdvancement(
+                        Objects.requireNonNull(ResourceLocation.tryParse(hotWaterAdvancementId)));
+
+            if (advancement != null) {
+              player.getAdvancements().award(advancement, "code_triggered");
+              playerData.putInt(hotWaterEnteredNumber, 0);
+            }
+          }
+        }
+
+        int hotBathTime = playerData.getInt(hotWaterStayedTime) + 1;
+        playerData.putInt(hotWaterStayedTime, hotBathTime);
 
         if (playerData.getInt(hotWaterStayedTime) >= stayedEffectTriggerTime * TICK_NUMBER) {
           player.addEffect(
@@ -66,34 +79,6 @@ public class HotWaterEvents {
       } else {
         playerData.putInt(hotWaterStayedTime, 0);
         playerData.putBoolean(hasEnteredHotWater, false);
-      }
-    }
-  }
-
-  static void handleAdvancement(
-      int enteredCountTriggerNumber,
-      String hotWaterEnteredNumber,
-      String hotWaterStayedTime,
-      String hasEnteredHotWater,
-      String hotWaterAdvancementId,
-      ServerPlayer player,
-      CompoundTag playerData) {
-    if (!playerData.getBoolean(hasEnteredHotWater)) {
-      int enteredCount = playerData.getInt(hotWaterEnteredNumber) + 1;
-      playerData.putInt(hotWaterEnteredNumber, enteredCount);
-      playerData.putBoolean(hasEnteredHotWater, true);
-
-      if (enteredCount >= enteredCountTriggerNumber) {
-        Advancement advancement =
-            Objects.requireNonNull(player.getServer())
-                .getAdvancements()
-                .getAdvancement(
-                    Objects.requireNonNull(ResourceLocation.tryParse(hotWaterAdvancementId)));
-
-        if (advancement != null) {
-          player.getAdvancements().award(advancement, "code_triggered");
-          playerData.putInt(hotWaterEnteredNumber, 0);
-        }
       }
     }
   }

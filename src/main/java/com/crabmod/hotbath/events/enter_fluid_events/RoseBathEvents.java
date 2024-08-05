@@ -7,6 +7,7 @@ import com.crabmod.hotbath.util.CustomFluidHandler;
 import com.crabmod.hotbath.util.EffectRemovalHandler;
 import java.util.Objects;
 import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -57,11 +58,10 @@ public class RoseBathEvents {
           playerData.putBoolean(hasEnteredRoseBath, true);
 
           if (enteredCount >= enteredCountTriggerNumber) {
-            Advancement advancement =
+            AdvancementHolder advancement =
                 Objects.requireNonNull(player.getServer())
                     .getAdvancements()
-                    .getAdvancement(
-                        Objects.requireNonNull(ResourceLocation.tryParse(roseBathAdvancementId)));
+                    .get(Objects.requireNonNull(ResourceLocation.tryParse(roseBathAdvancementId)));
 
             if (advancement != null) {
               player.getAdvancements().award(advancement, "code_triggered");

@@ -1,12 +1,12 @@
 package com.crabmod.hotbath.advancements;
 
-import com.google.gson.JsonObject;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.mojang.serialization.Codec;
 import net.minecraft.advancements.CriterionTrigger;
 import net.minecraft.advancements.CriterionTriggerInstance;
-import net.minecraft.advancements.critereon.DeserializationContext;
-import net.minecraft.advancements.critereon.SerializationContext;
+import net.minecraft.advancements.critereon.CriterionValidator;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.PlayerAdvancements;
 import net.minecraft.server.level.ServerPlayer;
@@ -18,11 +18,6 @@ public class AdvancementTrigger implements CriterionTrigger<AdvancementTrigger.I
 
   public AdvancementTrigger(String modName, String advancementName) {
     this.ID = new ResourceLocation(modName, advancementName);
-  }
-
-  @Override
-  public @NotNull ResourceLocation getId() {
-    return ID;
   }
 
   @Override
@@ -43,9 +38,8 @@ public class AdvancementTrigger implements CriterionTrigger<AdvancementTrigger.I
   }
 
   @Override
-  public @NotNull Instance createInstance(
-      @NotNull JsonObject json, @NotNull DeserializationContext context) {
-    return new Instance(ID);
+  public Codec<Instance> codec() {
+    return null;
   }
 
   public void trigger(ServerPlayer player) {
@@ -61,15 +55,6 @@ public class AdvancementTrigger implements CriterionTrigger<AdvancementTrigger.I
     }
 
     @Override
-    public @NotNull ResourceLocation getCriterion() {
-      return id;
-    }
-
-    // Implement the necessary methods for serialization if needed
-    @Override
-    public @NotNull JsonObject serializeToJson(@NotNull SerializationContext context) {
-      // Return a JSON object representing the conditions of this instance
-      return new JsonObject();
-    }
+    public void validate(CriterionValidator pValidator) {}
   }
 }

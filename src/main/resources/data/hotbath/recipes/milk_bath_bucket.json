@@ -14,7 +14,7 @@
     }
   },
   "result": {
-    "item": "hotbath:milk_bath_bucket",
+    "id": "hotbath:milk_bath_bucket",
     "count": 1
   }
 }

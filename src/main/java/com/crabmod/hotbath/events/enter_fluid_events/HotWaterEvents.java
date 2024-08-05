@@ -4,6 +4,7 @@ import com.crabmod.hotbath.HotBath;
 import com.crabmod.hotbath.util.CustomFluidHandler;
 import java.util.Objects;
 import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -55,11 +56,10 @@ public class HotWaterEvents {
           playerData.putBoolean(hasEnteredHotWater, true);
 
           if (enteredCount >= enteredCountTriggerNumber) {
-            Advancement advancement =
+            AdvancementHolder advancement =
                 Objects.requireNonNull(player.getServer())
                     .getAdvancements()
-                    .getAdvancement(
-                        Objects.requireNonNull(ResourceLocation.tryParse(hotWaterAdvancementId)));
+                    .get(Objects.requireNonNull(ResourceLocation.tryParse(hotWaterAdvancementId)));
 
             if (advancement != null) {
               player.getAdvancements().award(advancement, "code_triggered");

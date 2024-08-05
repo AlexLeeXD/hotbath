@@ -1,7 +1,5 @@
 package com.crabmod.hotbath.fluid_details;
 
-import com.mojang.blaze3d.shaders.FogShape;
-import com.mojang.blaze3d.systems.RenderSystem;
 import java.util.function.Consumer;
 import net.minecraft.client.Camera;
 import net.minecraft.client.multiplayer.ClientLevel;
@@ -87,19 +85,6 @@ public class BaseFluidType extends FluidType {
               float darkenWorldAmount,
               Vector3f fluidFogColor) {
             return fogColor;
-          }
-
-          @Override
-          public void modifyFogRender(
-              Camera camera,
-              FogRenderer.FogMode mode,
-              float renderDistance,
-              float partialTicks,
-              float nearDistance,
-              float farDistance,
-              FogShape shape) {
-            RenderSystem.setShaderFogStart(1f);
-            RenderSystem.setShaderFogEnd(6f);
           }
         });
   }

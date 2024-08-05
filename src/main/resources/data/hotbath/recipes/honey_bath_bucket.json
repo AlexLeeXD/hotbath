@@ -14,7 +14,7 @@
     }
   },
   "result": {
-    "item": "hotbath:honey_bath_bucket",
+    "id": "hotbath:honey_bath_bucket",
     "count": 1
   }
 }

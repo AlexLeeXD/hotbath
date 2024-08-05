@@ -8,6 +8,7 @@ import com.crabmod.hotbath.util.EffectRemovalHandler;
 import com.crabmod.hotbath.util.HungerRegenHandler;
 import java.util.Objects;
 import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -51,7 +52,14 @@ public class MilkBathEvents {
       boolean isInMilkBath = CustomFluidHandler.isPlayerInMilkBathBlock(player);
 
       if (isInMilkBath) {
-        handleAdvancement(enteredCountTriggerNumber, enteredNumberInMilkBath, milkBathStayedTime, hasEnteredMilkBath, milkBathAdvancementId, player, playerData);
+        handleAdvancement(
+            enteredCountTriggerNumber,
+            enteredNumberInMilkBath,
+            milkBathStayedTime,
+            hasEnteredMilkBath,
+            milkBathAdvancementId,
+            player,
+            playerData);
         HungerRegenHandler.regenHunger(1, 15, player);
         regenHealth(0.25F, 2, player);
         if (playerData.getInt(milkBathStayedTime) >= stayedEffectTriggerTime * TICK_NUMBER) {
@@ -64,18 +72,24 @@ public class MilkBathEvents {
     }
   }
 
-  static void handleAdvancement(int enteredCountTriggerNumber, String enteredNumberInMilkBath, String milkBathStayedTime, String hasEnteredMilkBath, String milkBathAdvancementId, ServerPlayer player, CompoundTag playerData) {
+  static void handleAdvancement(
+      int enteredCountTriggerNumber,
+      String enteredNumberInMilkBath,
+      String milkBathStayedTime,
+      String hasEnteredMilkBath,
+      String milkBathAdvancementId,
+      ServerPlayer player,
+      CompoundTag playerData) {
     if (!playerData.getBoolean(hasEnteredMilkBath)) {
       int enteredCount = playerData.getInt(enteredNumberInMilkBath) + 1;
       playerData.putInt(enteredNumberInMilkBath, enteredCount);
       playerData.putBoolean(hasEnteredMilkBath, true);
 
       if (enteredCount >= enteredCountTriggerNumber) {
-        Advancement advancement =
+        AdvancementHolder advancement =
             Objects.requireNonNull(player.getServer())
                 .getAdvancements()
-                .getAdvancement(
-                    Objects.requireNonNull(ResourceLocation.tryParse(milkBathAdvancementId)));
+                .get(Objects.requireNonNull(ResourceLocation.tryParse(milkBathAdvancementId)));
 
         if (advancement != null) {
           player.getAdvancements().award(advancement, "code_triggered");

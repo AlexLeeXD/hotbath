@@ -7,6 +7,7 @@ import com.crabmod.hotbath.util.HealthRegenHandler;
 import com.crabmod.hotbath.util.ResistanceBoostHandler;
 import java.util.Objects;
 import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -79,10 +80,10 @@ public class HerbalBathEvents {
           playerData.putBoolean(hasEnteredHerbalBath, true);
 
           if (enteredCount >= enteredCountTriggerNumber) {
-            Advancement advancement =
+            AdvancementHolder advancement =
                 Objects.requireNonNull(player.getServer())
                     .getAdvancements()
-                    .getAdvancement(
+                    .get(
                         Objects.requireNonNull(ResourceLocation.tryParse(herbalBathAdvancementId)));
 
             if (advancement != null) {

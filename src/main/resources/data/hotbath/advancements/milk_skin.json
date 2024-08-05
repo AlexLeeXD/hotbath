@@ -2,7 +2,7 @@
   "id": "hotbath:milk_skin",
   "display": {
     "icon": {
-      "item": "hotbath:milk_bath_bucket"
+      "id": "hotbath:milk_bath_bucket"
     },
     "title": {
       "translate": "hotbath.advancement.milk_skin"

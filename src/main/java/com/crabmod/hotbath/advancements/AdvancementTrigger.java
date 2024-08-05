@@ -13,11 +13,10 @@ import net.minecraft.server.level.ServerPlayer;
 import org.jetbrains.annotations.NotNull;
 
 public class AdvancementTrigger implements CriterionTrigger<AdvancementTrigger.Instance> {
-  private final ResourceLocation ID;
   private final List<Listener<Instance>> listeners = new ArrayList<>();
 
   public AdvancementTrigger(String modName, String advancementName) {
-    this.ID = new ResourceLocation(modName, advancementName);
+    ResourceLocation ID = new ResourceLocation(modName, advancementName);
   }
 
   @Override
@@ -38,8 +37,8 @@ public class AdvancementTrigger implements CriterionTrigger<AdvancementTrigger.I
   }
 
   @Override
-  public Codec<Instance> codec() {
-    return null;
+  public @NotNull Codec<Instance> codec() {
+    return Codec.unit(() -> new Instance(new ResourceLocation("")));
   }
 
   public void trigger(ServerPlayer player) {
@@ -48,13 +47,10 @@ public class AdvancementTrigger implements CriterionTrigger<AdvancementTrigger.I
   }
 
   public static class Instance implements CriterionTriggerInstance {
-    private final ResourceLocation id;
 
-    public Instance(ResourceLocation id) {
-      this.id = id;
-    }
+    public Instance(ResourceLocation id) {}
 
     @Override
-    public void validate(CriterionValidator pValidator) {}
+    public void validate(@NotNull CriterionValidator pValidator) {}
   }
 }

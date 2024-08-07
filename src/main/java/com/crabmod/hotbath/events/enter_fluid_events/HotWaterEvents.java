@@ -1,12 +1,9 @@
 package com.crabmod.hotbath.events.enter_fluid_events;
 
 import com.crabmod.hotbath.HotBath;
+import com.crabmod.hotbath.advancements.AdvancementTrigger;
 import com.crabmod.hotbath.util.CustomFluidHandler;
-import java.util.Objects;
-import net.minecraft.advancements.Advancement;
-import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -20,9 +17,11 @@ public class HotWaterEvents {
   static final String HOT_WATER_ENTERED_NUMBER = "HotWaterEnteredNumber";
   static final String HOT_WATER_STAYED_TIME = "HotWaterStayedTime";
   static final String HAS_ENTERED_HOT_WATER = "HasEnteredHotWater";
-  static final String HOT_WATER_ADVANCEMENT_ID = "hotbath:foot_health";
   private static final int HOT_WATER_ENTERED_COUNT_TRIGGER_NUMBER = 100;
   private static final int HOT_WATER_STAYED_EFFECT_TRIGGER_TIME_SECONDS = 15;
+
+  private static final AdvancementTrigger HOT_WATER_TRIGGER =
+      new AdvancementTrigger("hotbath", "hot_water");
 
   // enter hot water block event
   @SubscribeEvent
@@ -33,8 +32,7 @@ public class HotWaterEvents {
         HOT_WATER_STAYED_EFFECT_TRIGGER_TIME_SECONDS,
         HOT_WATER_ENTERED_NUMBER,
         HOT_WATER_STAYED_TIME,
-        HAS_ENTERED_HOT_WATER,
-        HOT_WATER_ADVANCEMENT_ID);
+        HAS_ENTERED_HOT_WATER);
   }
 
   public static void enterFluidEvents(
@@ -43,8 +41,7 @@ public class HotWaterEvents {
       int stayedEffectTriggerTime,
       String hotWaterEnteredNumber,
       String hotWaterStayedTime,
-      String hasEnteredHotWater,
-      String hotWaterAdvancementId) {
+      String hasEnteredHotWater) {
     if (event.getEntity() instanceof ServerPlayer player) {
       CompoundTag playerData = player.getPersistentData();
       boolean isInHotWater = CustomFluidHandler.isPlayerInHotWaterBlock(player);
@@ -56,15 +53,9 @@ public class HotWaterEvents {
           playerData.putBoolean(hasEnteredHotWater, true);
 
           if (enteredCount >= enteredCountTriggerNumber) {
-            AdvancementHolder advancement =
-                Objects.requireNonNull(player.getServer())
-                    .getAdvancements()
-                    .get(Objects.requireNonNull(ResourceLocation.tryParse(hotWaterAdvancementId)));
+            HOT_WATER_TRIGGER.trigger(player); // Pass the player instance here
 
-            if (advancement != null) {
-              player.getAdvancements().award(advancement, "code_triggered");
-              playerData.putInt(hotWaterEnteredNumber, 0);
-            }
+            playerData.putInt(hotWaterEnteredNumber, 0);
           }
         }
 

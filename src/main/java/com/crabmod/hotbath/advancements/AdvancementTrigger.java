@@ -1,5 +1,6 @@
 package com.crabmod.hotbath.advancements;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,12 +22,14 @@ public class AdvancementTrigger implements CriterionTrigger<AdvancementTrigger.I
   }
 
   @Override
-  public void addPlayerListener(@NotNull PlayerAdvancements playerAdvancements, @NotNull Listener listener) {
+  public void addPlayerListener(
+      @NotNull PlayerAdvancements playerAdvancements, @NotNull Listener listener) {
     this.listeners.add(listener);
   }
 
   @Override
-  public void removePlayerListener(@NotNull PlayerAdvancements playerAdvancements, @NotNull Listener listener) {
+  public void removePlayerListener(
+      @NotNull PlayerAdvancements playerAdvancements, @NotNull Listener listener) {
     this.listeners.remove(listener);
   }
 
@@ -38,6 +41,19 @@ public class AdvancementTrigger implements CriterionTrigger<AdvancementTrigger.I
   @Override
   public @NotNull Codec<Instance> codec() {
     return Codec.unit(() -> new Instance(this.ID));
+  }
+
+  public void trigger(ServerPlayer player) {
+    try {
+      Method triggerMethod =
+          CriterionTrigger.Listener.class.getDeclaredMethod("trigger", ServerPlayer.class);
+      triggerMethod.setAccessible(true);
+      for (Listener listener : this.listeners) {
+        triggerMethod.invoke(listener, player);
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
   public static class Instance implements CriterionTriggerInstance {

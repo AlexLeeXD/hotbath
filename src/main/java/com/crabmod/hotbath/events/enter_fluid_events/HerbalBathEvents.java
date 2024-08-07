@@ -1,13 +1,12 @@
 package com.crabmod.hotbath.events.enter_fluid_events;
 
 import com.crabmod.hotbath.HotBath;
+import com.crabmod.hotbath.advancements.AdvancementTrigger;
 import com.crabmod.hotbath.util.CustomFluidHandler;
 import com.crabmod.hotbath.util.EffectRemovalHandler;
 import com.crabmod.hotbath.util.HealthRegenHandler;
 import com.crabmod.hotbath.util.ResistanceBoostHandler;
-import java.util.Objects;
 import net.minecraft.advancements.Advancement;
-import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -27,6 +26,9 @@ public class HerbalBathEvents {
   static final String HERBAL_BATH_ADVANCEMENT_ID = "hotbath:chronic_invalid";
   private static final int HERBAL_BATH_ENTERED_COUNT_TRIGGER_NUMBER = 100;
   private static final int HERBAL_BATH_STAYED_EFFECT_TRIGGER_TIME_SECONDS = 5;
+
+  private static final AdvancementTrigger HERBAL_BATH_TRIGGER =
+      new AdvancementTrigger("hotbath", "herbal_bath");
 
   // enter hot water block event
   @SubscribeEvent
@@ -80,16 +82,9 @@ public class HerbalBathEvents {
           playerData.putBoolean(hasEnteredHerbalBath, true);
 
           if (enteredCount >= enteredCountTriggerNumber) {
-            AdvancementHolder advancement =
-                Objects.requireNonNull(player.getServer())
-                    .getAdvancements()
-                    .get(
-                        Objects.requireNonNull(ResourceLocation.tryParse(herbalBathAdvancementId)));
+            HERBAL_BATH_TRIGGER.trigger(player);
 
-            if (advancement != null) {
-              player.getAdvancements().award(advancement, "code_triggered");
-              playerData.putInt(enteredNumberInHerbalBath, 0);
-            }
+            playerData.putInt(enteredNumberInHerbalBath, 0);
           }
         }
 

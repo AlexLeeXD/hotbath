@@ -7,11 +7,13 @@ import com.crabmod.hotbath.util.CustomFluidHandler;
 import com.crabmod.hotbath.util.EffectRemovalHandler;
 import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeInstance;
+import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -33,11 +35,9 @@ public class PeonyBathEvents {
   private static final int LUCK_DURATION = 45 * TICK_NUMBER;
   private static final int LUCK_THRESHOLD = 50;
 
-  private static final UUID ATTACK_SPEED_MODIFIER_UUID = UUID.randomUUID();
-  private static final UUID KNOCKBACK_RESISTANCE_UUID = UUID.randomUUID();
-  private static final int ATTRIBUTE_REMOVE_DELAY_TICKS = 15 * TICK_NUMBER;
+  private static final ResourceLocation ATTACK_SPEED_MODIFIER_NAME = ResourceLocation.fromNamespaceAndPath(HotBath.MOD_ID, "peony_bath_attack_speed_modifier");
+  private static final ResourceLocation KNOCKBACK_RESISTANCE_MODIFIER_NAME = ResourceLocation.fromNamespaceAndPath(HotBath.MOD_ID, "peony_bath_knockback_resistance_modifier");
 
-  // enter hot water block event
   @SubscribeEvent
   public static void enterPeonyBathEvents(LivingEvent.LivingTickEvent event) {
     enterFluidEvents(
@@ -73,8 +73,8 @@ public class PeonyBathEvents {
         regenHealth(0.25F, 2, player);
 
         if (playerData.getInt(peonyBathStayedTime) >= 15 * TICK_NUMBER) {
-          applyAttributeModifier(player, Attributes.KNOCKBACK_RESISTANCE, 0.05, true);
-          applyAttributeModifier(player, Attributes.ATTACK_SPEED, 0.10, true);
+          applyAttributeModifier(player, Attributes.KNOCKBACK_RESISTANCE, 0.05, KNOCKBACK_RESISTANCE_MODIFIER_NAME, true);
+          applyAttributeModifier(player, Attributes.ATTACK_SPEED, 0.10, ATTACK_SPEED_MODIFIER_NAME, true);
           EffectRemovalHandler.removeNegativeEffects(player);
           EffectRemovalHandler.removeBadOmen(player);
         }
@@ -92,12 +92,13 @@ public class PeonyBathEvents {
         playerData.putInt(PEONY_BATH_EXITED_TIME, playerData.getInt(PEONY_BATH_EXITED_TIME) + 1);
 
         if (playerData.getInt(PEONY_BATH_EXITED_TIME) >= 15 * TICK_NUMBER) {
-          // Remove attribute modifier
-          applyAttributeModifier(player, Attributes.ATTACK_SPEED, 0.10, false);
+          // Remove attack speed modifier
+          applyAttributeModifier(player, Attributes.ATTACK_SPEED, 0.10, ATTACK_SPEED_MODIFIER_NAME, false);
         }
 
         if (playerData.getInt(PEONY_BATH_EXITED_TIME) >= 30 * TICK_NUMBER) {
-          applyAttributeModifier(player, Attributes.KNOCKBACK_RESISTANCE, 0.05, false);
+          // Remove knockback resistance modifier
+          applyAttributeModifier(player, Attributes.KNOCKBACK_RESISTANCE, 0.05, KNOCKBACK_RESISTANCE_MODIFIER_NAME, false);
         }
 
         playerData.putInt(peonyBathStayedTime, 0);
@@ -109,12 +110,19 @@ public class PeonyBathEvents {
           ServerPlayer player,
           Holder<Attribute> attribute,
           double value,
+          ResourceLocation modifierName,
           boolean add) {
     AttributeInstance attributeInstance = player.getAttribute(attribute);
 
     if (attributeInstance != null) {
-      double currentValue = attributeInstance.getBaseValue();
-      attributeInstance.setBaseValue(add ? currentValue + value : currentValue - value);
+      if (add) {
+        AttributeModifier modifier = new AttributeModifier(modifierName, value, AttributeModifier.Operation.ADD_VALUE);
+        if (!attributeInstance.hasModifier(modifierName)) {
+          attributeInstance.addTransientModifier(modifier);
+        }
+      } else {
+        attributeInstance.removeModifier(modifierName);
+      }
     }
   }
 }

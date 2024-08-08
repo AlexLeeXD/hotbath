@@ -73,8 +73,8 @@ public class PeonyBathEvents {
         regenHealth(0.25F, 2, player);
 
         if (playerData.getInt(peonyBathStayedTime) >= 15 * TICK_NUMBER) {
-          applyAttributeModifier(player, Attributes.KNOCKBACK_RESISTANCE, 0.05, KNOCKBACK_RESISTANCE_MODIFIER_NAME, true);
-          applyAttributeModifier(player, Attributes.ATTACK_SPEED, 0.10, ATTACK_SPEED_MODIFIER_NAME, true);
+          applyAttributeModifier(player, Attributes.KNOCKBACK_RESISTANCE, 0.05, KNOCKBACK_RESISTANCE_MODIFIER_NAME, true, AttributeModifier.Operation.ADD_VALUE);
+          applyAttributeModifier(player, Attributes.ATTACK_SPEED, 0.10, ATTACK_SPEED_MODIFIER_NAME, true, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
           EffectRemovalHandler.removeNegativeEffects(player);
           EffectRemovalHandler.removeBadOmen(player);
         }
@@ -93,12 +93,12 @@ public class PeonyBathEvents {
 
         if (playerData.getInt(PEONY_BATH_EXITED_TIME) >= 15 * TICK_NUMBER) {
           // Remove attack speed modifier
-          applyAttributeModifier(player, Attributes.ATTACK_SPEED, 0.10, ATTACK_SPEED_MODIFIER_NAME, false);
+          applyAttributeModifier(player, Attributes.ATTACK_SPEED, 0.10, ATTACK_SPEED_MODIFIER_NAME, false, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
         }
 
         if (playerData.getInt(PEONY_BATH_EXITED_TIME) >= 30 * TICK_NUMBER) {
           // Remove knockback resistance modifier
-          applyAttributeModifier(player, Attributes.KNOCKBACK_RESISTANCE, 0.05, KNOCKBACK_RESISTANCE_MODIFIER_NAME, false);
+          applyAttributeModifier(player, Attributes.KNOCKBACK_RESISTANCE, 0.05, KNOCKBACK_RESISTANCE_MODIFIER_NAME, false, AttributeModifier.Operation.ADD_VALUE);
         }
 
         playerData.putInt(peonyBathStayedTime, 0);
@@ -111,12 +111,14 @@ public class PeonyBathEvents {
           Holder<Attribute> attribute,
           double value,
           ResourceLocation modifierName,
-          boolean add) {
+          boolean add,
+          AttributeModifier.Operation operation
+  ) {
     AttributeInstance attributeInstance = player.getAttribute(attribute);
 
     if (attributeInstance != null) {
       if (add) {
-        AttributeModifier modifier = new AttributeModifier(modifierName, value, AttributeModifier.Operation.ADD_VALUE);
+        AttributeModifier modifier = new AttributeModifier(modifierName, value, operation);
         if (!attributeInstance.hasModifier(modifierName)) {
           attributeInstance.addTransientModifier(modifier);
         }

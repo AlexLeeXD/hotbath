@@ -3,11 +3,13 @@ package com.crabmod.hotbath.events.enter_fluid_events;
 import static com.crabmod.hotbath.util.HealthRegenHandler.regenHealth;
 
 import com.crabmod.hotbath.HotBath;
-import com.crabmod.hotbath.advancements.AdvancementTrigger;
 import com.crabmod.hotbath.util.CustomFluidHandler;
 import com.crabmod.hotbath.util.EffectRemovalHandler;
 import java.util.Objects;
+import net.minecraft.advancements.Advancement;
+import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -21,11 +23,9 @@ public class RoseBathEvents {
   static final String ROSE_BATH_ENTERED_NUMBER = "RoseBathEnteredNumber";
   static final String ROSE_BATH_STAYED_TIME = "RoseBathStayedTime";
   static final String HAS_ENTERED_ROSE_BATH = "HasEnteredRoseBath";
+  static final String ROSE_BATH_ADVANCEMENT_ID = "hotbath:rose_body_fragrance";
   private static final int ROSE_BATH_ENTERED_COUNT_TRIGGER_NUMBER = 100;
   private static final int ROSE_BATH_STAYED_EFFECT_TRIGGER_TIME_SECONDS = 15;
-
-  private static final AdvancementTrigger ROSE_BATH_TRIGGER =
-      new AdvancementTrigger("hotbath", "rose_bath");
 
   @SubscribeEvent
   public static void enterRoseBathEvents(LivingEvent.LivingTickEvent event) {
@@ -35,7 +35,8 @@ public class RoseBathEvents {
         ROSE_BATH_STAYED_EFFECT_TRIGGER_TIME_SECONDS,
         ROSE_BATH_ENTERED_NUMBER,
         ROSE_BATH_STAYED_TIME,
-        HAS_ENTERED_ROSE_BATH);
+        HAS_ENTERED_ROSE_BATH,
+        ROSE_BATH_ADVANCEMENT_ID);
   }
 
   public static void enterFluidEvents(
@@ -44,7 +45,8 @@ public class RoseBathEvents {
       int stayedEffectTriggerTime,
       String enteredNumberInRoseBath,
       String roseBathStayedTime,
-      String hasEnteredRoseBath) {
+      String hasEnteredRoseBath,
+      String roseBathAdvancementId) {
     if (event.getEntity() instanceof ServerPlayer player) {
       CompoundTag playerData = player.getPersistentData();
       boolean isInRoseBath = CustomFluidHandler.isPlayerInRoseBathBlock(player);
@@ -56,12 +58,17 @@ public class RoseBathEvents {
           playerData.putBoolean(hasEnteredRoseBath, true);
 
           if (enteredCount >= enteredCountTriggerNumber) {
-            ROSE_BATH_TRIGGER.trigger(player); // Pass the player instance here
+            AdvancementHolder advancement =
+                Objects.requireNonNull(player.getServer())
+                    .getAdvancements()
+                    .get(Objects.requireNonNull(ResourceLocation.tryParse(roseBathAdvancementId)));
 
-            playerData.putInt(enteredNumberInRoseBath, 0);
+            if (advancement != null) {
+              player.getAdvancements().award(advancement, "code_triggered");
+              playerData.putInt(enteredNumberInRoseBath, 0);
+            }
           }
         }
-
         int roseBathStayTime = playerData.getInt(roseBathStayedTime) + 1;
         playerData.putInt(roseBathStayedTime, roseBathStayTime);
         regenHealth(0.25F, 1, player);
@@ -72,6 +79,7 @@ public class RoseBathEvents {
               new MobEffectInstance(
                   MobEffects.DAMAGE_BOOST, 20 * TICK_NUMBER, 0, false, false, true));
         }
+
       } else {
         playerData.putInt(roseBathStayedTime, 0);
         playerData.putBoolean(hasEnteredRoseBath, false);

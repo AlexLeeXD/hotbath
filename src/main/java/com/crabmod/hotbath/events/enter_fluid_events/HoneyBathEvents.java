@@ -27,9 +27,7 @@ public class HoneyBathEvents {
   }
 
   public static void enterFluidEvents(
-          LivingEvent.LivingTickEvent event,
-          int stayedEffectTriggerTime,
-          String honeyBathStayedTime) {
+      LivingEvent.LivingTickEvent event, int stayedEffectTriggerTime, String honeyBathStayedTime) {
     if (event.getEntity() instanceof ServerPlayer player) {
       CompoundTag playerData = player.getPersistentData();
       boolean isInHoneyBath = CustomFluidHandler.isPlayerInHoneyBathBlock(player);
@@ -42,12 +40,14 @@ public class HoneyBathEvents {
         HungerRegenHandler.regenHunger(1, 4, player);
 
         player.addEffect(
-                new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 10 * TICK_NUMBER, 0, false, false, true));
+            new MobEffectInstance(
+                MobEffects.MOVEMENT_SLOWDOWN, 10 * TICK_NUMBER, 0, false, false, true));
 
         if (playerData.getInt(honeyBathStayedTime) >= stayedEffectTriggerTime * TICK_NUMBER) {
           EffectRemovalHandler.removeNegativeEffectsExceptSlowAndUnluck(player);
           player.addEffect(
-                  new MobEffectInstance(MobEffects.ABSORPTION, 20 * TICK_NUMBER, 1, false, false, true));
+              new MobEffectInstance(
+                  MobEffects.ABSORPTION, 20 * TICK_NUMBER, 1, false, false, true));
         }
       } else {
         playerData.putInt(honeyBathStayedTime, 0);

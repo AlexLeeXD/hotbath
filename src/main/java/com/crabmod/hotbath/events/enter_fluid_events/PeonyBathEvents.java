@@ -16,6 +16,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -35,27 +36,30 @@ public class PeonyBathEvents {
   private static final int LUCK_DURATION = 45 * TICK_NUMBER;
   private static final int LUCK_THRESHOLD = 50;
 
-  private static final ResourceLocation ATTACK_SPEED_MODIFIER_NAME = ResourceLocation.fromNamespaceAndPath(HotBath.MOD_ID, "peony_bath_attack_speed_modifier");
-  private static final ResourceLocation KNOCKBACK_RESISTANCE_MODIFIER_NAME = ResourceLocation.fromNamespaceAndPath(HotBath.MOD_ID, "peony_bath_knockback_resistance_modifier");
+  private static final ResourceLocation ATTACK_SPEED_MODIFIER_NAME =
+      ResourceLocation.fromNamespaceAndPath(HotBath.MOD_ID, "peony_bath_attack_speed_modifier");
+  private static final ResourceLocation KNOCKBACK_RESISTANCE_MODIFIER_NAME =
+      ResourceLocation.fromNamespaceAndPath(
+          HotBath.MOD_ID, "peony_bath_knockback_resistance_modifier");
 
   @SubscribeEvent
   public static void enterPeonyBathEvents(LivingEvent.LivingTickEvent event) {
     enterFluidEvents(
-            event,
-            PEONY_BATH_ENTERED_COUNT_TRIGGER_NUMBER,
-            PEONY_BATH_STAYED_EFFECT_TRIGGER_TIME_SECONDS,
-            PEONY_BATH_ENTERED_NUMBER,
-            PEONY_BATH_STAYED_TIME,
-            HAS_ENTERED_PEONY_BATH);
+        event,
+        PEONY_BATH_ENTERED_COUNT_TRIGGER_NUMBER,
+        PEONY_BATH_STAYED_EFFECT_TRIGGER_TIME_SECONDS,
+        PEONY_BATH_ENTERED_NUMBER,
+        PEONY_BATH_STAYED_TIME,
+        HAS_ENTERED_PEONY_BATH);
   }
 
   public static void enterFluidEvents(
-          LivingEvent.LivingTickEvent event,
-          int enteredCountTriggerNumber,
-          int stayedEffectTriggerTime,
-          String enteredNumberInPeonyBath,
-          String peonyBathStayedTime,
-          String hasEnteredPeonyBath) {
+      LivingEvent.LivingTickEvent event,
+      int enteredCountTriggerNumber,
+      int stayedEffectTriggerTime,
+      String enteredNumberInPeonyBath,
+      String peonyBathStayedTime,
+      String hasEnteredPeonyBath) {
     if (event.getEntity() instanceof ServerPlayer player) {
       CompoundTag playerData = player.getPersistentData();
       boolean isInPeonyBath = CustomFluidHandler.isPlayerInPeonyBathBlock(player);
@@ -73,14 +77,27 @@ public class PeonyBathEvents {
         regenHealth(0.25F, 2, player);
 
         if (playerData.getInt(peonyBathStayedTime) >= 15 * TICK_NUMBER) {
-          applyAttributeModifier(player, Attributes.KNOCKBACK_RESISTANCE, 0.05, KNOCKBACK_RESISTANCE_MODIFIER_NAME, true, AttributeModifier.Operation.ADD_VALUE);
-          applyAttributeModifier(player, Attributes.ATTACK_SPEED, 0.10, ATTACK_SPEED_MODIFIER_NAME, true, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
+          applyAttributeModifier(
+              player,
+              Attributes.KNOCKBACK_RESISTANCE,
+              0.05,
+              KNOCKBACK_RESISTANCE_MODIFIER_NAME,
+              true,
+              AttributeModifier.Operation.ADD_VALUE);
+          applyAttributeModifier(
+              player,
+              Attributes.ATTACK_SPEED,
+              0.10,
+              ATTACK_SPEED_MODIFIER_NAME,
+              true,
+              AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
           EffectRemovalHandler.removeNegativeEffects(player);
           EffectRemovalHandler.removeBadOmen(player);
         }
 
         if (playerData.getInt(enteredNumberInPeonyBath) >= LUCK_THRESHOLD) {
-          player.addEffect(new MobEffectInstance(MobEffects.LUCK, LUCK_DURATION, 0, false, false, true));
+          player.addEffect(
+              new MobEffectInstance(MobEffects.LUCK, LUCK_DURATION, 0, false, false, true));
         }
 
         playerData.putInt(PEONY_BATH_EXITED_TIME, 0);
@@ -93,12 +110,24 @@ public class PeonyBathEvents {
 
         if (playerData.getInt(PEONY_BATH_EXITED_TIME) >= 15 * TICK_NUMBER) {
           // Remove attack speed modifier
-          applyAttributeModifier(player, Attributes.ATTACK_SPEED, 0.10, ATTACK_SPEED_MODIFIER_NAME, false, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
+          applyAttributeModifier(
+              player,
+              Attributes.ATTACK_SPEED,
+              0.10,
+              ATTACK_SPEED_MODIFIER_NAME,
+              false,
+              AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL);
         }
 
         if (playerData.getInt(PEONY_BATH_EXITED_TIME) >= 30 * TICK_NUMBER) {
           // Remove knockback resistance modifier
-          applyAttributeModifier(player, Attributes.KNOCKBACK_RESISTANCE, 0.05, KNOCKBACK_RESISTANCE_MODIFIER_NAME, false, AttributeModifier.Operation.ADD_VALUE);
+          applyAttributeModifier(
+              player,
+              Attributes.KNOCKBACK_RESISTANCE,
+              0.05,
+              KNOCKBACK_RESISTANCE_MODIFIER_NAME,
+              false,
+              AttributeModifier.Operation.ADD_VALUE);
         }
 
         playerData.putInt(peonyBathStayedTime, 0);
@@ -106,14 +135,35 @@ public class PeonyBathEvents {
     }
   }
 
+  // Method to reset invalid attributes
+  private static void resetInvalidAttributes(ServerPlayer player) {
+    // Get the attack speed attribute instance
+    AttributeInstance attackSpeedAttribute = player.getAttribute(Attributes.ATTACK_SPEED);
+
+    // Check if the attack speed is negative, if so, reset it to the default value
+    if (attackSpeedAttribute != null) {
+      double currentAttackSpeed = attackSpeedAttribute.getBaseValue();
+      if (currentAttackSpeed < 0) {
+        attackSpeedAttribute.setBaseValue(4.0);
+      }
+    }
+  }
+
+  // Handle player login event and reset invalid attributes
+  @SubscribeEvent
+  public static void onPlayerLogin(PlayerEvent.PlayerLoggedInEvent event) {
+    if (event.getEntity() instanceof ServerPlayer player) {
+      resetInvalidAttributes(player);
+    }
+  }
+
   private static void applyAttributeModifier(
-          ServerPlayer player,
-          Holder<Attribute> attribute,
-          double value,
-          ResourceLocation modifierName,
-          boolean add,
-          AttributeModifier.Operation operation
-  ) {
+      ServerPlayer player,
+      Holder<Attribute> attribute,
+      double value,
+      ResourceLocation modifierName,
+      boolean add,
+      AttributeModifier.Operation operation) {
     AttributeInstance attributeInstance = player.getAttribute(attribute);
 
     if (attributeInstance != null) {

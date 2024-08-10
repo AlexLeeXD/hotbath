@@ -2,7 +2,7 @@
   "id": "hotbath:chronic_invalid",
   "display": {
     "icon": {
-      "id": "hotbath:herbal_bath_bucket"
+      "item": "hotbath:herbal_bath_bucket"
     },
     "title": {
       "translate": "hotbath.advancement.chronic_invalid"

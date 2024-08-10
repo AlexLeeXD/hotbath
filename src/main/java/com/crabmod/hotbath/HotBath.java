@@ -7,6 +7,7 @@ import com.crabmod.hotbath.registers.FluidsRegister;
 import com.crabmod.hotbath.registers.ItemRegister;
 import com.crabmod.hotbath.registers.ParticleRegister;
 import com.mojang.logging.LogUtils;
+import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;

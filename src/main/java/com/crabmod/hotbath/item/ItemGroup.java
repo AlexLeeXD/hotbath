@@ -9,7 +9,7 @@ public class ItemGroup {
       new net.minecraft.world.item.CreativeModeTab("hot_bath_tab") {
         @Override
         public @NotNull ItemStack makeIcon() {
-          return new ItemStack(ItemRegister.HERBAL_BATH_BUCKET.get());
+          return new ItemStack(ItemRegister.HOT_WATER_BUCKET.get());
         }
       };
 }

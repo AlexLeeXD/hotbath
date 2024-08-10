@@ -2,7 +2,7 @@
   "id": "hotbath:foot_health",
   "display": {
     "icon": {
-      "id": "hotbath:hot_water_bucket"
+      "item": "hotbath:hot_water_bucket"
     },
     "title": {
       "translate": "hotbath.advancement.foot_health"

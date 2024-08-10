@@ -1,7 +1,7 @@
 {
   "display": {
     "icon": {
-      "id": "hotbath:hot_water_bucket"
+      "item": "hotbath:hot_water_bucket"
     },
     "title": {
       "translate": "hotbath.advancement.hot_bath"

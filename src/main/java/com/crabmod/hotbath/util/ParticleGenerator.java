@@ -17,6 +17,7 @@ public class ParticleGenerator {
    */
   public static void renderDefaultSteam(World worldIn, BlockPos pos, java.util.Random rand) {
     if (rand.nextInt(80) == 0) {
+      assert STEAM_PARTICLE.get() != null;
       worldIn.addParticle(
           STEAM_PARTICLE.get(),
           (double) pos.getX() + rand.nextDouble(),

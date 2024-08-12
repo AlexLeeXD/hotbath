@@ -4,8 +4,6 @@
 
 [Mod Download](https://www.curseforge.com/minecraft/mc-mods/hotbath/comments)
 
-<span style="color:red;text-decoration:underline;font-weight:bold;font-size:larger;">**This early access version is under development. We appreciate your feedback, bug reports, and suggestions. Please understand that errors may occur as this is made by an independent modding team. Enjoy the game!**</span>
-
 <span style="color:red;text-decoration:underline;font-weight:bold;font-size:larger;">这是一个正在开发中的抢先体验版
 mod，我们感激所有的意见，Bug 汇报，任何建议。</span>
 

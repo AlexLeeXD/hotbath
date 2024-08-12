@@ -23,7 +23,7 @@ public class SteamParticle extends SpriteTexturedParticle {
       boolean longLivingEmber) {
     super(world, x, y, z);
     this.particleScale = (this.rand.nextFloat() * 0.5F + 0.5F) * 2.0F;
-    this.multipleParticleScaleBy(2.5F + rand.nextFloat() * 1.0F);
+    this.multipleParticleScaleBy(2.5F + rand.nextFloat());
     this.setSize(0.25F, 0.25F);
     this.particleScale *= 0.2F;
     if (longLivingEmber) {
@@ -76,22 +76,6 @@ public class SteamParticle extends SpriteTexturedParticle {
       this.spriteSet = spriteSet;
     }
 
-    public Particle makeParticle(
-        BasicParticleType typeIn,
-        ClientWorld worldIn,
-        double x,
-        double y,
-        double z,
-        double xSpeed,
-        double ySpeed,
-        double zSpeed) {
-      SteamParticle steamParticle =
-          new SteamParticle(worldIn, x, y, z, xSpeed, ySpeed, zSpeed, false);
-      steamParticle.setAlphaF(0.9F); // transparency
-      steamParticle.selectSpriteRandomly(this.spriteSet);
-      return steamParticle;
-    }
-
     @Nullable
     @Override
     public Particle makeParticle(
@@ -103,7 +87,11 @@ public class SteamParticle extends SpriteTexturedParticle {
         double xSpeed,
         double ySpeed,
         double zSpeed) {
-      return null;
+      SteamParticle steamParticle =
+          new SteamParticle((ClientWorld) worldIn, x, y, z, xSpeed, ySpeed, zSpeed, false);
+      steamParticle.setAlphaF(0.9F);
+      steamParticle.selectSpriteRandomly(this.spriteSet);
+      return steamParticle;
     }
   }
 }

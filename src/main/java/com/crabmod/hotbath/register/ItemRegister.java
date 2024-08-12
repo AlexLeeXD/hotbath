@@ -12,7 +12,14 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class ItemRegister {
   public static final DeferredRegister<Item> ITEMS =
       new DeferredRegister<>(ForgeRegistries.ITEMS, HotBath.MOD_ID);
-  // Write by alphabet order please!
+
+  public static final RegistryObject<Item> HOT_WATER_BUCKET =
+      ITEMS.register(
+          "hot_water_bucket",
+          () ->
+              new BucketItem(
+                  FluidsRegister.HOT_WATER_FLUID,
+                  new Item.Properties().group(ItemGroup.HOT_BATH).maxStackSize(1)));
 
   public static final RegistryObject<Item> HERBAL_BATH_BUCKET =
       ITEMS.register(
@@ -28,14 +35,6 @@ public class ItemRegister {
           () ->
               new BucketItem(
                   FluidsRegister.HONEY_BATH_FLUID,
-                  new Item.Properties().group(ItemGroup.HOT_BATH).maxStackSize(1)));
-
-  public static final RegistryObject<Item> HOT_WATER_BUCKET =
-      ITEMS.register(
-          "hot_water_bucket",
-          () ->
-              new BucketItem(
-                  FluidsRegister.HOT_WATER_FLUID,
                   new Item.Properties().group(ItemGroup.HOT_BATH).maxStackSize(1)));
 
   public static final RegistryObject<Item> MILK_BATH_BUCKET =

@@ -1,4 +1,4 @@
-# This is an example mods.toml file. It contains the data relating to the loading mods.
+# This is an Hot Baths.toml file. It contains the data relating to the loading mods.
 # There are several mandatory fields (#mandatory), and many more that are optional (#optional).
 # The overall format is standard TOML format, v0.5.0.
 # Note that there are a couple of TOML lists in this file.
@@ -12,45 +12,64 @@ issueTrackerURL="http://my.issue.tracker/" #optional
 # A list of mods - how many allowed here is determined by the individual mod loader
 [[mods]] #mandatory
 # The modid of the mod
-modId="examplemod" #mandatory
+modId="hotbath" #mandatory
 # The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
-version="${file.jarVersion}" #mandatory
+version="1.13.2-1.0.0" #mandatory
  # A display name for the mod
-displayName="Example Mod" #mandatory
+displayName="Hot Bath" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification <here>
-updateJSONURL="http://myurl.me/" #optional
+updateJSONURL = "https://raw.githubusercontent.com/crabsatellite/hotBath/master/updates.json" #optional
 # A URL for the "homepage" for this mod, displayed in the mod UI
-displayURL="http://example.com/" #optional
+# displayURL="http://example.com/" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
-logoFile="examplemod.png" #optional
+logoFile="hotbath.png" #optional
 # A text field displayed in the mod UI
-credits="Thanks for this example mod goes to Java" #optional
+credits = "Charry, Chocolate, Dorashi, ScaRet" #optional
 # A text field displayed in the mod UI
-authors="Love, Cheese and small house plants" #optional
+authors = "Charry, ScaRet" #optional
 # The description text for the mod (multi line!) (#mandatory)
-description='''
-This is a long form description of the mod. You can write whatever you want here
+description = '''
+Oh joyous day, when one may immerse
+In waters pure and crystal clear.
+To wash away the grime and dirt,
+And leave the body fresh and sheer.
 
-Have some lorem ipsum.
+The Minecraft world doth offer up
+A wealth of streams and rivers fair.
+But lo, a bath of one's design
+Is where true luxury lies there.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mollis lacinia magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed sagittis luctus odio eu tempus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque volutpat ligula eget lacus auctor sagittis. In hac habitasse platea dictumst. Nunc gravida elit vitae sem vehicula efficitur. Donec mattis ipsum et arcu lobortis, eleifend sagittis sem rutrum. Cras pharetra quam eget posuere fermentum. Sed id tincidunt justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+The joy of soaking in warm suds,
+Of feeling water's gentle touch,
+Of letting go the day's fatigue
+And feeling one's whole being flush.
+
+A time to contemplate and muse,
+Or sing a tune or two aloud,
+Or simply float and drift away,
+In peaceful silence, free and proud.
+
+So let us revel in this gift,
+Of Minecraft baths, so fine and rare.
+And bask in all their cleansing bliss,
+With not a worry nor a care.
 '''
-# A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
-[[dependencies.examplemod]] #optional
-    # the modid of the dependency
-    modId="forge" #mandatory
-    # Does this dependency have to exist - if not, ordering below must be specified
-    mandatory=true #mandatory
-    # The version range of the dependency
-    versionRange="[25,)" #mandatory
-    # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
-    ordering="NONE"
-    # Side this dependency is applied on - BOTH, CLIENT or SERVER
-    side="BOTH"
-# Here's another dependency
-[[dependencies.examplemod]]
-    modId="minecraft"
-    mandatory=true
-    versionRange="[1.13.2]"
-    ordering="NONE"
-    side="BOTH"
+## A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
+#[[dependencies.hotbath]] #optional
+#    # the modid of the dependency
+#    modId="forge" #mandatory
+#    # Does this dependency have to exist - if not, ordering below must be specified
+#    mandatory=true #mandatory
+#    # The version range of the dependency
+#    versionRange="[25,)" #mandatory
+#    # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
+#    ordering="NONE"
+#    # Side this dependency is applied on - BOTH, CLIENT or SERVER
+#    side="BOTH"
+## Here's another dependency
+#[[dependencies.hotbath]]
+#    modId="minecraft"
+#    mandatory=true
+#    versionRange="[1.13.2]"
+#    ordering="NONE"
+#    side="BOTH"

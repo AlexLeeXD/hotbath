@@ -18,7 +18,7 @@ public class CustomFluidHandler {
   public static boolean isPlayerInHotWaterBlock(PlayerEntity player) {
     BlockPos playerPos = player.getPosition();
     BlockState stateAtPlayerPos = player.world.getBlockState(playerPos);
-    return stateAtPlayerPos.getBlock() instanceof IHotbathBlock;
+    return stateAtPlayerPos.getBlock() instanceof HotWaterBlock;
   }
 
   public static boolean isPlayerInHoneyBathBlock(PlayerEntity player) {

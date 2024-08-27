@@ -31,23 +31,23 @@ public class HerbalBathEvents {
   @SubscribeEvent
   public static void enterHerbalBathBlockEvent(LivingEvent.LivingTickEvent event) {
     enterFluidEvents(
-            event,
-            HERBAL_BATH_ENTERED_COUNT_TRIGGER_NUMBER,
-            HERBAL_BATH_STAYED_EFFECT_TRIGGER_TIME_SECONDS,
-            HERBAL_BATH_ENTERED_NUMBER,
-            HERBAL_BATH_STAYED_TIME,
-            HAS_ENTERED_HERBAL_BATH,
-            HERBAL_BATH_ADVANCEMENT_ID);
+        event,
+        HERBAL_BATH_ENTERED_COUNT_TRIGGER_NUMBER,
+        HERBAL_BATH_STAYED_EFFECT_TRIGGER_TIME_SECONDS,
+        HERBAL_BATH_ENTERED_NUMBER,
+        HERBAL_BATH_STAYED_TIME,
+        HAS_ENTERED_HERBAL_BATH,
+        HERBAL_BATH_ADVANCEMENT_ID);
   }
 
   public static void enterFluidEvents(
-          LivingEvent.LivingTickEvent event,
-          int enteredCountTriggerNumber,
-          int stayedEffectTriggerTime,
-          String enteredNumberInHerbalBath,
-          String herbalBathStayedTime,
-          String hasEnteredHerbalBath,
-          String herbalBathAdvancementId) {
+      LivingEvent.LivingTickEvent event,
+      int enteredCountTriggerNumber,
+      int stayedEffectTriggerTime,
+      String enteredNumberInHerbalBath,
+      String herbalBathStayedTime,
+      String hasEnteredHerbalBath,
+      String herbalBathAdvancementId) {
 
     if (!(event.getEntity() instanceof ServerPlayer)) {
       if (event.getEntity() instanceof Zombie || event.getEntity() instanceof Skeleton) {
@@ -67,12 +67,12 @@ public class HerbalBathEvents {
     }
 
     boolean isInHerbalBath =
-            CustomFluidHandler.isPlayerInHerbalBathBlock((ServerPlayer) event.getEntity());
+        CustomFluidHandler.isPlayerInHerbalBathBlock((ServerPlayer) event.getEntity());
 
     if (event.getEntity() instanceof ServerPlayer player) {
       CompoundTag playerData = player.getPersistentData();
 
-      if (isInHerbalBath) {
+      if (isInHerbalBath && player.isAlive()) {
         if (!playerData.getBoolean(hasEnteredHerbalBath)) {
           int enteredCount = playerData.getInt(enteredNumberInHerbalBath) + 1;
           playerData.putInt(enteredNumberInHerbalBath, enteredCount);
@@ -80,10 +80,10 @@ public class HerbalBathEvents {
 
           if (enteredCount >= enteredCountTriggerNumber) {
             Advancement advancement =
-                    Objects.requireNonNull(player.getServer())
-                            .getAdvancements()
-                            .getAdvancement(
-                                    Objects.requireNonNull(ResourceLocation.tryParse(herbalBathAdvancementId)));
+                Objects.requireNonNull(player.getServer())
+                    .getAdvancements()
+                    .getAdvancement(
+                        Objects.requireNonNull(ResourceLocation.tryParse(herbalBathAdvancementId)));
 
             if (advancement != null) {
               player.getAdvancements().award(advancement, "code_triggered");

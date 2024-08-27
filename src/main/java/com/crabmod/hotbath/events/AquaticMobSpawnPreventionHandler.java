@@ -2,7 +2,7 @@ package com.crabmod.hotbath.events;
 
 import static com.crabmod.hotbath.HotBath.MOD_ID;
 
-import com.crabmod.hotbath.fluid_blocks.IHotbathBlock;
+import com.crabmod.hotbath.fluid_blocks.AbstractHotbathBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraftforge.event.entity.living.MobSpawnEvent;
@@ -19,7 +19,7 @@ public class AquaticMobSpawnPreventionHandler {
     BlockPos pos = event.getEntity().blockPosition();
 
     // Check if the spawning location is a HotBath block
-    boolean isHotBathBlock = world.getBlockState(pos).getBlock() instanceof IHotbathBlock;
+    boolean isHotBathBlock = world.getBlockState(pos).getBlock() instanceof AbstractHotbathBlock;
 
     // If the spawning location is a HotBath block, cancel the spawn event
     if (isHotBathBlock) {

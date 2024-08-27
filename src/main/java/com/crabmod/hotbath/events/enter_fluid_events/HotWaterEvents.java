@@ -27,28 +27,28 @@ public class HotWaterEvents {
   @SubscribeEvent
   public static void enterHotWaterEvents(LivingEvent.LivingTickEvent event) {
     enterFluidEvents(
-            event,
-            HOT_WATER_ENTERED_COUNT_TRIGGER_NUMBER,
-            HOT_WATER_STAYED_EFFECT_TRIGGER_TIME_SECONDS,
-            HOT_WATER_ENTERED_NUMBER,
-            HOT_WATER_STAYED_TIME,
-            HAS_ENTERED_HOT_WATER,
-            HOT_WATER_ADVANCEMENT_ID);
+        event,
+        HOT_WATER_ENTERED_COUNT_TRIGGER_NUMBER,
+        HOT_WATER_STAYED_EFFECT_TRIGGER_TIME_SECONDS,
+        HOT_WATER_ENTERED_NUMBER,
+        HOT_WATER_STAYED_TIME,
+        HAS_ENTERED_HOT_WATER,
+        HOT_WATER_ADVANCEMENT_ID);
   }
 
   public static void enterFluidEvents(
-          LivingEvent.LivingTickEvent event,
-          int enteredCountTriggerNumber,
-          int stayedEffectTriggerTime,
-          String hotWaterEnteredNumber,
-          String hotWaterStayedTime,
-          String hasEnteredHotWater,
-          String hotWaterAdvancementId) {
+      LivingEvent.LivingTickEvent event,
+      int enteredCountTriggerNumber,
+      int stayedEffectTriggerTime,
+      String hotWaterEnteredNumber,
+      String hotWaterStayedTime,
+      String hasEnteredHotWater,
+      String hotWaterAdvancementId) {
     if (event.getEntity() instanceof ServerPlayer player) {
       CompoundTag playerData = player.getPersistentData();
       boolean isInHotWater = CustomFluidHandler.isPlayerInHotWaterBlock(player);
 
-      if (isInHotWater) {
+      if (isInHotWater && player.isAlive()) {
         if (!playerData.getBoolean(hasEnteredHotWater)) {
           int enteredCount = playerData.getInt(hotWaterEnteredNumber) + 1;
           playerData.putInt(hotWaterEnteredNumber, enteredCount);
@@ -56,10 +56,10 @@ public class HotWaterEvents {
 
           if (enteredCount >= enteredCountTriggerNumber) {
             Advancement advancement =
-                    Objects.requireNonNull(player.getServer())
-                            .getAdvancements()
-                            .getAdvancement(
-                                    Objects.requireNonNull(ResourceLocation.tryParse(hotWaterAdvancementId)));
+                Objects.requireNonNull(player.getServer())
+                    .getAdvancements()
+                    .getAdvancement(
+                        Objects.requireNonNull(ResourceLocation.tryParse(hotWaterAdvancementId)));
 
             if (advancement != null) {
               player.getAdvancements().award(advancement, "code_triggered");
@@ -73,8 +73,8 @@ public class HotWaterEvents {
 
         if (playerData.getInt(hotWaterStayedTime) >= stayedEffectTriggerTime * TICK_NUMBER) {
           player.addEffect(
-                  new MobEffectInstance(
-                          MobEffects.MOVEMENT_SPEED, TICK_NUMBER * 20, 0, false, false, true));
+              new MobEffectInstance(
+                  MobEffects.MOVEMENT_SPEED, TICK_NUMBER * 20, 0, false, false, true));
         }
       } else {
         playerData.putInt(hotWaterStayedTime, 0);

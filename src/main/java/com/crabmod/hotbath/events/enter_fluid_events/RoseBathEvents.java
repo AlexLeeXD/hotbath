@@ -29,28 +29,28 @@ public class RoseBathEvents {
   @SubscribeEvent
   public static void enterRoseBathEvents(LivingEvent.LivingTickEvent event) {
     enterFluidEvents(
-            event,
-            ROSE_BATH_ENTERED_COUNT_TRIGGER_NUMBER,
-            ROSE_BATH_STAYED_EFFECT_TRIGGER_TIME_SECONDS,
-            ROSE_BATH_ENTERED_NUMBER,
-            ROSE_BATH_STAYED_TIME,
-            HAS_ENTERED_ROSE_BATH,
-            ROSE_BATH_ADVANCEMENT_ID);
+        event,
+        ROSE_BATH_ENTERED_COUNT_TRIGGER_NUMBER,
+        ROSE_BATH_STAYED_EFFECT_TRIGGER_TIME_SECONDS,
+        ROSE_BATH_ENTERED_NUMBER,
+        ROSE_BATH_STAYED_TIME,
+        HAS_ENTERED_ROSE_BATH,
+        ROSE_BATH_ADVANCEMENT_ID);
   }
 
   public static void enterFluidEvents(
-          LivingEvent.LivingTickEvent event,
-          int enteredCountTriggerNumber,
-          int stayedEffectTriggerTime,
-          String enteredNumberInRoseBath,
-          String roseBathStayedTime,
-          String hasEnteredRoseBath,
-          String roseBathAdvancementId) {
+      LivingEvent.LivingTickEvent event,
+      int enteredCountTriggerNumber,
+      int stayedEffectTriggerTime,
+      String enteredNumberInRoseBath,
+      String roseBathStayedTime,
+      String hasEnteredRoseBath,
+      String roseBathAdvancementId) {
     if (event.getEntity() instanceof ServerPlayer player) {
       CompoundTag playerData = player.getPersistentData();
       boolean isInRoseBath = CustomFluidHandler.isPlayerInRoseBathBlock(player);
 
-      if (isInRoseBath) {
+      if (isInRoseBath && player.isAlive()) {
         if (!playerData.getBoolean(hasEnteredRoseBath)) {
           int enteredCount = playerData.getInt(enteredNumberInRoseBath) + 1;
           playerData.putInt(enteredNumberInRoseBath, enteredCount);
@@ -58,10 +58,10 @@ public class RoseBathEvents {
 
           if (enteredCount >= enteredCountTriggerNumber) {
             Advancement advancement =
-                    Objects.requireNonNull(player.getServer())
-                            .getAdvancements()
-                            .getAdvancement(
-                                    Objects.requireNonNull(ResourceLocation.tryParse(roseBathAdvancementId)));
+                Objects.requireNonNull(player.getServer())
+                    .getAdvancements()
+                    .getAdvancement(
+                        Objects.requireNonNull(ResourceLocation.tryParse(roseBathAdvancementId)));
 
             if (advancement != null) {
               player.getAdvancements().award(advancement, "code_triggered");
@@ -76,8 +76,8 @@ public class RoseBathEvents {
           EffectRemovalHandler.removeNegativeEffects(player);
           EffectRemovalHandler.removeBadOmen(player);
           player.addEffect(
-                  new MobEffectInstance(
-                          MobEffects.DAMAGE_BOOST, 20 * TICK_NUMBER, 0, false, false, true));
+              new MobEffectInstance(
+                  MobEffects.DAMAGE_BOOST, 20 * TICK_NUMBER, 0, false, false, true));
         }
 
       } else {

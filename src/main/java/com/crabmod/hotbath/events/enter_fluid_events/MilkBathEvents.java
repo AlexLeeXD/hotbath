@@ -29,29 +29,36 @@ public class MilkBathEvents {
   @SubscribeEvent
   public static void enterMilkBathEvents(LivingEvent.LivingTickEvent event) {
     enterFluidEvents(
-            event,
-            MILK_BATH_ENTERED_COUNT_TRIGGER_NUMBER,
-            MILK_BATH_STAYED_EFFECT_TRIGGER_TIME_SECONDS,
-            MILK_BATH_ENTERED_NUMBER,
-            MILK_BATH_STAYED_TIME,
-            HAS_ENTERED_MILK_BATH,
-            MILK_BATH_ADVANCEMENT_ID);
+        event,
+        MILK_BATH_ENTERED_COUNT_TRIGGER_NUMBER,
+        MILK_BATH_STAYED_EFFECT_TRIGGER_TIME_SECONDS,
+        MILK_BATH_ENTERED_NUMBER,
+        MILK_BATH_STAYED_TIME,
+        HAS_ENTERED_MILK_BATH,
+        MILK_BATH_ADVANCEMENT_ID);
   }
 
   public static void enterFluidEvents(
-          LivingEvent.LivingTickEvent event,
-          int enteredCountTriggerNumber,
-          int stayedEffectTriggerTime,
-          String enteredNumberInMilkBath,
-          String milkBathStayedTime,
-          String hasEnteredMilkBath,
-          String milkBathAdvancementId) {
+      LivingEvent.LivingTickEvent event,
+      int enteredCountTriggerNumber,
+      int stayedEffectTriggerTime,
+      String enteredNumberInMilkBath,
+      String milkBathStayedTime,
+      String hasEnteredMilkBath,
+      String milkBathAdvancementId) {
     if (event.getEntity() instanceof ServerPlayer player) {
       CompoundTag playerData = player.getPersistentData();
       boolean isInMilkBath = CustomFluidHandler.isPlayerInMilkBathBlock(player);
 
-      if (isInMilkBath) {
-        handleAdvancement(enteredCountTriggerNumber, enteredNumberInMilkBath, milkBathStayedTime, hasEnteredMilkBath, milkBathAdvancementId, player, playerData);
+      if (isInMilkBath && player.isAlive()) {
+        handleAdvancement(
+            enteredCountTriggerNumber,
+            enteredNumberInMilkBath,
+            milkBathStayedTime,
+            hasEnteredMilkBath,
+            milkBathAdvancementId,
+            player,
+            playerData);
         HungerRegenHandler.regenHunger(1, 15, player);
         regenHealth(0.25F, 2, player);
         if (playerData.getInt(milkBathStayedTime) >= stayedEffectTriggerTime * TICK_NUMBER) {
@@ -64,7 +71,14 @@ public class MilkBathEvents {
     }
   }
 
-  static void handleAdvancement(int enteredCountTriggerNumber, String enteredNumberInMilkBath, String milkBathStayedTime, String hasEnteredMilkBath, String milkBathAdvancementId, ServerPlayer player, CompoundTag playerData) {
+  static void handleAdvancement(
+      int enteredCountTriggerNumber,
+      String enteredNumberInMilkBath,
+      String milkBathStayedTime,
+      String hasEnteredMilkBath,
+      String milkBathAdvancementId,
+      ServerPlayer player,
+      CompoundTag playerData) {
     if (!playerData.getBoolean(hasEnteredMilkBath)) {
       int enteredCount = playerData.getInt(enteredNumberInMilkBath) + 1;
       playerData.putInt(enteredNumberInMilkBath, enteredCount);
@@ -72,10 +86,10 @@ public class MilkBathEvents {
 
       if (enteredCount >= enteredCountTriggerNumber) {
         Advancement advancement =
-                Objects.requireNonNull(player.getServer())
-                        .getAdvancements()
-                        .getAdvancement(
-                                Objects.requireNonNull(ResourceLocation.tryParse(milkBathAdvancementId)));
+            Objects.requireNonNull(player.getServer())
+                .getAdvancements()
+                .getAdvancement(
+                    Objects.requireNonNull(ResourceLocation.tryParse(milkBathAdvancementId)));
 
         if (advancement != null) {
           player.getAdvancements().award(advancement, "code_triggered");

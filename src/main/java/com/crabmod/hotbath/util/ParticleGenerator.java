@@ -5,8 +5,10 @@ import static com.crabmod.hotbath.registers.ParticleRegister.STEAM_PARTICLE;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.RandomSource;
-import org.apache.logging.log4j.Logger;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
+@OnlyIn(Dist.CLIENT)
 /** Fluids Particles */
 public class ParticleGenerator {
 

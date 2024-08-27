@@ -17,6 +17,7 @@ import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -44,7 +45,7 @@ public class HotBath {
     FluidsRegister.register(modEventBus);
     BlocksRegister.register(modEventBus);
     ItemRegister.register(modEventBus);
-    ParticleRegister.register(modEventBus);
+    DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> ParticleRegister.register(modEventBus));
     HotbathFluidType.register(modEventBus);
     // Register ourselves for server and other game events we are interested in
     MinecraftForge.EVENT_BUS.register(this);

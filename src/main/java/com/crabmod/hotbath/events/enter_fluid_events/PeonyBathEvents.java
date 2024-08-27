@@ -40,26 +40,26 @@ public class PeonyBathEvents {
   @SubscribeEvent
   public static void enterPeonyBathEvents(LivingEvent.LivingTickEvent event) {
     enterFluidEvents(
-            event,
-            PEONY_BATH_ENTERED_COUNT_TRIGGER_NUMBER,
-            PEONY_BATH_STAYED_EFFECT_TRIGGER_TIME_SECONDS,
-            PEONY_BATH_ENTERED_NUMBER,
-            PEONY_BATH_STAYED_TIME,
-            HAS_ENTERED_PEONY_BATH);
+        event,
+        PEONY_BATH_ENTERED_COUNT_TRIGGER_NUMBER,
+        PEONY_BATH_STAYED_EFFECT_TRIGGER_TIME_SECONDS,
+        PEONY_BATH_ENTERED_NUMBER,
+        PEONY_BATH_STAYED_TIME,
+        HAS_ENTERED_PEONY_BATH);
   }
 
   public static void enterFluidEvents(
-          LivingEvent.LivingTickEvent event,
-          int enteredCountTriggerNumber,
-          int stayedEffectTriggerTime,
-          String enteredNumberInPeonyBath,
-          String peonyBathStayedTime,
-          String hasEnteredPeonyBath) {
+      LivingEvent.LivingTickEvent event,
+      int enteredCountTriggerNumber,
+      int stayedEffectTriggerTime,
+      String enteredNumberInPeonyBath,
+      String peonyBathStayedTime,
+      String hasEnteredPeonyBath) {
     if (event.getEntity() instanceof ServerPlayer player) {
       CompoundTag playerData = player.getPersistentData();
       boolean isInPeonyBath = CustomFluidHandler.isPlayerInPeonyBathBlock(player);
 
-      if (isInPeonyBath) {
+      if (isInPeonyBath && player.isAlive()) {
         if (!playerData.getBoolean(hasEnteredPeonyBath)) {
           int enteredCount = playerData.getInt(enteredNumberInPeonyBath) + 1;
           playerData.putInt(enteredNumberInPeonyBath, enteredCount);
@@ -73,24 +73,24 @@ public class PeonyBathEvents {
 
         if (playerData.getInt(peonyBathStayedTime) >= 15 * TICK_NUMBER) {
           applyAttributeModifier(
-                  player,
-                  Attributes.KNOCKBACK_RESISTANCE,
-                  KNOCKBACK_RESISTANCE_UUID,
-                  0.05,
-                  AttributeModifier.Operation.ADDITION);
+              player,
+              Attributes.KNOCKBACK_RESISTANCE,
+              KNOCKBACK_RESISTANCE_UUID,
+              0.05,
+              AttributeModifier.Operation.ADDITION);
           applyAttributeModifier(
-                  player,
-                  Attributes.ATTACK_SPEED,
-                  ATTACK_SPEED_MODIFIER_UUID,
-                  0.10,
-                  AttributeModifier.Operation.MULTIPLY_TOTAL);
+              player,
+              Attributes.ATTACK_SPEED,
+              ATTACK_SPEED_MODIFIER_UUID,
+              0.10,
+              AttributeModifier.Operation.MULTIPLY_TOTAL);
           EffectRemovalHandler.removeNegativeEffects(player);
           EffectRemovalHandler.removeBadOmen(player);
         }
 
         if (playerData.getInt(enteredNumberInPeonyBath) >= LUCK_THRESHOLD) {
           player.addEffect(
-                  new MobEffectInstance(MobEffects.LUCK, LUCK_DURATION, 45, false, false, true));
+              new MobEffectInstance(MobEffects.LUCK, LUCK_DURATION, 45, false, false, true));
         }
 
         playerData.putInt(PEONY_BATH_EXITED_TIME, 0);
@@ -108,7 +108,7 @@ public class PeonyBathEvents {
 
         if (playerData.getInt(PEONY_BATH_EXITED_TIME) >= 30 * TICK_NUMBER) {
           removeAttributeModifier(
-                  player, Attributes.KNOCKBACK_RESISTANCE, KNOCKBACK_RESISTANCE_UUID);
+              player, Attributes.KNOCKBACK_RESISTANCE, KNOCKBACK_RESISTANCE_UUID);
         }
 
         playerData.putInt(peonyBathStayedTime, 0);
@@ -117,16 +117,16 @@ public class PeonyBathEvents {
   }
 
   private static void applyAttributeModifier(
-          ServerPlayer player,
-          Attribute attribute,
-          UUID uuid,
-          double value,
-          AttributeModifier.Operation operation) {
+      ServerPlayer player,
+      Attribute attribute,
+      UUID uuid,
+      double value,
+      AttributeModifier.Operation operation) {
     AttributeInstance attributeInstance = player.getAttribute(attribute);
 
     if (attributeInstance != null) {
       AttributeModifier modifier =
-              new AttributeModifier(uuid, attribute.getDescriptionId(), value, operation);
+          new AttributeModifier(uuid, attribute.getDescriptionId(), value, operation);
 
       if (attributeInstance.getModifier(modifier.getId()) != null) {
         attributeInstance.removeModifier(modifier.getId());

@@ -5,6 +5,8 @@ import com.crabmod.hotbath.advancements.AdvancementTrigger;
 import com.crabmod.hotbath.particles.SteamParticle;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.client.Minecraft;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -13,6 +15,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 @Mod.EventBusSubscriber(modid = HotBath.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ExtraEventsRegister {
   @SubscribeEvent
+  @OnlyIn(Dist.CLIENT)
   public static void registerParticlesFactories(final RegisterParticleProvidersEvent event) {
     Minecraft.getInstance()
         .particleEngine

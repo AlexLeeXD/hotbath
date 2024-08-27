@@ -73,7 +73,7 @@ public class HerbalBathEvents {
     if (event.getEntity() instanceof ServerPlayer player) {
       CompoundTag playerData = player.getPersistentData();
 
-      if (isInHerbalBath) {
+      if (isInHerbalBath && player.isAlive()) {
         if (!playerData.getBoolean(hasEnteredHerbalBath)) {
           int enteredCount = playerData.getInt(enteredNumberInHerbalBath) + 1;
           playerData.putInt(enteredNumberInHerbalBath, enteredCount);

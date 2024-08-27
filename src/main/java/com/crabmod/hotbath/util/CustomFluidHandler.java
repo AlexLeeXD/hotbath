@@ -12,7 +12,7 @@ public class CustomFluidHandler {
   public static boolean isPlayerInHotBathBlock(Player player) {
     BlockPos playerPos = player.blockPosition();
     BlockState stateAtPlayerPos = player.level().getBlockState(playerPos);
-    return stateAtPlayerPos.getBlock() instanceof IHotbathBlock;
+    return stateAtPlayerPos.getBlock() instanceof AbstractHotbathBlock;
   }
 
   public static boolean isPlayerInHerbalBathBlock(Player player) {

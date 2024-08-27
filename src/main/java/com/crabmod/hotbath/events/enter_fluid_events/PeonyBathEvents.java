@@ -64,7 +64,7 @@ public class PeonyBathEvents {
       CompoundTag playerData = player.getPersistentData();
       boolean isInPeonyBath = CustomFluidHandler.isPlayerInPeonyBathBlock(player);
 
-      if (isInPeonyBath) {
+      if (isInPeonyBath && player.isAlive()) {
         if (!playerData.getBoolean(hasEnteredPeonyBath)) {
           int enteredCount = playerData.getInt(enteredNumberInPeonyBath) + 1;
           playerData.putInt(enteredNumberInPeonyBath, enteredCount);

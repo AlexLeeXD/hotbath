@@ -32,7 +32,7 @@ public class HoneyBathEvents {
       CompoundTag playerData = player.getPersistentData();
       boolean isInHoneyBath = CustomFluidHandler.isPlayerInHoneyBathBlock(player);
 
-      if (isInHoneyBath) {
+      if (isInHoneyBath && player.isAlive()) {
         int honeyBathTime = playerData.getInt(honeyBathStayedTime) + 1;
         playerData.putInt(honeyBathStayedTime, honeyBathTime);
 

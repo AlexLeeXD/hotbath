@@ -7,8 +7,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.player.Player;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -27,14 +25,12 @@ public class HoneyBathEvents {
   }
 
   public static void enterFluidEvents(
-          LivingEvent.LivingTickEvent event,
-          int stayedEffectTriggerTime,
-          String honeyBathStayedTime) {
+      LivingEvent.LivingTickEvent event, int stayedEffectTriggerTime, String honeyBathStayedTime) {
     if (event.getEntity() instanceof ServerPlayer player) {
       CompoundTag playerData = player.getPersistentData();
       boolean isInHoneyBath = CustomFluidHandler.isPlayerInHoneyBathBlock(player);
 
-      if (isInHoneyBath) {
+      if (isInHoneyBath && player.isAlive()) {
         int honeyBathTime = playerData.getInt(honeyBathStayedTime) + 1;
         playerData.putInt(honeyBathStayedTime, honeyBathTime);
 
@@ -42,12 +38,14 @@ public class HoneyBathEvents {
         HungerRegenHandler.regenHunger(1, 4, player);
 
         player.addEffect(
-                new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 10 * TICK_NUMBER, 0, false, false, true));
+            new MobEffectInstance(
+                MobEffects.MOVEMENT_SLOWDOWN, 10 * TICK_NUMBER, 0, false, false, true));
 
         if (playerData.getInt(honeyBathStayedTime) >= stayedEffectTriggerTime * TICK_NUMBER) {
           EffectRemovalHandler.removeNegativeEffectsExceptSlowAndUnluck(player);
           player.addEffect(
-                  new MobEffectInstance(MobEffects.ABSORPTION, 20 * TICK_NUMBER, 1, false, false, true));
+              new MobEffectInstance(
+                  MobEffects.ABSORPTION, 20 * TICK_NUMBER, 1, false, false, true));
         }
       } else {
         playerData.putInt(honeyBathStayedTime, 0);

@@ -16,23 +16,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 import org.jetbrains.annotations.NotNull;
 
 // ** Honey Bath Block */
-public class HoneyBathBlock extends LiquidBlock implements IHotbathBlock {
+public class HoneyBathBlock extends AbstractHotbathBlock {
   public HoneyBathBlock(Supplier<? extends FlowingFluid> supplier, Properties properties) {
     super(supplier, properties);
-  }
-
-  @Override
-  public FluidState getHotBathFluidState() {
-    return FluidsRegister.HONEY_BATH_FLUID.get().defaultFluidState();
-  }
-
-  @Override
-  @OnlyIn(Dist.CLIENT)
-  public void animateTick(
-          @NotNull BlockState stateIn,
-          @NotNull Level worldIn,
-          @NotNull BlockPos pos,
-          @NotNull RandomSource rand) {
-    ParticleGenerator.renderDefaultSteam((ClientLevel) worldIn, pos, rand);
   }
 }

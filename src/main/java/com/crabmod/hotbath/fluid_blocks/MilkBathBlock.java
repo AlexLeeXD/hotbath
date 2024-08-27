@@ -17,23 +17,8 @@ import org.jetbrains.annotations.NotNull;
 import java.util.function.Supplier;
 
 /** Milk Bath Block */
-public class MilkBathBlock extends LiquidBlock implements IHotbathBlock {
+public class MilkBathBlock extends AbstractHotbathBlock {
   public MilkBathBlock(Supplier<? extends FlowingFluid> supplier, Properties properties) {
     super(supplier, properties);
-  }
-
-  @Override
-  public FluidState getHotBathFluidState() {
-    return FluidsRegister.MILK_BATH_FLUID.get().defaultFluidState();
-  }
-
-  @Override
-  @OnlyIn(Dist.CLIENT)
-  public void animateTick(
-          @NotNull BlockState stateIn,
-          @NotNull Level worldIn,
-          @NotNull BlockPos pos,
-          @NotNull RandomSource rand) {
-    ParticleGenerator.renderDefaultSteam((ClientLevel) worldIn, pos, rand);
   }
 }

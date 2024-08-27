@@ -15,6 +15,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -36,7 +37,7 @@ public class HotBath {
     FluidsRegister.register(modEventBus);
     BlocksRegister.register(modEventBus);
     ItemRegister.register(modEventBus);
-    ParticleRegister.register(modEventBus);
+    DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> ParticleRegister.register(modEventBus));
     HotbathFluidType.register(modEventBus);
     // Register the commonSetup method for modloading
     modEventBus.addListener(this::commonSetup);

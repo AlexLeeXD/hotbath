@@ -50,7 +50,7 @@ public class RoseBathEvents {
       CompoundTag playerData = player.getPersistentData();
       boolean isInRoseBath = CustomFluidHandler.isPlayerInRoseBathBlock(player);
 
-      if (isInRoseBath) {
+      if (isInRoseBath && player.isAlive()) {
         if (!playerData.getBoolean(hasEnteredRoseBath)) {
           int enteredCount = playerData.getInt(enteredNumberInRoseBath) + 1;
           playerData.putInt(enteredNumberInRoseBath, enteredCount);

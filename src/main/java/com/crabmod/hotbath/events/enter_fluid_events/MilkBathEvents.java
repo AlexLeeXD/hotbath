@@ -51,7 +51,7 @@ public class MilkBathEvents {
       CompoundTag playerData = player.getPersistentData();
       boolean isInMilkBath = CustomFluidHandler.isPlayerInMilkBathBlock(player);
 
-      if (isInMilkBath) {
+      if (isInMilkBath && player.isAlive()) {
         handleAdvancement(
             enteredCountTriggerNumber,
             enteredNumberInMilkBath,
@@ -60,8 +60,10 @@ public class MilkBathEvents {
             milkBathAdvancementId,
             player,
             playerData);
+
         HungerRegenHandler.regenHunger(1, 15, player);
         regenHealth(0.25F, 2, player);
+
         if (playerData.getInt(milkBathStayedTime) >= stayedEffectTriggerTime * TICK_NUMBER) {
           EffectRemovalHandler.removeNegativeEffectsExceptUnluck(player);
         }
@@ -99,7 +101,7 @@ public class MilkBathEvents {
       }
     }
 
-    int hotBathTime = playerData.getInt(milkBathStayedTime) + 1;
-    playerData.putInt(milkBathStayedTime, hotBathTime);
+    int milkBathTime = playerData.getInt(milkBathStayedTime) + 1;
+    playerData.putInt(milkBathStayedTime, milkBathTime);
   }
 }

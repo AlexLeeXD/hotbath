@@ -3,11 +3,14 @@ package com.crabmod.hotbath.registers;
 import com.crabmod.hotbath.HotBath;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+@OnlyIn(Dist.CLIENT)
 public class ParticleRegister {
   public static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES =
       DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, HotBath.MOD_ID);

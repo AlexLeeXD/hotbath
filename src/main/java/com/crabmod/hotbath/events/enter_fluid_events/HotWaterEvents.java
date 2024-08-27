@@ -48,7 +48,7 @@ public class HotWaterEvents {
       CompoundTag playerData = player.getPersistentData();
       boolean isInHotWater = CustomFluidHandler.isPlayerInHotWaterBlock(player);
 
-      if (isInHotWater) {
+      if (isInHotWater && player.isAlive()) {
         if (!playerData.getBoolean(hasEnteredHotWater)) {
           int enteredCount = playerData.getInt(hotWaterEnteredNumber) + 1;
           playerData.putInt(hotWaterEnteredNumber, enteredCount);

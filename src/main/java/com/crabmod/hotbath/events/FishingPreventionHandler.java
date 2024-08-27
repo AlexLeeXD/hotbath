@@ -1,7 +1,7 @@
 package com.crabmod.hotbath.events;
 
 import com.crabmod.hotbath.HotBath;
-import com.crabmod.hotbath.fluid_blocks.IHotbathBlock;
+import com.crabmod.hotbath.fluid_blocks.AbstractHotbathBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.FishingRodItem;
 import net.minecraft.world.item.ItemStack;
@@ -42,7 +42,7 @@ public class FishingPreventionHandler {
     if (lastFishingRodPosition != null) {
       Level world = event.getEntity().getCommandSenderWorld();
       boolean isHotBathBlock =
-          world.getBlockState(lastFishingRodPosition).getBlock() instanceof IHotbathBlock;
+          world.getBlockState(lastFishingRodPosition).getBlock() instanceof AbstractHotbathBlock;
 
       // If the fishing rod is in a HotBath block, cancel the fishing event
       if (isHotBathBlock) {

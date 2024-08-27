@@ -16,5 +16,5 @@ public final class FluidsColor {
   public static final int PEONY_BATH_COLOR = setFluidColor(253, 104, 159);
   public static final int ROSE_BATH_COLOR = setFluidColor(254, 119, 142);
 
-  public static final Vector3f DEFAULT_FOG_COLOR = new Vector3f(1.0f, 1.0f, 1.0f);
+  public static final Vector3f DEFAULT_FOG_COLOR = new Vector3f(0.0f, 0.0f, 0.0f);
 }

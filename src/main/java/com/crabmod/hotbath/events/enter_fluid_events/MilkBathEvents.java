@@ -51,7 +51,7 @@ public class MilkBathEvents {
       CompoundTag playerData = player.getPersistentData();
       boolean isInMilkBath = CustomFluidHandler.isPlayerInMilkBathBlock(player);
 
-      if (isInMilkBath) {
+      if (isInMilkBath && player.isAlive()) {
         handleAdvancement(
             enteredCountTriggerNumber,
             enteredNumberInMilkBath,

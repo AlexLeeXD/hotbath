@@ -61,7 +61,7 @@ public class PeonyBathEvents {
       CompoundTag playerData = player.getPersistentData();
       boolean isInPeonyBath = CustomFluidHandler.isPlayerInPeonyBathBlock(player);
 
-      if (isInPeonyBath) {
+      if (isInPeonyBath && player.isAlive()) {
         if (!playerData.getBoolean(hasEnteredPeonyBath)) {
           int enteredCount = playerData.getInt(enteredNumberInPeonyBath) + 1;
           playerData.putInt(enteredNumberInPeonyBath, enteredCount);
@@ -120,7 +120,7 @@ public class PeonyBathEvents {
 
   private static void applyAttributeModifier(
       ServerPlayer player,
-        Holder<Attribute> attribute,
+      Holder<Attribute> attribute,
       UUID uuid,
       double value,
       AttributeModifier.Operation operation) {
@@ -138,7 +138,8 @@ public class PeonyBathEvents {
     }
   }
 
-  private static void removeAttributeModifier(ServerPlayer player, Holder<Attribute> attribute, UUID uuid) {
+  private static void removeAttributeModifier(
+      ServerPlayer player, Holder<Attribute> attribute, UUID uuid) {
     AttributeInstance attributeInstance = player.getAttribute(attribute);
 
     if (attributeInstance != null && attributeInstance.getModifier(uuid) != null) {

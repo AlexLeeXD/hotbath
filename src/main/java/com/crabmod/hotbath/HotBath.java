@@ -45,7 +45,7 @@ public class HotBath {
     FluidsRegister.register(modEventBus);
     BlocksRegister.register(modEventBus);
     ItemRegister.register(modEventBus);
-    DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> ParticleRegister.register(modEventBus));
+    ParticleRegister.register(modEventBus);
     HotbathFluidType.register(modEventBus);
     // Register ourselves for server and other game events we are interested in
     MinecraftForge.EVENT_BUS.register(this);

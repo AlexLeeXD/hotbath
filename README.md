@@ -13,8 +13,8 @@ currently in development. We appreciate any feedback, bug reports, and suggestio
 ### Known Issues / 已知问题
 
 - **Optifine Incompatibility / 不支持Optifine**:  
-  Optifine may cause rendering issues with fluid colors in this mod. For example, fluids like milk may not display their correct colors and appear watery. This is a known incompatibility with Optifine, which affects the rendering of many mods. We recommend using alternative shader mods such as **Sodium** or **Oculus** for better compatibility.  
-  Optifine 可能会导致本模组中的流体颜色渲染出现问题，例如牛奶等流体可能不会显示正确的颜色，呈现出水样效果。这是 Optifine 与许多模组不兼容的已知问题。我们建议使用 **Sodium** 或 **Oculus** 等替代光影模组以获得更好的兼容性。
+  Optifine may cause rendering issues with fluid colors in this mod. For example, fluids like milk bath may not display their correct colors and appear watery. This is a known incompatibility with Optifine, which affects the rendering of many mods. We recommend using alternative shader mods such as **Sodium** or **Oculus** for better compatibility.  
+  Optifine 可能会导致本模组中的流体颜色渲染出现问题，例如牛奶浴等流体可能不会显示正确的颜色，呈现出水样效果。这是 Optifine 与许多模组不兼容的已知问题。我们建议使用 **Sodium** 或 **Oculus** 等替代光影模组以获得更好的兼容性。
 
 # Hot-bath Mod
 

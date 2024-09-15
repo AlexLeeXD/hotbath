@@ -22,7 +22,7 @@ public class ItemGroup {
           () ->
               CreativeModeTab.builder()
                   .icon(() -> new ItemStack(ItemRegister.HOT_WATER_BUCKET.get()))
-                  .title(Component.translatable("hotbath_tab"))
+                  .title(Component.translatable("itemGroup.hotbath_tab"))
                   .displayItems(
                       (pParameters, pOutput) -> {
                         pOutput.accept(ItemRegister.HOT_WATER_BUCKET.get());

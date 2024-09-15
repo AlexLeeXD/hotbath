@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PPP",
+    "S#S",
+    "   "
+  ],
+  "key": {
+    "#": {
+      "item": "hotbath:hot_water_bucket"
+    },
+    "S": {
+      "item": "minecraft:sugar"
+    },
+    "P": {
+      "item": "minecraft:sunflower"
+    }
+  },
+  "result": {
+    "item": "hotbath:honey_bath_bucket",
+    "count": 1
+  }
+}

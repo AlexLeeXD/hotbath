@@ -1,0 +1,89 @@
+package com.crabmod.hotbath.events.enter_fluid_events;
+
+import com.crabmod.hotbath.HotBath;
+import com.crabmod.hotbath.util.CustomFluidHandler;
+import com.crabmod.hotbath.util.EffectRemovalHandler;
+import net.minecraft.advancements.Advancement;
+import net.minecraft.entity.player.EntityPlayerMP;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.init.MobEffects;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+
+import java.util.Objects;
+
+import static com.crabmod.hotbath.util.HealthRegenHandler.regenHealth;
+
+@Mod.EventBusSubscriber(modid = HotBath.MOD_ID)
+public class RoseBathEvents {
+  private static final int TICK_NUMBER = 20;
+  static final String ROSE_BATH_ENTERED_NUMBER = "RoseBathEnteredNumber";
+  static final String ROSE_BATH_STAYED_TIME = "RoseBathStayedTime";
+  static final String HAS_ENTERED_ROSE_BATH = "HasEnteredRoseBath";
+  static final String ROSE_BATH_ADVANCEMENT_ID = "hotbath:rose_body_fragrance";
+  private static final int ROSE_BATH_ENTERED_COUNT_TRIGGER_NUMBER = 100;
+  private static final int ROSE_BATH_STAYED_EFFECT_TRIGGER_TIME_SECONDS = 15;
+
+  @SubscribeEvent
+  public static void enterRoseBathEvents(LivingEvent.LivingUpdateEvent event) {
+    enterFluidEvents(
+        event,
+        ROSE_BATH_ENTERED_COUNT_TRIGGER_NUMBER,
+        ROSE_BATH_STAYED_EFFECT_TRIGGER_TIME_SECONDS,
+        ROSE_BATH_ENTERED_NUMBER,
+        ROSE_BATH_STAYED_TIME,
+        HAS_ENTERED_ROSE_BATH,
+        ROSE_BATH_ADVANCEMENT_ID);
+  }
+
+  public static void enterFluidEvents(
+      LivingEvent.LivingUpdateEvent event,
+      int enteredCountTriggerNumber,
+      int stayedEffectTriggerTime,
+      String enteredNumberInRoseBath,
+      String roseBathStayedTime,
+      String hasEnteredRoseBath,
+      String roseBathAdvancementId) {
+    if (event.getEntityLiving() instanceof EntityPlayerMP) {
+      EntityPlayerMP player = (EntityPlayerMP) event.getEntityLiving();
+      NBTTagCompound playerData = player.getEntityData();
+      boolean isInRoseBath = CustomFluidHandler.isPlayerInRoseBathBlock(player);
+
+      if (isInRoseBath) {
+        if (!playerData.getBoolean(hasEnteredRoseBath)) {
+          int enteredCount = playerData.getInt(enteredNumberInRoseBath) + 1;
+          playerData.setInt(enteredNumberInRoseBath, enteredCount);
+          playerData.setBoolean(hasEnteredRoseBath, true);
+
+          if (enteredCount >= enteredCountTriggerNumber) {
+            Advancement advancement =
+                Objects.requireNonNull(player.getServer())
+                    .getAdvancementManager()
+                    .getAdvancement(new ResourceLocation(roseBathAdvancementId));
+
+            if (advancement != null) {
+              player.getAdvancements().grantCriterion(advancement, "code_triggered");
+              playerData.setInt(enteredNumberInRoseBath, 0);
+            }
+          }
+        }
+        int roseBathStayTime = playerData.getInt(roseBathStayedTime) + 1;
+        playerData.setInt(roseBathStayedTime, roseBathStayTime);
+        regenHealth(0.25F, 1, player);
+        if (playerData.getInt(roseBathStayedTime) >= stayedEffectTriggerTime * TICK_NUMBER) {
+          EffectRemovalHandler.removeNegativeEffects(player);
+          EffectRemovalHandler.removeBadOmen(player);
+          player.addPotionEffect(
+              new PotionEffect(MobEffects.STRENGTH, 20 * TICK_NUMBER, 0, false, false));
+        }
+
+      } else {
+        playerData.setInt(roseBathStayedTime, 0);
+        playerData.setBoolean(hasEnteredRoseBath, false);
+      }
+    }
+  }
+}

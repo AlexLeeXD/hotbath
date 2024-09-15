@@ -1,11 +1,9 @@
 package com.crabmod.hotbath.util;
 
 import com.crabmod.hotbath.fluid_blocks.*;
-import net.minecraft.block.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.BlockPos;
 
 public class CustomFluidHandler {

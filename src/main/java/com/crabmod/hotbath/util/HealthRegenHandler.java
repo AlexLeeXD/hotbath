@@ -5,7 +5,7 @@ import net.minecraft.nbt.NBTTagCompound;
 
 public class HealthRegenHandler {
   public static void regenHealth(
-          float regenHealthNumber, double perSecondsNumber, EntityPlayer player) {
+      float regenHealthNumber, double perSecondsNumber, EntityPlayer player) {
 
     NBTTagCompound playerData = player.getEntityData();
     String healthRegenTimerKey = "healthRegenTimer";

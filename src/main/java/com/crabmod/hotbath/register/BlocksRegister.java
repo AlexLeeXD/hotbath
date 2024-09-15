@@ -2,7 +2,7 @@ package com.crabmod.hotbath.register;
 
 import com.crabmod.hotbath.HotBath;
 import com.crabmod.hotbath.fluid_blocks.*;
-import com.crabmod.hotbath.item.ItemGroup;
+import com.crabmod.hotbath.item.CreativeTab;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
@@ -48,17 +48,17 @@ public class BlocksRegister {
     event
         .getRegistry()
         .registerAll(
-            new ItemBlock(HERBAL_BATH_BLOCK, new Item.Properties().group(ItemGroup.HOT_BATH))
+            new ItemBlock(HERBAL_BATH_BLOCK, new Item.Properties().group(CreativeTab.HOT_BATH))
                 .setRegistryName(HERBAL_BATH_BLOCK.getRegistryName()),
-            new ItemBlock(HONEY_BATH_BLOCK, new Item.Properties().group(ItemGroup.HOT_BATH))
+            new ItemBlock(HONEY_BATH_BLOCK, new Item.Properties().group(CreativeTab.HOT_BATH))
                 .setRegistryName(HONEY_BATH_BLOCK.getRegistryName()),
-            new ItemBlock(HOT_WATER_BLOCK, new Item.Properties().group(ItemGroup.HOT_BATH))
+            new ItemBlock(HOT_WATER_BLOCK, new Item.Properties().group(CreativeTab.HOT_BATH))
                 .setRegistryName(HOT_WATER_BLOCK.getRegistryName()),
-            new ItemBlock(MILK_BATH_BLOCK, new Item.Properties().group(ItemGroup.HOT_BATH))
+            new ItemBlock(MILK_BATH_BLOCK, new Item.Properties().group(CreativeTab.HOT_BATH))
                 .setRegistryName(MILK_BATH_BLOCK.getRegistryName()),
-            new ItemBlock(PEONY_BATH_BLOCK, new Item.Properties().group(ItemGroup.HOT_BATH))
+            new ItemBlock(PEONY_BATH_BLOCK, new Item.Properties().group(CreativeTab.HOT_BATH))
                 .setRegistryName(PEONY_BATH_BLOCK.getRegistryName()),
-            new ItemBlock(ROSE_BATH_BLOCK, new Item.Properties().group(ItemGroup.HOT_BATH))
+            new ItemBlock(ROSE_BATH_BLOCK, new Item.Properties().group(CreativeTab.HOT_BATH))
                 .setRegistryName(ROSE_BATH_BLOCK.getRegistryName()));
   }
 }

@@ -1,11 +1,10 @@
 package com.crabmod.hotbath.particles;
 
+import javax.annotation.Nullable;
 import net.minecraft.client.particle.IParticleFactory;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.particles.BasicParticleType;
 import net.minecraft.world.World;
-
-import javax.annotation.Nullable;
 
 public class SteamParticle extends Particle {
 

@@ -6,7 +6,7 @@ import net.minecraft.util.FoodStats;
 
 public class HungerRegenHandler {
   public static void regenHunger(
-          int regenHungerNumber, float perSecondsNumber, EntityPlayer player) {
+      int regenHungerNumber, float perSecondsNumber, EntityPlayer player) {
     NBTTagCompound playerData = player.getEntityData();
     String hungerRegenTimerKey = "hungerRegenTimer";
 
@@ -14,7 +14,7 @@ public class HungerRegenHandler {
     playerData.setInt(hungerRegenTimerKey, hungerRegenTimer);
 
     int ticksPerRegen =
-            (int) (perSecondsNumber * 20); // Calculate the number of ticks required to recover
+        (int) (perSecondsNumber * 20); // Calculate the number of ticks required to recover
 
     if (hungerRegenTimer >= ticksPerRegen) { // Regenerate based on the given number of seconds
       FoodStats foodStats = player.getFoodStats();

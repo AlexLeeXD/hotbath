@@ -1,10 +1,11 @@
 package com.crabmod.hotbath.register;
 
+import static com.crabmod.hotbath.fluid_details.FluidsProperties.*;
+
 import com.crabmod.hotbath.HotBath;
 import com.crabmod.hotbath.fluid_blocks.CustomFluid;
 import com.crabmod.hotbath.fluid_blocks.CustomFluidBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.RegistryEvent;
@@ -87,17 +88,17 @@ public class FluidsRegister {
     event
         .getRegistry()
         .registerAll(
-            new CustomFluidBlock(HERBAL_BATH_FLUID, Block.Properties.create(Material.WATER))
+            new CustomFluidBlock(HERBAL_BATH_FLUID, HERBAL_BATH_PROPERTIES)
                 .setRegistryName(new ResourceLocation(HotBath.MOD_ID, "herbal_bath_block")),
-            new CustomFluidBlock(HONEY_BATH_FLUID, Block.Properties.create(Material.WATER))
+            new CustomFluidBlock(HONEY_BATH_FLUID, HONEY_BATH_PROPERTIES)
                 .setRegistryName(new ResourceLocation(HotBath.MOD_ID, "honey_bath_block")),
-            new CustomFluidBlock(HOT_WATER_FLUID, Block.Properties.create(Material.WATER))
+            new CustomFluidBlock(HOT_WATER_FLUID, HOT_WATER_PROPERTIES)
                 .setRegistryName(new ResourceLocation(HotBath.MOD_ID, "hot_water_block")),
-            new CustomFluidBlock(MILK_BATH_FLUID, Block.Properties.create(Material.WATER))
+            new CustomFluidBlock(MILK_BATH_FLUID, MILK_BATH_PROPERTIES)
                 .setRegistryName(new ResourceLocation(HotBath.MOD_ID, "milk_bath_block")),
-            new CustomFluidBlock(PEONY_BATH_FLUID, Block.Properties.create(Material.WATER))
+            new CustomFluidBlock(PEONY_BATH_FLUID, PEONY_BATH_PROPERTIES)
                 .setRegistryName(new ResourceLocation(HotBath.MOD_ID, "peony_bath_block")),
-            new CustomFluidBlock(ROSE_BATH_FLUID, Block.Properties.create(Material.WATER))
+            new CustomFluidBlock(ROSE_BATH_FLUID, ROSE_BATH_PROPERTIES)
                 .setRegistryName(new ResourceLocation(HotBath.MOD_ID, "rose_bath_block")));
   }
 }

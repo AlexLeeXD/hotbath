@@ -1,21 +1,20 @@
 package com.crabmod.hotbath.fluid_details;
 
+import static com.crabmod.hotbath.register.FluidsRegister.*;
+
 import com.crabmod.hotbath.register.ItemRegister;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockFlowingFluid;
-import net.minecraft.block.FlowingFluidBlock;
 import net.minecraft.fluid.FlowingFluid;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvents;
 import net.minecraftforge.fluids.FluidAttributes;
-import net.minecraftforge.fluids.ForgeFlowingFluid;
 import net.minecraftforge.fml.RegistryObject;
-
-import static com.crabmod.hotbath.register.FluidsRegister.*;
 
 public class FluidsProperties {
 
-  public static final ForgeFlowingFluid.Properties HERBAL_BATH_PROPERTIES =
+  public static final Block.Properties HERBAL_BATH_PROPERTIES =
       setHotBathProperties(
           HERBAL_BATH_FLUID,
           HERBAL_BATH_FLOWING,
@@ -25,7 +24,7 @@ public class FluidsProperties {
           FluidsTexture.HERBAL_BATH_STILL_TEXTURE,
           FluidsTexture.HERBAL_BATH_FLOWING_TEXTURE);
 
-  public static final ForgeFlowingFluid.Properties HONEY_BATH_PROPERTIES =
+  public static final Block.Properties HONEY_BATH_PROPERTIES =
       setHotBathProperties(
           HONEY_BATH_FLUID,
           HONEY_BATH_FLOWING,
@@ -35,7 +34,7 @@ public class FluidsProperties {
           FluidsTexture.HONEY_BATH_STILL_TEXTURE,
           FluidsTexture.HONEY_BATH_FLOWING_TEXTURE);
 
-  public static final ForgeFlowingFluid.Properties HOT_WATER_PROPERTIES =
+  public static final Block.Properties HOT_WATER_PROPERTIES =
       setHotBathProperties(
           HOT_WATER_FLUID,
           HOT_WATER_FLOWING,
@@ -45,7 +44,7 @@ public class FluidsProperties {
           FluidsTexture.HOT_WATER_STILL_TEXTURE,
           FluidsTexture.HOT_WATER_FLOWING_TEXTURE);
 
-  public static final ForgeFlowingFluid.Properties MILK_BATH_PROPERTIES =
+  public static final Block.Properties MILK_BATH_PROPERTIES =
       setHotBathProperties(
           MILK_BATH_FLUID,
           MILK_BATH_FLOWING,
@@ -55,7 +54,7 @@ public class FluidsProperties {
           FluidsTexture.MILK_BATH_STILL_TEXTURE,
           FluidsTexture.MILK_BATH_FLOWING_TEXTURE);
 
-  public static final ForgeFlowingFluid.Properties PEONY_BATH_PROPERTIES =
+  public static final Block.Properties PEONY_BATH_PROPERTIES =
       setHotBathProperties(
           PEONY_BATH_FLUID,
           PEONY_BATH_FLOWING,
@@ -65,7 +64,7 @@ public class FluidsProperties {
           FluidsTexture.PEONY_BATH_STILL_TEXTURE,
           FluidsTexture.PEONY_BATH_FLOWING_TEXTURE);
 
-  public static final ForgeFlowingFluid.Properties ROSE_BATH_PROPERTIES =
+  public static final Block.Properties ROSE_BATH_PROPERTIES =
       setHotBathProperties(
           ROSE_BATH_FLUID,
           ROSE_BATH_FLOWING,
@@ -75,7 +74,7 @@ public class FluidsProperties {
           FluidsTexture.ROSE_BATH_STILL_TEXTURE,
           FluidsTexture.ROSE_BATH_FLOWING_TEXTURE);
 
-  public static FlowingFluid.Properties setHotBathProperties(
+  public static Block.Properties setHotBathProperties(
       RegistryObject<FlowingFluid> DEFAULT_HOT_BATH_FLUID,
       RegistryObject<FlowingFluid> DEFAULT_HOT_BATH_FLOWING,
       RegistryObject<BlockFlowingFluid> DEFAULT_HOT_BATH_BLOCK,
@@ -84,7 +83,7 @@ public class FluidsProperties {
       ResourceLocation STILL_TEXTURE,
       ResourceLocation FLOWING_TEXTURE) {
 
-    return new ForgeFlowingFluid.Properties(
+    return new Block.Properties(
             () -> DEFAULT_HOT_BATH_FLUID.get(),
             () -> DEFAULT_HOT_BATH_FLOWING.get(),
             FluidAttributes.builder(STILL_TEXTURE, FLOWING_TEXTURE)

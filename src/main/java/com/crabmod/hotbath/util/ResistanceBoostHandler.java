@@ -1,8 +1,8 @@
 package com.crabmod.hotbath.util;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.init.MobEffects;
+import net.minecraft.potion.PotionEffect;
 
 public class ResistanceBoostHandler {
   public static void applyResistanceBoost(int secondPerBoost, EntityPlayer player) {

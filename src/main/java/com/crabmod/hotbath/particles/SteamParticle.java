@@ -65,7 +65,6 @@ public class SteamParticle extends TextureSheetParticle {
     return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
   }
 
-  @OnlyIn(Dist.CLIENT)
   public static class CozySmokeFactory implements ParticleProvider<SimpleParticleType> {
     private final SpriteSet spriteSet;
 

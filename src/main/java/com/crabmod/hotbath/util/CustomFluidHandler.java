@@ -2,12 +2,19 @@ package com.crabmod.hotbath.util;
 
 import com.crabmod.hotbath.fluid_blocks.*;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class CustomFluidHandler {
+
+  public static boolean isPlayerHeadInHotBath(Player player) {
+    BlockPos playerEyePos = BlockPos.containing(player.getEyePosition());
+    BlockState stateAtPlayerPos = player.level().getBlockState(playerEyePos);
+    return stateAtPlayerPos.getBlock() instanceof AbstractHotbathBlock;
+  }
 
   public static boolean isPlayerInHotBathBlock(Player player) {
     BlockPos playerPos = player.blockPosition();

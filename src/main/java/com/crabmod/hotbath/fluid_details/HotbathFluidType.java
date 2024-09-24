@@ -4,6 +4,9 @@ import static com.crabmod.hotbath.fluid_details.FluidsColor.DEFAULT_FOG_COLOR;
 
 import com.crabmod.hotbath.HotBath;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.level.pathfinder.BlockPathTypes;
+import net.minecraftforge.common.SoundActions;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fluids.FluidType;
 import net.minecraftforge.registries.DeferredRegister;
@@ -26,7 +29,21 @@ public class HotbathFluidType {
       ResourceLocation FLOWING_RL_TEXTURE) {
     return register(
         name,
-        FluidType.Properties.create().lightLevel(2).density(15).viscosity(5),
+        FluidType.Properties.create()
+            .lightLevel(2)
+            .density(15)
+            .viscosity(5)
+            .canExtinguish(true)
+            .supportsBoating(true)
+            .fallDistanceModifier(0.0F)
+            .canDrown(true)
+            .canSwim(true)
+            .pathType(BlockPathTypes.WATER)
+            .adjacentPathType(BlockPathTypes.WATER_BORDER)
+            .sound(SoundActions.BUCKET_FILL, SoundEvents.BUCKET_FILL)
+            .sound(SoundActions.BUCKET_EMPTY, SoundEvents.BUCKET_EMPTY)
+            .sound(SoundActions.FLUID_VAPORIZE, SoundEvents.FIRE_EXTINGUISH)
+            .canHydrate(true),
         color,
         STILL_RL_TEXTURE,
         FLOWING_RL_TEXTURE);

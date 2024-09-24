@@ -36,8 +36,6 @@ public abstract class AbstractHotbathBlock extends LiquidBlock {
 
     // Generate steam particles at random adjacent air blocks
     generateSteamParticles(worldIn, pos, rand);
-    // Play ambient water sound around the block
-    SoundHandler.playAmbientWaterSound(worldIn, pos, rand);
 
     // Set the maximum distance in squared units to avoid unnecessary checks
     final double maxDistanceSqr = 3.0 * 3.0;
@@ -48,6 +46,13 @@ public abstract class AbstractHotbathBlock extends LiquidBlock {
       if (player.distanceToSqr(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5)
           > maxDistanceSqr) {
         continue; // Skip if the player is too far from the hot bath block
+      }
+
+      // Check if the player's head is underwater, if so, don't play ambient sound
+      boolean isPlayerHeadUnderwater = CustomFluidHandler.isPlayerHeadInHotBath(player);
+      if (!isPlayerHeadUnderwater) {
+        // Play ambient water sound only if the player is not completely underwater
+        SoundHandler.playAmbientWaterSound(worldIn, pos, rand);
       }
 
       // Only handle underwater and water entry/exit states if the player is within range

@@ -2,7 +2,7 @@ package com.crabmod.hotbath.events;
 
 import static com.crabmod.hotbath.HotBath.MOD_ID;
 
-import com.crabmod.hotbath.fluid_blocks.IHotbathBlock;
+import com.crabmod.hotbath.fluid_blocks.AbstractHotbathBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
@@ -24,7 +24,7 @@ public class AquaticMobHurtsHandler {
     BlockPos pos = entity.blockPosition();
 
     // Check if the entity is in a hot bath block
-    boolean inHotBath = world.getBlockState(pos).getBlock() instanceof IHotbathBlock;
+    boolean inHotBath = world.getBlockState(pos).getBlock() instanceof AbstractHotbathBlock;
 
     if (inHotBath && isNonTropicalAquatic(entity)) {
       entity.hurt(DamageSource.MAGIC, 1.0F);

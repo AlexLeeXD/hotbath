@@ -2,7 +2,7 @@ package com.crabmod.hotbath.events;
 
 import static com.crabmod.hotbath.HotBath.MOD_ID;
 
-import com.crabmod.hotbath.fluid_blocks.IHotbathBlock;
+import com.crabmod.hotbath.fluid_blocks.AbstractHotbathBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -23,7 +23,7 @@ public class BlockPlacementHandler {
   public static void onRightClickBlock(PlayerInteractEvent.RightClickBlock event) {
     Level world = event.getWorld();
     BlockPos pos = event.getPos();
-    boolean isHotBathBlock = world.getBlockState(pos).getBlock() instanceof IHotbathBlock;
+    boolean isHotBathBlock = world.getBlockState(pos).getBlock() instanceof AbstractHotbathBlock;
 
     if (isHotBathBlock) {
       Item heldItem = event.getItemStack().getItem();

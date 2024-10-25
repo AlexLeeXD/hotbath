@@ -1,4 +1,8 @@
+![hotBath Cover](https://raw.githubusercontent.com/crabsatellite/hotBath/1.16.5/hotbath_cover.png)
+
 # Hot-bath Mod
+
+[![Discord](https://img.shields.io/badge/Join-Discord-7289DA?logo=discord&logoColor=white)](https://discord.gg/nQpq2rAA)
 
 [Github Source Code](https://github.com/crabsatellite/hotBath)
 

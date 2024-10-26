@@ -8,11 +8,11 @@
 
 [Mod Download](https://www.curseforge.com/minecraft/mc-mods/hotbath/comments)
 
-<span style="color:red;text-decoration:underline;font-weight:bold;font-size:larger;">这是一个正在开发中的抢先体验版
-mod，我们感激所有的意见，Bug 汇报，任何建议。</span>
+### Recommended Mods / 推荐模组
 
-<span style="color:red;text-decoration:underline;font-weight:bold;font-size:larger;">This is a beta version of a mod
-currently in development. We appreciate any feedback, bug reports, and suggestions.</span>
+- **🌟 Highly Recommended | Fluidlogged 🌟**  
+  [Modrinth Link](https://modrinth.com/mod/fluidlogged/versions)  
+  Fluidlogged enables custom fluid blocks to have a waterlogged effect with blocks like stairs, slabs, and more, allowing hotbath fluids to integrate naturally into various structures.
 
 ### Known Issues / 已知问题
 

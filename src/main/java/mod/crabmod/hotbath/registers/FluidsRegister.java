@@ -6,6 +6,8 @@ import static mod.crabmod.hotbath.fluid_details.HotbathFluidType.getHotBathFluid
 
 import mod.crabmod.hotbath.HotBath;
 import mod.crabmod.hotbath.fluid_blocks.*;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LiquidBlock;
@@ -40,7 +42,12 @@ public class FluidsRegister {
                   Block.Properties.ofFullCopy(Blocks.WATER)
                       .noCollission()
                       .strength(1000.0F)
-                      .noOcclusion()));
+                      .noOcclusion()
+                      .setId(
+                          ResourceKey.create(
+                              ForgeRegistries.BLOCKS.getRegistryKey(),
+                              ResourceLocation.parse(
+                                  String.format("%s:%s", HotBath.MOD_ID, "hot_water_block"))))));
 
   public static final ForgeFlowingFluid.Properties HOT_WATER_PROPERTIES =
       new ForgeFlowingFluid.Properties(
@@ -75,7 +82,12 @@ public class FluidsRegister {
                   Block.Properties.ofFullCopy(Blocks.WATER)
                       .noCollission()
                       .strength(1000.0F)
-                      .noOcclusion()));
+                      .noOcclusion()
+                      .setId(
+                          ResourceKey.create(
+                              ForgeRegistries.BLOCKS.getRegistryKey(),
+                              ResourceLocation.parse(
+                                  String.format("%s:%s", HotBath.MOD_ID, "honey_bath_block"))))));
 
   public static final ForgeFlowingFluid.Properties HONEY_BATH_PROPERTIES =
       new ForgeFlowingFluid.Properties(
@@ -110,7 +122,13 @@ public class FluidsRegister {
                   Block.Properties.ofFullCopy(Blocks.WATER)
                       .noCollission()
                       .strength(1000.0F)
-                      .noOcclusion()));
+                      .noOcclusion()
+                      .setId(
+                          ResourceKey.create(
+                              ForgeRegistries.BLOCKS.getRegistryKey(),
+                              ResourceLocation.parse(
+                                  String.format("%s:%s", HotBath.MOD_ID, "milk_bath_block"))))));
+
   public static final ForgeFlowingFluid.Properties MILK_BATH_PROPERTIES =
       new ForgeFlowingFluid.Properties(
               getHotBathFluidType(
@@ -144,7 +162,12 @@ public class FluidsRegister {
                   Block.Properties.ofFullCopy(Blocks.WATER)
                       .noCollission()
                       .strength(1000.0F)
-                      .noOcclusion()));
+                      .noOcclusion()
+                      .setId(
+                          ResourceKey.create(
+                              ForgeRegistries.BLOCKS.getRegistryKey(),
+                              ResourceLocation.parse(
+                                  String.format("%s:%s", HotBath.MOD_ID, "peony_bath_block"))))));
 
   public static final ForgeFlowingFluid.Properties PEONY_BATH_PROPERTIES =
       new ForgeFlowingFluid.Properties(
@@ -179,7 +202,12 @@ public class FluidsRegister {
                   Block.Properties.ofFullCopy(Blocks.WATER)
                       .noCollission()
                       .strength(1000.0F)
-                      .noOcclusion()));
+                      .noOcclusion()
+                      .setId(
+                          ResourceKey.create(
+                              ForgeRegistries.BLOCKS.getRegistryKey(),
+                              ResourceLocation.parse(
+                                  String.format("%s:%s", HotBath.MOD_ID, "rose_bath_block"))))));
 
   public static final ForgeFlowingFluid.Properties ROSE_BATH_PROPERTIES =
       new ForgeFlowingFluid.Properties(
@@ -213,7 +241,12 @@ public class FluidsRegister {
                   Block.Properties.ofFullCopy(Blocks.WATER)
                       .noCollission()
                       .strength(1000.0F)
-                      .noOcclusion()));
+                      .noOcclusion()
+                      .setId(
+                          ResourceKey.create(
+                              ForgeRegistries.BLOCKS.getRegistryKey(),
+                              ResourceLocation.parse(
+                                  String.format("%s:%s", HotBath.MOD_ID, "herbal_bath_block"))))));
 
   public static final ForgeFlowingFluid.Properties HERBAL_BATH_PROPERTIES =
       new ForgeFlowingFluid.Properties(

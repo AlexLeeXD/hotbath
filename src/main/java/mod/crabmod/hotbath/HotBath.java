@@ -21,7 +21,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.ObjectHolder;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -108,23 +107,4 @@ public class HotBath {
           FluidsRegister.HERBAL_BATH_FLOWING.get(), RenderType.translucent());
     }
   }
-
-  // Register the setup method for modloading
-  @ObjectHolder(registryName = "minecraft:block", value = "hotbath:hot_water_block")
-  public static final HotWaterBlock HOT_WATER_BLOCK = null;
-
-  @ObjectHolder(registryName = "minecraft:block", value = "hotbath:herbal_bath_block")
-  public static final HerbalBathBlock HERBAL_BATH_BLOCK = null;
-
-  @ObjectHolder(registryName = "minecraft:block", value = "hotbath:honey_bath_block")
-  public static final HoneyBathBlock HONEY_BATH_BLOCK = null;
-
-  @ObjectHolder(registryName = "minecraft:block", value = "hotbath:milk_bath_block")
-  public static final MilkBathBlock MILK_BATH_BLOCK = null;
-
-  @ObjectHolder(registryName = "minecraft:block", value = "hotbath:peony_bath_block")
-  public static final PeonyBathBlock PEONY_BATH_BLOCK = null;
-
-  @ObjectHolder(registryName = "minecraft:block", value = "hotbath:rose_bath_block")
-  public static final RoseBathBlock ROSE_BATH_BLOCK = null;
 }

@@ -4,9 +4,9 @@
 
 [![Discord](https://img.shields.io/badge/Join-Discord-7289DA?logo=discord&logoColor=white)](https://discord.gg/nQpq2rAA)
 
-[Github Source Code](https://github.com/crabsatellite/hotBath)
+[![GitHub](https://img.shields.io/badge/Source%20Code-GitHub-181717?logo=github&logoColor=white)](https://github.com/crabsatellite/hotBath)
 
-[Mod Download](https://www.curseforge.com/minecraft/mc-mods/hotbath/comments)
+[![Mod Download](https://img.shields.io/badge/Download-Mod-FFB119?logo=curseforge&logoColor=white)](https://www.curseforge.com/minecraft/mc-mods/hotbath/comments)
 
 ### Recommended Mods / 推荐模组
 

@@ -6,12 +6,8 @@
     "   "
   ],
   "key": {
-    "#": {
-      "item": "hotbath:hot_water_bucket"
-    },
-    "S": {
-      "item": "minecraft:milk_bucket"
-    }
+    "#": "hotbath:hot_water_bucket",
+    "S": "minecraft:milk_bucket"
   },
   "result": {
     "id": "hotbath:milk_bath_bucket",

@@ -6,12 +6,8 @@
     "   "
   ],
   "key": {
-    "#": {
-      "item": "hotbath:hot_water_bucket"
-    },
-    "S": {
-      "item": "hotbath:bath_herb"
-    }
+    "#": "hotbath:hot_water_bucket",
+    "S": "hotbath:bath_herb"
   },
   "result": {
     "id": "hotbath:herbal_bath_bucket"

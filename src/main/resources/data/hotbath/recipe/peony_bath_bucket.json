@@ -6,12 +6,8 @@
     "   "
   ],
   "key": {
-    "#": {
-      "item": "hotbath:hot_water_bucket"
-    },
-    "S": {
-      "item": "minecraft:peony"
-    }
+    "#": "hotbath:hot_water_bucket",
+    "S": "minecraft:peony"
   },
   "result": {
     "id": "hotbath:peony_bath_bucket"

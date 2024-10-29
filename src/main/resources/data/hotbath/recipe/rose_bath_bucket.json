@@ -6,12 +6,8 @@
     "SSS"
   ],
   "key": {
-    "#": {
-      "item": "hotbath:hot_water_bucket"
-    },
-    "S": {
-      "item": "minecraft:rose_bush"
-    }
+    "#": "hotbath:hot_water_bucket",
+    "S": "minecraft:rose_bush"
   },
   "result": {
     "id": "hotbath:rose_bath_bucket"

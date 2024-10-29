@@ -16,7 +16,9 @@
         "1.21-latest": "2.0.1",
         "1.21-recommended": "2.0.1",
         "1.21.1-latest": "2.0.1",
-        "1.21.1-recommended": "2.0.1"
+        "1.21.1-recommended": "2.0.1",
+        "1.21.3-latest": "2.0.1",
+        "1.21.3-recommended": "2.0.1"
     },
     "1.16.5": {
         "0.1.0": {
@@ -135,6 +137,12 @@
         },
         "2.0.1": {
             "changes": "Fix server startup and some sound issues",
+            "url": "https://www.curseforge.com/minecraft/mc-mods/hotbath"
+        }
+    },
+    "1.21.3": {
+        "2.0.1": {
+            "changes": "Initial release for 1.21.3",
             "url": "https://www.curseforge.com/minecraft/mc-mods/hotbath"
         }
     }
